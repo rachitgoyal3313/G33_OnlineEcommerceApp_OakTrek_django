@@ -1,7 +1,13 @@
 from django.db import models
 from Profile.models import User
 from django.utils.text import slugify
+from django import forms
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True)
+    email = forms.EmailField(required=True)
+    subject = forms.CharField(max_length=200, required=False)
+    message = forms.CharField(widget=forms.Textarea, required=True)
 class Product(models.Model):
     CATEGORY_CHOICES = [
         ('Skincare', 'Skincare'),

@@ -1,8 +1,7 @@
-{% extends 'base.html'%}
-{% load static %} {# <-- Added this line #}
+{% extends "base.html" %}
+{% load static %} 
 
-{% block style_block %}
-
+{% block styles_block %}
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -99,6 +98,86 @@
     margin-bottom: 10px;
   }
 
+  .container {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    margin-bottom: 50px;
+    font-size: 3em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .middlecontent {
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .chooseprojects {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  h5 {
+    font-size: 25px;
+    width: 100%;
+  }
+
+  p {
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+
+  @media (max-width: 1200px) {
+    .container {
+      margin-top: 150px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    h5 {
+      font-size: 28px; 
+    }
+  }
+
+  @media (max-width: 992px) {
+    .container {
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 40px;
+    }
+
+    .middlecontent {
+      margin-top: 60px;
+    }
+
+    h5 {
+      font-size: 26px; 
+    }
+  }
+
+
   @media (max-width: 768px) {
     .emailnotify {
       width: 95%;
@@ -108,6 +187,7 @@
     #email {
       width: 100%;
       margin-bottom: 10px;
+      margin-right: 0; 
     }
 
     .initiatives {
@@ -126,8 +206,51 @@
 
     .childpara {
       width: 100%;
+      min-width: unset; 
+    }
+
+     .container {
+      margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .middlecontent {
+      margin-top: 40px;
+    }
+
+    h5 {
+      font-size: 24px; 
+    }
+
+    .chooseprojects {
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
   }
+
+  @media (max-width: 576px) {
+     .container {
+      margin-top: 60px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+    }
+
+    h5 {
+      font-size: 22px;
+    }
+
+    .chooseprojects {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
 
   @media (max-width: 480px) {
     #initiativeheading {
@@ -141,8 +264,47 @@
 </style>
 {% endblock %}
 
+
+{% block title %}Footprint - Oaktrek{% endblock %}
+
 {% block main_block %}
 
+<div class="container">
+  <div class="uppermainheading">
+    <h1 id="mainheading"><b>What's In a Footprint</b></h1>
+  </div>
+
+  <img src="{% static 'assets/products/regenerative1.png' %}" alt="Regenerative Process Diagram">
+
+  <div class="middlecontent">
+    <div class="ourmission">
+      <h5 id="ourmission"><b>Where We Measure</b></h5><br>
+      <p> To hold ourselves accountable in our mission to lower our carbon footprint, we’re measuring our impact and
+        putting our results on display. We track our emissions throughout five different areas. </p><br><br>
+
+
+
+      <h5><b>Materials</b></h5><br>
+      <p>We've always used natural materials like Wool, Tree, and Sugar whenever we can, because we think their natural
+        carbon-sucking ability has the potential to make this number go from our highest to our lowest.</p><br><br>
+      <h5><b>Manufacturing</b></h5><br>
+      <p>The truth is, making things takes energy. But when you work with partners who share your values and manufacture
+        efficiently, it turns out you can reduce those numbers pretty significantly.</p><br><br>
+      <h5><b>Transportation</b></h5><br>
+      <p>Our products move from factory to distribution center, then from distribution center to customers across the
+        globe. And sometimes, they're returned or exchanged. Every leg of a product's journey makes an impact.</p>
+      <br><br>
+      <h5><b>Product Use</b></h5><br>
+      <p>No matter how lightly you tread, your Allbirds are bound to need a rinse every now and again. Our products are
+        machine washable, and we strongly encourage you to wash on cold and air dry to minimize your carbon footprint
+        and maximize your product's lifetime.</p><br><br>
+      <h5><b>End of Life</b></h5><br>
+      <p>Most products end up in a landfill, where they emit greenhouse gases into the atmosphere while they decompose.
+        It's far from a perfect solution, and we're working on it.</p><br><br>
+    </div>
+  </div>
+
+</div>
 
 <div class="emailnotify">
   <div>
@@ -155,10 +317,8 @@
   </div>
   <br />
   <div>
-   
-    <form action="#" method="POST">
-      {% csrf_token %} 
-      <input type="email" name="email" id="email" placeholder="Enter your email" />
+    <form action="#" method="POST"> 
+      <input type="email" name="email" id="email" placeholder="Enter your email" required/> 
       <input type="submit" value="SIGNUP" class="btn btn-dark" />
     </form>
   </div>
@@ -169,8 +329,7 @@
   <div class="member">
     <a href="{% url 'sustainability' %}" class="disnon">
       <div class="card">
-        <img src="{% static 'assets/products/member1.png' %}" class="card-img-top cardimage"
-          alt="MO.ONSHOT" />
+        <img src="{% static 'assets/products/member1.png' %}" class="card-img-top cardimage" alt="MO.ONSHOT Teaser" /> 
         <div class="card-body">
           <h3><b>Introducing MO.ONSHOT</b></h3>
           <p class="card-text">Learn more about the World's first net zero carbon shoe...</p>
@@ -180,10 +339,8 @@
   </div>
 
   <div class="member">
-    <a href="{% url 'moonshot' %}" class="disnon">
-      <div class="card">
-        <img src="{% static 'assets/products/member3.png' %}" class="card-img-top cardimage"
-          alt="MO.ONSHOT" />
+    <a href="{% url 'bcorp' %}" class="disnon">
+        <img src="{% static 'assets/products/member3.png' %}" class="card-img-top cardimage" alt="B Corp Certification" />
         <div class="card-body">
           <h3><b>We're a Certified B Corp</b></h3>
           <p class="card-text">From the very beginning, the environment...</p>
@@ -192,10 +349,9 @@
     </a>
   </div>
   <div class="member">
-    <a href="{% url 'mothernature' %}" class="disnon">
+    <a href="{% url 'moonshot' %}" class="disnon">
       <div class="card">
-        <img src="{% static 'assets/products/member4.png' %}" class="card-img-top cardimage"
-          alt="MO.ONSHOT" />
+        <img src="{% static 'assets/products/member4.png' %}" class="card-img-top cardimage" alt="Mother Nature Initiative" />
         <div class="card-body">
           <h3><b>Giving Mother Nature a seat at the Table</b></h3>
           <p class="card-text">We're prioritizing the planet...</p>
@@ -206,8 +362,7 @@
   <div class="member">
     <a href="{% url 'adidasxoaktrek' %}" class="disnon">
       <div class="card">
-        <img src="{% static 'assets/products/member5.png' %}" class="card-img-top cardimage"
-          alt="MO.ONSHOT" />
+        <img src="{% static 'assets/products/member5.png' %}" class="card-img-top cardimage" alt="Adidas X Oaktrek Collaboration" /> 
         <div class="card-body">
           <h3><b>Adidas X Oaktrek</b></h3>
           <p class="card-text">We teamed up with Adidas...</p>
@@ -236,7 +391,4 @@
       sugar cane. They're soft, breathable, and better for the planet—win, win, win.</p>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-{% endblock %}  
+{% endblock %}

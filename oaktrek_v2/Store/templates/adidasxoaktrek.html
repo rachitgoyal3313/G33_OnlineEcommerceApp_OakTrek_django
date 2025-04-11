@@ -1,17 +1,14 @@
 {% extends "base.html" %}
-{% load static %} {# Load the static tag library #}
+{% load static %} 
 
-{# Assuming base.html has a block for extra styles, possibly in the <head> #}
 {% block styles_block %}
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-  /* --- Your CSS rules remain unchanged --- */
   * {
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
   }
-  /* ... (keep all your existing CSS rules here) ... */
    .emailnotify {
     background-color: rgba(235, 235, 235, 0.738);
     width: 90%;
@@ -266,18 +263,15 @@
 </style>
 {% endblock %}
 
-{# Assuming base.html has a block for the title tag #}
 {% block title %}Adidas OakTrek - Oaktrek{% endblock %}
 
-{# Main content block #}
 {% block main_block %}
 
-<div class="container pt-5"> {# Added padding-top #}
+<div class="container pt-5"> 
   <div class="uppermainheading">
     <h1 id="mainheading"><b>Carbon Offsets</b></h1>
   </div>
 
-  {# Use the static tag for images #}
   <img src="{% static 'assets/products/adidas.png' %}" alt="Adidas x Oaktrek Collaboration" class="main-product-image img-fluid rounded shadow-sm mb-5" /> {# Added alt text, bootstrap classes #}
 
   <div class="middlecontent">
