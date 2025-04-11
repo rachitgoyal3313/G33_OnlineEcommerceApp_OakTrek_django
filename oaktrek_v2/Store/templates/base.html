@@ -157,7 +157,6 @@
                     </ul>
                 </div>
 
-                <!-- Brand Logo -->
                 <a class="navbar-brand mx-auto" href="#><img class="Logo"
                         src="{% static 'assets/logos/oaktrek_logo-no_bg.png' %}" alt=""></a>
 
@@ -173,15 +172,14 @@
                                         <h6>OUR IMPACT</h6>
                                         <a href="{% url 'adidasxoaktrek' %}">Adidas X OakTrek</a>
                                         <a href="{% url 'carbonoffsets' %}">Carbon Footprint</a>
-                                        <a href="#">Regenerative Agriculture</a>
-                                        <a href="#">Waste Reduction</a>
+                                        <a href="{% url 'regenerative' %}">Regenerative Agriculture</a>
                                     </div>
                                     <div class="dropdown-section">
                                         <h6>OUR INITIATIVES</h6>
                                         <a href="#">Eco-Friendly Innovations</a>
                                         <a href="#">Recycled Materials</a>
                                         <a href="#">Sustainable Factories</a>
-                                        <a href="#">B Corp Certification</a>
+                                        <a href="{% url 'bcorp' %}">B Corp Certification</a>
                                        
                                     </div>
                                     <div class="dropdown-section">

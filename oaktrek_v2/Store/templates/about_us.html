@@ -2,11 +2,10 @@
 {% load static %}
 
 {% block main_block %}
-<!DOCTYPE html> <!-- This is redundant if base.html already has it -->
-<html lang="en"> <!-- This is redundant if base.html already has it -->
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Meta tags, title, and common links are usually in base.html -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Oaktrek</title>
@@ -21,7 +20,6 @@
             --accent-color: #4D5559;
         }
 
-        /* Consider moving styles to a separate CSS file loaded via {% static %} */
         body {
             font-family: 'Vollkorn', serif;
             background-color: white;

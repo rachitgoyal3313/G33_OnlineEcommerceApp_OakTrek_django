@@ -40,17 +40,15 @@ def products_view(request, collection_name):
 
 
 def product_page_view(request, collection_name, product_slug):
-    # Normalize collection_name to match the gender field
     if collection_name.lower() in ["male", "mens", "men's", "men"]:
         gender = "Male"
     else:
-        gender = None  # Handle other cases (e.g., "Female") if applicable
+        gender = None  
     
-    # Query the product by slug and gender
     product = get_object_or_404(Product, gender=gender, slug=product_slug)
     
     context = {
-        'collection_name': collection_name,  # For URL consistency
+        'collection_name': collection_name,  
         'product': product,
     }
     return render(request, 'product_page.html', context)
@@ -102,3 +100,17 @@ def faq(request):
 def returns(request):
     return render(request, 'returns.html')
 
+def aboutUs(request):
+    return render(request, 'about_us.html')
+
+def our_story(request):
+    return render(request, 'our_story.html')
+
+def our_materials(request):
+    return render(request, 'our_materials.html')
+
+def sustainability(request):
+    return render(request, 'sustainability.html')
+
+def regenerative(request):
+    return render(request, 'regenerative.html')

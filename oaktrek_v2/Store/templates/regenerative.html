@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %} {# <--- Added this to load the static template tag #}
+{% load static %} 
 
 {% block title %}Renewable Materials - Oaktrek{% endblock %} {# Updated title to match H1 #}
 
@@ -15,21 +15,18 @@
   body {
     margin: 0;
     padding: 0;
-    font-size: 16px; /* Base font size */
-    line-height: 1.6; /* Improve readability */
-    color: #333; /* Default text color */
+    font-size: 16px;
+    line-height: 1.6; 
+    color: #333; 
   }
 
-  /* --- Main Content Container --- */
   .container {
-    /* Removed fixed margin-top, rely on flow or add to specific elements if needed */
-    /* margin-top: 200px; */
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px; /* Max width for content */
-    padding: 40px 20px; /* Add some padding */
+    max-width: 1200px; 
+    padding: 40px 20px;
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;

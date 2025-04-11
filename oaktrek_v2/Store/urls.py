@@ -19,5 +19,10 @@ urlpatterns = [
     path('oaktrek_help/', views.oaktrek_help, name='oaktrek_help'),
     path('returns/', views.returns, name='returns'),
     path('faq/', views.faq, name='faq'),
+    path('aboutUs/',  views.aboutUs, name='about_us'),
+    path('our_story/',  views.our_story, name='our_story'),
+    path('our_materials/',  views.our_materials, name='our_materials'),
+    path('sustainability/',  views.sustainability, name='sustainability'),
+    path('regenerative/',  views.regenerative, name='regenerative'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

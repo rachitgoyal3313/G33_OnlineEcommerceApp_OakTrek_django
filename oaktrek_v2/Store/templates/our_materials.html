@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% block title_block %} OakTrek - Our Materials {% endblock %}
+{% load static %}
 
+{% block title_block %}OakTrek - Our Materials{% endblock %}
 
 {% block styles %}
 <style>
@@ -103,7 +104,6 @@
 
 {% block title %}Our Materials - Oaktrek{% endblock %}
 
-
 {% block main_block %}
 <div class="hero-section">
     <div class="container">
@@ -117,8 +117,8 @@
         <div class="row mb-5">
             <div class="col-md-4 mb-4">
                 <div class="card material-card">
-                    <img width="1000px" src="{{ url_for('static', filename='assets/logos/merino_wool.jpg') }}"
-                        alt="Merino Wool" class="img-fluid rounded">
+                    <img width="1000px" src="{% static 'assets/logos/merino_wool.jpg' %}" 
+                         alt="Merino Wool" class="img-fluid rounded">
                     <div class="card-body">
                         <h5 class="card-title">Merino Wool</h5>
                         <p class="card-text">Naturally temperature-regulating and moisture-wicking material that keeps
@@ -133,8 +133,8 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card material-card">
-                    <img width="1000px" src="{{ url_for('static', filename='assets/logos/recycled_polyester.jpg') }}"
-                        alt="Recycled Polyester" class="img-fluid rounded">
+                    <img width="1000px" src="{% static 'assets/logos/recycled_polyester.jpg' %}" 
+                         alt="Recycled Polyester" class="img-fluid rounded">
                     <div class="card-body">
                         <h5 class="card-title">Recycled Polyester</h5>
                         <p class="card-text">Made from post-consumer plastic bottles, our recycled polyester reduces
@@ -149,8 +149,8 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card material-card">
-                    <img width="1000px" src="{{ url_for('static', filename='assets/logos/natural_rubber.jpg') }}"
-                        alt="Natural Rubber" class="img-fluid rounded">
+                    <img width="1000px" src="{% static 'assets/logos/natural_rubber.jpg' %}" 
+                         alt="Natural Rubber" class="img-fluid rounded">
                     <div class="card-body">
                         <h5 class="card-title">Natural Rubber</h5>
                         <p class="card-text">Sustainably sourced natural rubber provides the perfect balance of grip and
@@ -175,16 +175,19 @@
     </div>
 </div>
 
-
 <script>
-    const leavesContainer = document.getElementById('leaves-container');
-    for (let i = 0; i < 10; i++) {
-        const leaf = document.createElement('div');
-        leaf.className = 'floating-leaf';
-        leaf.style.left = Math.random() * 100 + 'vw';
-        leaf.style.animationDelay = Math.random() * 20 + 's';
-        leaf.innerHTML = `<svg viewBox="0 0 100 100"><path d="M50 10 C60 30 80 40 90 60 C80 80 60 90 50 95 C40 90 20 80 10 60 C20 40 40 30 50 10" fill="currentColor"/></svg>`;
-        leavesContainer.appendChild(leaf);
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const leavesContainer = document.getElementById('leaves-container');
+        if (leavesContainer) {
+            for (let i = 0; i < 10; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'floating-leaf';
+                leaf.style.left = Math.random() * 100 + 'vw';
+                leaf.style.animationDelay = Math.random() * 20 + 's';
+                leaf.innerHTML = `<svg viewBox="0 0 100 100"><path d="M50 10 C60 30 80 40 90 60 C80 80 60 90 50 95 C40 90 20 80 10 60 C20 40 40 30 50 10" fill="currentColor"/></svg>`;
+                leavesContainer.appendChild(leaf);
+            }
+        }
+    });
 </script>
 {% endblock %}
