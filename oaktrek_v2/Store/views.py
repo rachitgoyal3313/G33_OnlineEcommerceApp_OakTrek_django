@@ -19,15 +19,39 @@ def coming_soon(request):
     return render(request, "coming_soon.html")
 
 def products_view(request, collection_name):
+    products = []
+    normalized_collection_name = collection_name.lower()
+    
+    if normalized_collection_name in ["male", "mens", "men's", "men"]:
+        collection_name = "Men"
+        products = Product.objects.filter(gender="Male")
+
+    if normalized_collection_name in ["Women", "Womens", "Wommen's", "women"]:
+        collection_name = "Women"
+        products = Product.objects.filter(gender="Female")
+    
     context = {
-        'collection_name': collection_name,
+        'products': products,
+        'collection_name': collection_name,  # Use normalized name for URLs
+        'original_collection_name': collection_name,  # Pass original for display if needed
+        "sizes": [8, 9, 10, 11, 12]
     }
     return render(request, 'products.html', context)
 
+
 def product_page_view(request, collection_name, product_slug):
+    # Normalize collection_name to match the gender field
+    if collection_name.lower() in ["male", "mens", "men's", "men"]:
+        gender = "Male"
+    else:
+        gender = None  # Handle other cases (e.g., "Female") if applicable
+    
+    # Query the product by slug and gender
+    product = get_object_or_404(Product, gender=gender, slug=product_slug)
+    
     context = {
-        'collection_name': collection_name,
-        'product_slug': product_slug,
+        'collection_name': collection_name,  # For URL consistency
+        'product': product,
     }
     return render(request, 'product_page.html', context)
 

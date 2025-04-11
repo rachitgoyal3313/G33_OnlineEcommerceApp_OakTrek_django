@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -17,5 +19,5 @@ urlpatterns = [
     path('oaktrek_help/', views.oaktrek_help, name='oaktrek_help'),
     path('returns/', views.returns, name='returns'),
     path('faq/', views.faq, name='faq'),
-    
-]
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
