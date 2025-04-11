@@ -1,0 +1,395 @@
+{% extends "base.html" %}
+{% load static %} {# Load the static tag library #}
+
+{# Assuming base.html has a block for extra styles, possibly in the <head> #}
+{% block styles_block %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+  /* --- Your CSS rules remain unchanged --- */
+  * {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+  /* ... (keep all your existing CSS rules here) ... */
+   .emailnotify {
+    background-color: rgba(235, 235, 235, 0.738);
+    width: 90%;
+    max-width: 800px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  #email {
+    width: 60%;
+    max-width: 300px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    margin-right: 10px;
+  }
+
+  #initiativeheading {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 2em;
+  }
+
+  .initiatives {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    width: 18rem;
+    height: auto;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+    background-color: #fff; /* Ensure card background is white */
+  }
+  .card .card-body{
+    padding: 1.5rem; /* Add padding to card body */
+  }
+  .card h3 {
+      font-size: 1.25rem; /* Adjust heading size */
+      margin-bottom: 0.75rem;
+  }
+   .card p {
+      font-size: 0.95rem; /* Adjust paragraph size */
+      color: #555; /* Slightly lighter text color */
+  }
+
+  .card-img-top {
+    transition: transform 0.3s ease-in-out;
+    height: 200px; /* Give images a fixed height */
+    object-fit: cover; /* Ensure images cover the area */
+  }
+
+  .card:hover {
+      transform: translateY(-5px); /* Lift card slightly on hover */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+  }
+  .card:hover .card-img-top {
+    transform: scale(1.05); /* Slightly smaller scale on hover */
+  }
+
+  .disnon {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #approachhead {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .parentpara {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+
+  .childpara {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .childpara h4 {
+    margin-bottom: 10px;
+  }
+
+  .container {
+    margin-top: 50px; /* Adjusted top margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container img.main-product-image { /* Added class for specificity */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 40px; /* Add space below image */
+  }
+
+  h1#mainheading { /* More specific selector */
+    margin-bottom: 50px;
+    font-size: 3em;
+    text-align: center;
+    width: 100%;
+  }
+  .middlecontent h1 {
+      font-size: 2.5em; /* Smaller heading for this section */
+      margin-top: 60px;
+      margin-bottom: 30px;
+      text-align: center;
+  }
+
+  .middlecontent {
+    max-width: 800px; /* Limit width */
+    width: 100%; /* Ensure it takes full width on smaller screens */
+    margin-top: 40px; /* Adjusted margin */
+    text-align: center; /* Center align text */
+    line-height: 1.7; /* Improve readability */
+  }
+  .middlecontent p {
+      margin-bottom: 25px; /* Space between paragraphs */
+      font-size: 1.05rem;
+  }
+
+
+  .chooseprojects { /* This class wasn't used in HTML, but keeping style */
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  h5 { /* This tag wasn't used in HTML, but keeping style */
+    font-size: 33px;
+    width: 100%;
+  }
+
+  /* --- Responsive Styles --- */
+  @media (max-width: 992px) {
+    .middlecontent h1 {
+        font-size: 2.2em;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .emailnotify {
+      width: 95%;
+      margin: 50px auto 20px;
+    }
+
+    #email {
+      width: 100%;
+      max-width: none; /* Remove max-width */
+      margin-right: 0; /* Remove margin */
+      margin-bottom: 10px;
+    }
+    .emailnotify form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+     .emailnotify .btn {
+        width: 60%; /* Make button wider */
+    }
+
+    .initiatives {
+      padding: 10px;
+    }
+
+    .card {
+      width: 90%; /* Adjust card width */
+      max-width: 350px; /* Slightly larger max-width */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .card-img-top {
+        height: 180px; /* Adjust image height */
+    }
+
+    .parentpara {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .childpara {
+      width: 90%; /* Adjust width */
+      max-width: 400px; /* Limit max width */
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+
+     h1#mainheading {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+     .middlecontent h1 {
+        font-size: 2em;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .middlecontent {
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    h1#mainheading {
+      font-size: 2em;
+    }
+    .middlecontent h1 {
+        font-size: 1.8em;
+    }
+    .middlecontent p {
+        font-size: 1rem;
+    }
+     #initiativeheading {
+      font-size: 1.5em;
+    }
+    .emailnotify h2 {
+      font-size: 1.5em;
+    }
+     .card {
+      width: 95%;
+    }
+     .card-img-top {
+        height: 160px;
+    }
+  }
+</style>
+{% endblock %}
+
+{# Assuming base.html has a block for the title tag #}
+{% block title %}Adidas OakTrek - Oaktrek{% endblock %}
+
+{# Main content block #}
+{% block main_block %}
+
+<div class="container pt-5"> {# Added padding-top #}
+  <div class="uppermainheading">
+    <h1 id="mainheading"><b>Carbon Offsets</b></h1>
+  </div>
+
+  {# Use the static tag for images #}
+  <img src="{% static 'assets/products/adidas.png' %}" alt="Adidas x Oaktrek Collaboration" class="main-product-image img-fluid rounded shadow-sm mb-5" /> {# Added alt text, bootstrap classes #}
+
+  <div class="middlecontent">
+    <p>For the next evolution of our collaboration with adidas, we created the Adizero x Allbirds 2.94 kg CO2e — an ultralight running shoe with our lowest carbon footprint to date.</p>
+
+    <h1>The Numbers Don't Lie</h1>
+
+    <p>Which is why we put them right where you can see them, on the outsole of every pair. Putting a product's footprint front and center will begin to force us to consider how the things we make (and buy) impact the planet. To hold ourselves, and each other, accountable.</p>
+
+    <h1>Treading Lighter, Together</h1>
+
+    <p>Our partnership with adidas proves that healthy competition can lead to healthier collaborations. By open-sourcing our learnings and material innovations, we can help accelerate the industry toward a carbon-neutral future.</p> {# Updated text slightly #}
+  </div>
+</div>
+
+<div class="emailnotify my-5"> {# Added vertical margin #}
+  <div>
+    <h2><b>Stay in the Loop</b></h2> {# Simplified heading #}
+    <br />
+    <p>
+      <b>Sign up for email updates on our progress towards long-term sustainability goals.</b> {# Simplified text #}
+    </p>
+  </div>
+  <br />
+  <div>
+    {# Add csrf_token to POST forms #}
+    <form action="#" method="POST"> {# Keep action="#" if submitting to same URL, otherwise use {% url '...' %} #}
+        {% csrf_token %}
+        <input type="email" name="email" id="email" placeholder="Enter your email" required class="form-control d-inline-block me-2" style="width: auto; max-width: 300px;"/> {# Added required and bootstrap classes #}
+        <input type="submit" value="SIGN UP" class="btn btn-dark" /> {# Changed value slightly #}
+    </form>
+  </div>
+</div>
+
+<h2 id="initiativeheading"><b>Oaktrek Sustainability Initiatives</b></h2>
+<div class="initiatives container mb-5"> {# Added container class and bottom margin #}
+  <div class="row justify-content-center g-4"> {# Use Bootstrap row/col for layout #}
+
+    <div class="col-lg-3 col-md-6"> {# Bootstrap column #}
+      {# Use the url tag for internal links - replace 'sustainability' with your actual URL name #}
+      <a href="{% url 'sustainability' %}" class="disnon">
+        <div class="card h-100"> {# Added h-100 for equal height cards #}
+          {# Use the static tag for images #}
+          <img src="{% static 'assets/products/member1.png' %}" class="card-img-top cardimage" alt="MO.ONSHOT Shoe Initiative" />
+          <div class="card-body d-flex flex-column"> {# Added flex classes for alignment #}
+            <h3 class="card-title"><b>Introducing MO.ONSHOT</b></h3> {# Use card-title #}
+            <p class="card-text mt-auto">Learn more about the World's first net zero carbon shoe.</p> {# Added mt-auto to push text down #}
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6"> {# Bootstrap column #}
+      {# Replace 'bcorp' with your actual URL name #}
+      <a href="{% url 'bcorp' %}" class="disnon">
+        <div class="card h-100">
+          <img src="{% static 'assets/products/member3.png' %}" class="card-img-top cardimage" alt="Certified B Corp Badge" />
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title"><b>We're a Certified B Corp</b></h3>
+            <p class="card-text mt-auto">From the very beginning, the environment has been a stakeholder.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6"> {# Bootstrap column #}
+      {# Replace 'mothernature' with your actual URL name #}
+      <a href="{% url 'mothernature' %}" class="disnon">
+        <div class="card h-100">
+          <img src="{% static 'assets/products/member4.png' %}" class="card-img-top cardimage" alt="Person holding plant" />
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title"><b>Giving Mother Nature a Seat</b></h3> {# Shortened title #}
+            <p class="card-text mt-auto">We're prioritizing the planet in our business decisions.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6"> {# Bootstrap column #}
+      {# Replace 'adidasxoaktrek' with your actual URL name #}
+      <a href="{% url 'adidasxoaktrek' %}" class="disnon">
+        <div class="card h-100">
+          <img src="{% static 'assets/products/member5.png' %}" class="card-img-top cardimage" alt="Adidas and Oaktrek Shoes" />
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title"><b>Adidas X Oaktrek</b></h3>
+            <p class="card-text mt-auto">We teamed up with Adidas to create ultra-low carbon footwear.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<div class="approach-section bg-light py-5"> {# Added background and padding #}
+    <div class="container">
+        <h2 id="approachhead" class="mb-5"><b>The Oaktrek Approach</b></h2>
+        <div class="parentpara row"> {# Use Bootstrap row #}
+          <div class="childpara col-md-4 mb-4"> {# Use Bootstrap column #}
+            <h4><b>Wear All Day Comfort</b></h4>
+            <p>Lightweight, bouncy, and wildly comfortable, Oaktrek shoes make any outing feel effortless. Slip in, lace up, or slide them on and enjoy the comfy support.</p>
+          </div>
+          <div class="childpara col-md-4 mb-4"> {# Use Bootstrap column #}
+            <h4><b>Sustainability in Every Step</b></h4>
+            <p>From materials to transport, we're working to reduce our carbon footprint to near zero. Holding ourselves accountable and striving for climate goals isn't a distant target—it's now.</p> {# Updated text #}
+          </div>
+          <div class="childpara col-md-4 mb-4"> {# Use Bootstrap column #}
+            <h4><b>Materials From Nature</b></h4> {# Updated text #}
+            <p>We replace petroleum-based synthetics with natural alternatives like Merino wool, TENCEL™ Lyocell (tree fiber), and SweetFoam® (sugar cane). Better for you, better for the planet.</p> {# Updated text #}
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
