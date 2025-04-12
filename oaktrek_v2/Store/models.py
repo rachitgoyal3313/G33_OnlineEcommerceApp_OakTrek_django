@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from Profile.models import User
 from django.utils.text import slugify
 from django import forms
@@ -13,7 +14,6 @@ class Product(models.Model):
         ('Skincare', 'Skincare'),
         ('Haircare', 'Haircare'),
         ('Bodycare', 'Bodycare'),
-        # Add more if needed
     ]
 
     GENDER_CHOICES = [
@@ -43,7 +43,7 @@ class Product(models.Model):
         return self.product_name
 
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     rating = models.IntegerField()
     comment = models.TextField(blank=True)
@@ -53,7 +53,7 @@ class Review(models.Model):
         return f"Review by {self.user.username} on {self.product.product_name}"
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
@@ -61,14 +61,14 @@ class Cart(models.Model):
         return f"{self.product.product_name} x {self.quantity}"
 
 class Wishlist(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.user.username}'s wishlist item: {self.product.product_name}"
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
     address = models.ForeignKey('Profile.Address', on_delete=models.SET_NULL, null=True)
     order_date = models.DateTimeField(auto_now_add=True)
     total_amount = models.FloatField()

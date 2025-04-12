@@ -99,6 +99,7 @@ def seed_database():
     print("Starting database seeding...")
     
     print("Clearing existing data...")
+    # Clear existing data
     try:
         Product.objects.all().delete()
         Review.objects.all().delete()
@@ -106,11 +107,12 @@ def seed_database():
         Wishlist.objects.all().delete()
         Order.objects.all().delete()
         Address.objects.all().delete()
-        User.objects.all().delete()  
+        User.objects.all().delete()  # Be cautious with this in production
     except Exception as e:
         print(f"Error clearing data: {e}")
 
     print("Creating users...")
+    # Create users
     users = []
     for user_data in users_data:
         password = user_data.pop("password")
@@ -124,6 +126,7 @@ def seed_database():
         users.append(user)
     
     print("Adding products...")
+    # Add products
     created_products = []
     for product_data in products_data:
         if "rating" not in product_data:
@@ -157,6 +160,7 @@ def seed_database():
             )
     
     print("Adding cart items...")
+    # Create cart items
     for user in users:
         for _ in range(random.randint(0, 3)):
             product = random.choice(created_products)
@@ -173,6 +177,7 @@ def seed_database():
                 cart_item.save()
     
     print("Adding wishlist items...")
+    # Create wishlist items
     for user in users:
         for product in random.sample(created_products, random.randint(0, 5)):
             Wishlist.objects.get_or_create(
@@ -181,8 +186,10 @@ def seed_database():
             )
     
     print("Creating orders...")
+    # Create orders
     for user in users:
         for _ in range(random.randint(0, 2)):
+            # Create address
             address, _ = Address.objects.get_or_create(
                 user=user,
                 defaults={
@@ -195,6 +202,7 @@ def seed_database():
                 }
             )
             
+            # Create order with random products
             order_products = random.sample(created_products, random.randint(1, 3))
             total_amount = sum(product.price for product in order_products)
             
@@ -213,6 +221,7 @@ def seed_database():
     print(f"- {Order.objects.count()} orders")
     print(f"- {Address.objects.count()} addresses")
 
+# Create a management command
 class Command(BaseCommand):
     help = 'Seed the database with users, products, reviews, carts, wishlists, orders, and addresses'
 
