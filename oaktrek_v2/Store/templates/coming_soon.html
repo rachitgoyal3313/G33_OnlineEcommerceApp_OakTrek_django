@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %} 
 
 {% block title_block %}Coming Soon - Oaktrek{% endblock %}
@@ -102,32 +103,31 @@
         border-radius: 12px; /* Softer radius */
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Subtle shadow */
     }
-
     .notification-message {
         background-color: var(--primary-color);
         color: white;
         padding: 15px 25px;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        margin-top: 1.5rem; /* More space */
+        margin-top: 1.5rem;
         display: none; /* Start hidden */
         opacity: 0;
-        transform: scale(0.8);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        transform: translateY(10px) scale(0.95); /* Start slightly below and scaled down */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Slower, smoother transition */
     }
-
+    
     .notification-message.success {
         background-color: #28a745;
     }
-
+    
     .notification-message.error {
         background-color: #dc3545;
     }
-
+    
     .notification-message.show {
-        display: inline-block; /* Or block if preferred */
+        display: inline-block;
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0) scale(1); /* Fully visible and in place */
     }
 
     @keyframes fadeInUp {
@@ -223,29 +223,25 @@
 {% endblock %}
 
 {% block main_block %}
-
 <div class="content-wrapper">
-    <div class="leaves-container"></div> {# Leaf container lives inside the wrapper #}
+    <div class="leaves-container"></div>
 
     <main class="main-content">
         <div class="coming-soon-container">
-            {# Use the {% static %} tag for the logo #}
             <img src="{% static 'assets/logos/patta.png' %}" alt="Oaktrek Logo" class="logo">
             <h1 style="color:var(--primary-color)">Coming Soon</h1>
             <p class="description">We're crafting something special. Join our waitlist to be the first to know when we launch.</p>
-            {# Add CSRF token for Django POST forms #}
-            <form class="email-form" id="notifyForm" method="POST"> {# Typically POST for email submission #}
+            <form class="email-form" id="notifyForm" method="POST">
                 {% csrf_token %}
-                <input type="email" class="form-control" name="email" placeholder="Enter your email address" required> {# Added name attribute #}
-                    <div class="notification-message server-message show {% if message.tags %}{{ message.tags }}{% endif %}">
+                <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+                <button type="submit" class="submit-btn">Notify Me</button>
             </form>
             <div class="notification-message" id="notificationMessage">
                 Thank you! We'll keep you posted about our launch! 🎉
             </div>
-            {# You might want to display server-side messages here too #}
             {% if messages %}
                 {% for message in messages %}
-                    <!-- <div class="notification-message server-message show" style="background-color: {% if message.tags == 'success' %}#28a745{% elif message.tags == 'error' %}#dc3545{% else %}var(--primary-color){% endif %};"> -->
+                    <div class="notification-message server-message show {% if message.tags %}{{ message.tags }}{% endif %}">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -253,7 +249,6 @@
         </div>
     </main>
 </div>
-{# Footer block is likely in base.html, no need to repeat here unless overriding #}
 {% endblock %}
 
 {% block scripts %}

@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 from django.contrib import messages
+from django.conf import settings
 from django import forms
 from django.core.mail import send_mail
 from .models import ContactForm
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'index.html', {'products': products})
+    return render(request, 'index.html', {
+        'MEDIA_URL': settings.MEDIA_URL,
+    })
 
 def sustainability(request):
     return render(request, 'sustainability.html')
@@ -32,8 +34,8 @@ def products_view(request, collection_name):
     
     context = {
         'products': products,
-        'collection_name': collection_name,  # Use normalized name for URLs
-        'original_collection_name': collection_name,  # Pass original for display if needed
+        'collection_name': collection_name,  
+        'original_collection_name': collection_name, 
         "sizes": [8, 9, 10, 11, 12]
     }
     return render(request, 'products.html', context)
@@ -52,6 +54,7 @@ def product_page_view(request, collection_name, product_slug):
         'product': product,
     }
     return render(request, 'product_page.html', context)
+
 
 def moonshot(request):
     return render(request, 'moonshot.html')
@@ -114,3 +117,12 @@ def sustainability(request):
 
 def regenerative(request):
     return render(request, 'regenerative.html')
+
+def renewable(request):
+    return render(request, 'renewable.html')
+
+def terms(request):
+    return render(request, 'terms.html')
+
+def responsibleEnergy(request):
+    return render(request, 'responsibleenergy.html')

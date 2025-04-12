@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+{% load static %} {# <--- Added: Load the static tag library #}
+
+{% block title_block %}Shopping Cart - Oaktrek{% endblock %}
+
+{% block style_block %}
+<style>
+    /* --- Your CSS remains unchanged --- */
+    :root {
+        --primary-color: #1C2327;
+        --text-color: #2C3539;
+        --border-color: #E5E7EB;
+        --background-color: #FFFFFF;
+        --secondary-color: #F7F7F7;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Vollkorn', serif;
+        overflow-x: hidden;
+    }
+
+    .floating-leaf {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        opacity: 0.05;
+        pointer-events: none;
+        animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(-5vh) translateX(0) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(105vh) translateX(100vw) rotate(360deg);
+        }
+    }
+
+    .logo {
+        max-width: 150px;
+    }
+
+    .cart-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cart-item {
+        display: flex;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--border-color);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .product-image {
+        width: 120px;
+        height: 120px;
+        background-color: var(--secondary-color);
+        margin-right: 24px;
+        border-radius: 8px;
+        overflow: hidden; /* Added to contain the image */
+    }
+
+    .product-image img { /* Style the image inside */
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Or 'contain' depending on desired look */
+    }
+
+
+    .product-title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .product-price {
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .quantity-btn {
+        background: none;
+        border: 1px solid var(--border-color);
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .cart-summary {
+        background-color: rgba(247, 247, 247, 0.95);
+        border-radius: 8px;
+        padding: 24px;
+        margin-top: 24px;
+    }
+
+    .checkout-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 16px;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-top: 16px;
+        transition: background-color 0.2s;
+    }
+
+    .checkout-btn:hover {
+        background-color: #2C3539;
+    }
+</style>
+{% endblock %}
+
+{% block main_block %}
+<div id="leaves-container"></div>
+
+<div class="cart-container">
+    <div class="row">
+        <div class="col-lg-8">
+            {% if cart_items %}
+                {% for item in cart_items %}
+                <div class="cart-item">
+                    <div class="product-image">
+                        {# --- Option 1: Using {% static %} if item.product_image is just a filename string --- #}
+                        {# <img src="{% static 'assets/products/' %}{{ item.product_image }}"
+                             alt="{{ item.product_name }}" class="img-fluid"> #}
+
+                        {# --- Option 2: Using .url if item.product_image is an ImageField/FileField (Recommended Django way) --- #}
+                        {% if item.product_image %}
+                        <img src="{{ item.product_image.url }}"
+                             alt="{{ item.product_name }}" class="img-fluid">
+                        {% else %}
+                        {# Optional: Placeholder if no image #}
+                        <img src="{% static 'assets/placeholder.png' %}" alt="Placeholder" class="img-fluid">
+                        {% endif %}
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="product-title">{{ item.product_name }}</div>
+                        <div class="product-price">${{ item.price|floatformat:2 }}</div> {# Optional: format price #}
+                        <div class="quantity-selector">
+                            <button class="quantity-btn decrease-btn" data-product="{{ item.product_name }}">-</button>
+                            <span class="px-3 quantity">{{ item.quantity }}</span>
+                            <button class="quantity-btn increase-btn" data-product="{{ item.product_name }}">+</button>
+                        </div>
+                        {# Add remove button if needed #}
+                        {# <form action="{% url 'remove_from_cart' item.product_id %}" method="post" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                        </form> #}
+                    </div>
+                    <div>
+                        <span class="fw-bold">${{ item.total_price|floatformat:2 }}</span> {# Display item total if calculated in view #}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">Your cart is empty.</p>
+            {% endif %}
+        </div>
+
+        <div class="col-lg-4">
+            <div class="cart-summary">
+                <h4 class="mb-4">Cart Summary</h4>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Subtotal</span>
+                    {# Changed: Calculate this value in your Django view #}
+                    <span>${{ cart_subtotal|floatformat:2 }}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Shipping</span>
+                    {# Assuming shipping logic might be added later #}
+                    <span>{% if shipping_cost > 0 %}${{ shipping_cost|floatformat:2 }}{% else %}Free{% endif %}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Tax</span>
+                     {# Assuming tax logic might be added later #}
+                    <span>{% if tax_amount > 0 %}${{ tax_amount|floatformat:2 }}{% else %}Calculated at checkout{% endif %}</span> {# Or Excluded #}
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between mb-3">
+                    <strong>Total</strong>
+                    {# Changed: Calculate this value in your Django view #}
+                    <strong>${{ cart_total|floatformat:2 }}</strong>
+                </div>
+                {% if cart_items %}
+                    {# Changed: Use {% url %} tag with the name from urls.py #}
+                    <a href="{% url 'checkout' %}">
+                        <button class="checkout-btn">Proceed to Checkout</button>
+                    </a>
+                {% else %}
+                    <button class="checkout-btn" disabled>Proceed to Checkout</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{# Keep the floating leaves script - it's standard JS #}
+<script>
+    const leavesContainer = document.getElementById('leaves-container');
+    if (leavesContainer) { // Add check if element exists
+        for (let i = 0; i < 10; i++) {
+            const leaf = document.createElement('div');
+            leaf.className = 'floating-leaf';
+            leaf.style.left = Math.random() * 100 + 'vw';
+            leaf.style.animationDelay = Math.random() * 20 + 's';
+            leaf.style.setProperty('--leaf-color', `hsl(${Math.random() * 60 + 30}, 50%, 60%)`); // Example color variation
+            leaf.innerHTML = `<svg viewBox="0 0 100 100"><path d="M50 10 C60 30 80 40 90 60 C80 80 60 90 50 95 C40 90 20 80 10 60 C20 40 40 30 50 10" fill="var(--leaf-color)"/></svg>`;
+            leavesContainer.appendChild(leaf);
+        }
+    } else {
+        console.warn("Element with id 'leaves-container' not found.");
+    }
+</script>
+
+{# --- Added: Standard Django script to get CSRF token for AJAX --- #}
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const productName = this.getAttribute('data-product');
+            const action = this.classList.contains('increase-btn') ? 'increase' : 'decrease';
+            const quantityElement = this.closest('.quantity-selector').querySelector('.quantity'); // More robust selector
+
+            // --- Changed: Use {% url %} tag result for the fetch URL ---
+            const updateCartUrl = "{% url 'update_cart' %}"; // Replace 'update_cart' with your URL name
+
+            fetch(updateCartUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken  // --- Added: Include CSRF token ---
+                },
+                body: JSON.stringify({ product_name: productName, action: action })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // Handle non-2xx responses if needed
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+             })
+            .then(data => {
+                console.log(data); // For debugging
+                if (data.success) {
+                    // --- Recommendation: Instead of just updating the number and reloading,
+                    // --- update the specific item's quantity, item total, cart subtotal, and cart total
+                    // --- directly using the data returned from the server (if your view returns it).
+                    // --- This avoids a full page reload and feels smoother.
+                    // --- For simplicity, keeping the reload for now as per original code.
+                    location.reload(); // Reload to update total price and potentially remove item if quantity hits 0
+                } else {
+                    console.error("Failed to update cart:", data.message || "Unknown error");
+                    alert("Could not update cart. " + (data.message || "Please try again."));
+                }
+            })
+            .catch(error => {
+                 console.error("Error updating cart:", error);
+                 alert("An error occurred while updating the cart.");
+            });
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

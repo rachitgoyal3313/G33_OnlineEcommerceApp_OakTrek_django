@@ -1,205 +1,72 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 
 {% block title %}MoonShot - Oaktrek{% endblock %}
 
-{% block styles_block %}
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+{% block style_block %}
+<style>@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-  /* --- Start of first CSS block --- */
+  /* Base Styles */
   * {
+    margin: 0;
+    padding: 0;
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
   }
-
+  
   body {
-    margin: 0;
-    padding: 0;
-  }
-
-  .emailnotify {
-    background-color: rgba(235, 235, 235, 0.738);
-    width: 90%;
-    max-width: 800px;
-    margin: 100px auto 20px;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-
-  #email {
-    width: 60%;
-    max-width: 300px;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 5px;
-    margin-right: 10px;
-  }
-
-  #initiativeheading {
-    text-align: center;
-    margin: 50px 0;
-    font-size: 2em;
-  }
-
-  .initiatives {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .card {
-    width: 18rem;
-    height: auto;
-    text-align: center;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .card-img-top {
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .card:hover .card-img-top {
-    transform: scale(1.1);
-  }
-
-  .disnon {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  #approachhead {
-    margin-top: 50px;
-    text-align: center;
-  }
-
-  .parentpara {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    margin: 50px auto;
-    max-width: 1200px;
-    padding: 0 20px;
-  }
-
-  .childpara {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    text-align: center;
-  }
-
-  .childpara h4 {
-    margin-bottom: 10px;
-  }
-
-  @media (max-width: 768px) {
-    .emailnotify {
-      width: 95%;
-      margin: 50px auto 20px;
-    }
-
-    #email {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .initiatives {
-      padding: 10px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .parentpara {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .childpara {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    #initiativeheading {
-      font-size: 1.5em;
-    }
-
-    .emailnotify h2 {
-      font-size: 1.5em;
-    }
-  }
-  /* --- End of first CSS block --- */
-
-  /* --- Start of potentially duplicate/overlapping CSS block --- */
-  /* Note: Many rules here are identical to the ones above. You might want to consolidate these. */
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
-  /* emailnotify, #email, #initiativeheading, .initiatives, .card, .card-img-top, .card:hover .card-img-top, .disnon, #approachhead, .parentpara, .childpara, .childpara h4 are duplicated */
-
-  /* Media queries are also duplicated */
-
-  /* --- Start of additional CSS --- */
-  * { /* This duplicates the * selector above */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body { /* This conflicts with the body rules above - check which font-family you want */
-    font-family: system-ui, -apple-system, sans-serif; /* Different font */
     line-height: 1.5;
     color: #333;
   }
-
+  
+  /* Banner */
   #banner {
-    margin-top: 400px; /* Check if this large margin is intended */
-    height: 500px;
     width: 100%;
-    object-fit: cover; /* Added for better image scaling */
+    height: 500px;
+    object-fit: cover;
+    margin-bottom: 50px;
   }
-
+  
+  /* Typography */
+  h1, h2 {
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Introduction Section */
   .intro-section {
     max-width: 900px;
-    margin: 100px auto;
+    margin: 80px auto;
     text-align: center;
     padding: 0 20px;
   }
-
+  
   .intro-section h1 {
-    margin-top: 50px;
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    line-height: 1.2;
   }
-
+  
   .intro-section p {
-    font-size: 1.10rem;
+    font-size: 1.1rem;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
     color: #4a4a4a;
   }
-
+  
+  /* Grid Layout */
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 auto;
+    margin: 80px auto;
     max-width: 1400px;
     padding: 0 50px;
     gap: 50px;
   }
-
+  
   .grid-item {
     padding: 4rem;
     display: flex;
@@ -207,109 +74,305 @@
     justify-content: center;
     gap: 1.5rem;
   }
-
+  
   .grid-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
+  
   .grid-item.image-container {
     padding: 0;
   }
-
+  
+  .grid-item h1, 
+  .grid-item h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .grid-item p {
+    font-size: 1.125rem;
+  }
+  
   .dark-section {
     background-color: #000;
     color: #fff;
   }
-
-  h1,
-  h2 { /* Consider scoping these better if they conflict with other h1/h2 styles */
-    font-size: 2.5rem;
-    font-weight: bold;
-    line-height: 1.2;
+  
+  /* Email Notification */
+  .emailnotify {
+    background-color: rgba(235, 235, 235, 0.738);
+    width: 90%;
+    max-width: 800px;
+    margin: 100px auto 50px;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
   }
-
-  p { /* This applies globally, check for conflicts */
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
+  
+  .emailnotify h2 {
+    margin-bottom: 0.5rem;
   }
-
-  .link { /* This class is not used in the HTML below */
+  
+  .emailnotify form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  #email {
+    width: 60%;
+    max-width: 300px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+  }
+  
+  /* Initiative Section */
+  #initiativeheading {
+    text-align: center;
+    margin: 70px 0 30px;
+    font-size: 2rem;
+  }
+  
+  .initiatives {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .member {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+  }
+  
+  /* Card Styles */
+  .card {
+    height: 100%;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .card .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .card-img-top {
+    transition: transform 0.3s ease;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card:hover .card-img-top {
+    transform: scale(1.05);
+  }
+  
+  .disnon {
+    text-decoration: none;
     color: inherit;
-    text-decoration: underline;
+    display: block;
+    height: 100%;
   }
-
-  /* Responsive Design */
+  
+  /* Approach Section */
+  #approachhead {
+    margin-top: 70px;
+    text-align: center;
+  }
+  
+  .parentpara {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  
+  .childpara {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+  }
+  
+  .childpara h4 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+  }
+  
+  /* Responsive Styles */
   @media (max-width: 1200px) {
     .grid-container {
       padding: 0 30px;
       gap: 30px;
     }
-
+  
     .grid-item {
       padding: 3rem;
     }
+    
+    .grid-item h1,
+    .grid-item h2 {
+      font-size: 2.2rem;
+    }
   }
-
-  @media (max-width: 968px) { /* Mismatched breakpoint compared to the first block (768px) */
+  
+  @media (max-width: 992px) {
     .intro-section h1 {
-      font-size: 2.8rem;
+      font-size: 2.3rem;
     }
-
-    .intro-section p {
-      font-size: 1.1rem;
+  
+    .initiatives {
+      gap: 20px;
     }
   }
-
-  @media (max-width: 768px) { /* Duplicates the 768px breakpoint */
+  
+  @media (max-width: 768px) {
+    #banner {
+      height: 400px;
+      margin-bottom: 30px;
+    }
+    
+    .intro-section {
+      margin: 50px auto;
+    }
+    
+    .intro-section h1 {
+      font-size: 2.2rem;
+    }
+    
     .grid-container {
       grid-template-columns: 1fr;
       padding: 0 20px;
       gap: 20px;
+      margin: 50px auto;
     }
-
+  
     .grid-item {
       padding: 2rem;
     }
-
-    h1,
-    h2 {
+  
+    .grid-item h1,
+    .grid-item h2 {
       font-size: 2rem;
     }
-
-    .intro-section {
-      margin: 60px auto;
+    
+    .emailnotify {
+      width: 95%;
+      margin: 50px auto;
+      padding: 20px;
     }
-
-    .intro-section h1 {
-      font-size: 2.2rem;
+  
+    .emailnotify form {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    #email {
+      width: 90%;
+      max-width: none;
+      margin-bottom: 10px;
+    }
+  
+    .btn {
+      width: 60%;
+    }
+    
+    .initiatives {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .member {
+      width: 90%;
+      max-width: 350px;
+    }
+    
+    .parentpara {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .childpara {
+      width: 90%;
+      max-width: 400px;
     }
   }
-
-  @media (max-width: 480px) { /* Duplicates the 480px breakpoint */
+  
+  @media (max-width: 576px) {
     #banner {
-      height: 70vh;
+      height: 300px;
     }
-
+  
     .intro-section {
       margin: 40px auto;
     }
-
+  
     .intro-section h1 {
       font-size: 1.8rem;
     }
-
+  
     .intro-section p {
       font-size: 1rem;
     }
-
+    
     .grid-item {
       padding: 1.5rem;
     }
-  }
-  /* --- End of additional/potentially overlapping CSS --- */
-</style>
+    
+    .grid-item h1,
+    .grid-item h2 {
+      font-size: 1.7rem;
+    }
+    
+    #initiativeheading {
+      font-size: 1.5rem;
+    }
+  
+    .emailnotify h2 {
+      font-size: 1.5rem;
+    }
+  }</style>
 {% endblock %}
 
 {% block main_block %}
@@ -349,7 +412,8 @@
     <h2>Sharing The Secret Sauce</h2>
     <p>On June 27, 2023, we unveiled our groundbreaking MOONSHOT Zero prototype to the world at the Global Fashion
       Summit, the premier international forum for sustainability in fashion.</p>
-    <p>During the event, we also shared our journey to zero: Our Recipe Book, an open-sourced toolkit of how we created a net zero
+    <p>During the event, we also shared our journey to zero: Our Recipe Book, an open-sourced toolkit of how we created
+      a net zero
       carbon shoe. It's our open invitation to the industry, made free for the taking. Because when it comes to
       reversing climate change, copycats aren't just welcome—they're essential.</p>
   </div>
@@ -361,7 +425,8 @@
       ways—wool made carbon-negative through innovative farming practices. This led us to Lake Hawea Station in New
       Zealand, a regenerative farm that produces premium merino wool and, impressively, sequesters more carbon than it
       emits. To achieve this distinction, they’ve created a best-in-class program that focuses on native plantings,
-      protecting large areas of regenerating forest, new pasture species, and more.</p> <!-- Missing closing </p> added -->
+      protecting large areas of regenerating forest, new pasture species, and more.</p>
+    <!-- Missing closing </p> added -->
   </div>
   <div class="grid-item image-container">
     <img src="{% static 'assets/products/moonshot3.png' %}" alt="Person in beige coat with sheep">
@@ -436,7 +501,8 @@
     <!-- Make sure you handle the CSRF token if this form submits to a Django view -->
     <form action="#" method="POST">
       {% csrf_token %} <!-- Added CSRF token for security -->
-      <input type="email" name="email" id="email" placeholder="Enter your email" required /> <!-- Added required attribute -->
+      <input type="email" name="email" id="email" placeholder="Enter your email" required />
+      <!-- Added required attribute -->
       <input type="submit" value="SIGNUP" class="btn btn-dark" />
     </form>
   </div>
@@ -448,8 +514,7 @@
     <!-- Assumes you have a URL named 'sustainability' in urls.py -->
     <a href="{% url 'sustainability' %}" class="disnon">
       <div class="card">
-        <img src="{% static 'assets/products/member1.png' %}" class="card-img-top cardimage"
-          alt="MO.ONSHOT" />
+        <img src="{% static 'assets/products/member1.png' %}" class="card-img-top cardimage" alt="MO.ONSHOT" />
         <div class="card-body">
           <h3><b>Introducing MO.ONSHOT</b></h3>
           <p class="card-text">Learn more about the World's first net zero carbon shoe...</p>
@@ -476,8 +541,8 @@
     <!-- Note: This link might be pointing back to the current page if 'moonshot' is the name for this view -->
     <a href="{% url 'moonshot' %}" class="disnon">
       <div class="card">
-        <img src="{% static 'assets/products/member4.png' %}" class="card-img-top cardimage"
-          alt="Mother Nature" /> <!-- Improved alt text -->
+        <img src="{% static 'assets/products/member4.png' %}" class="card-img-top cardimage" alt="Mother Nature" />
+        <!-- Improved alt text -->
         <div class="card-body">
           <h3><b>Giving Mother Nature a seat at the Table</b></h3>
           <p class="card-text">We're prioritizing the planet...</p>

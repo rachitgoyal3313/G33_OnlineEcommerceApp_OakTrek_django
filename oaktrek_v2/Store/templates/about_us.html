@@ -79,7 +79,6 @@
             background: #aaa;
         }
 
-
         .team-card {
             background: linear-gradient(135deg, var(--secondary-color), white);
             border-radius: 10px;
@@ -87,18 +86,19 @@
             padding: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: fadeInUp 0.8s ease forwards;
-            opacity: 0; /* Start hidden for animation */
-            transform: translateY(20px); /* Start slightly lower for animation */
-            min-width: 280px; /* Ensure minimum width for content */
-            max-width: 280px; /* Prevent cards from getting too wide */
-            height: 450px;    /* Fixed height for uniformity */
+            opacity: 0;
+            transform: translateY(20px);
+            min-width: 280px;
+            max-width: 280px;
+            height: auto;
+            min-height: 450px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            flex-shrink: 0; 
+            flex-shrink: 0;
+            overflow-y: hidden; /* Prevent vertical scrollbar */
         }
-
         .team-card:nth-child(1) { animation-delay: 0.1s; }
         .team-card:nth-child(2) { animation-delay: 0.2s; }
         .team-card:nth-child(3) { animation-delay: 0.3s; }
@@ -141,34 +141,40 @@
             margin-bottom: 1.5rem;
             line-height: 1.6;
             flex-grow: 1; /* Allows bio to take up remaining space */
-            overflow-y: auto; /* Add scroll if bio is too long */
-            max-height: 100px; /* Example max height */
+            overflow-wrap: break-word; /* Ensure long words wrap */
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap; /* Allow wrapping on small screens if needed */
-            margin-top: auto; /* Push social links to the bottom */
-        }
-
-        .social-button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-size: 0.9rem;
-            white-space: nowrap; /* Prevent button text wrapping */
-            display: inline-flex; /* Align icon and text */
-            align-items: center;
-            gap: 0.3rem; /* Space between icon and text */
-        }
-        .social-button i {
-            font-size: 1rem; /* Adjust icon size */
-        }
+            .social-links {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                flex-wrap: wrap; /* Already present, ensures buttons wrap to next line */
+                width: 100%; /* Ensure container stays within card */
+                box-sizing: border-box; /* Include padding/margins in width */
+                margin-top: auto; /* Push social links to the bottom */
+                padding: 0 0.5rem; /* Optional: add small padding to prevent buttons touching edges */
+            }
+            
+            .social-button {
+                padding: 0.4rem 0.8rem; /* Reduced padding to make buttons smaller */
+                border: none;
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                font-size: 0.85rem; /* Slightly smaller font size */
+                white-space: nowrap; /* Prevent text wrapping inside button */
+                display: inline-flex;
+                align-items: center;
+                gap: 0.3rem;
+                max-width: 120px; /* Constrain button width to fit within card */
+                overflow: hidden; /* Prevent text from spilling out */
+                text-overflow: ellipsis; /* Optional: add ellipsis for long text */
+            }
+            
+            .social-button i {
+                font-size: 0.9rem; /* Slightly smaller icon size */
+            }
 
         .linkedin { background-color: #0077B5; }
         .github { background-color: #333; }
@@ -304,8 +310,8 @@
                         <img src="{% static 'assets/products/pushkar.jpg' %}" alt="Pushkar Sharma"
                             class="team-member-image">
                         <h3 class="team-member-name">Pushkar Sharma</h3>
-                        <p class="team-member-role">Frontend Developer</p>
-                        <p class="team-member-bio">Skilled in crafting responsive designs and interactive user interfaces.
+                        <p class="team-member-role">Full Stack Developer</p>
+                        <p class="team-member-bio">Dedicated to creating reliable full stack systems, with expertise in designing secure authorization flows.
                         </p>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/pushkar-sharma-80146b332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"

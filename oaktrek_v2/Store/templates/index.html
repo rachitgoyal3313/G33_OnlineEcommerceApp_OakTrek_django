@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title_block %} OakTrek {% endblock %}
+
 {% block style_block %}
 <style>
     .hero-section {
@@ -699,8 +701,7 @@
                             <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button> {# Button inside overlay #}
                             </div>
-                            <img src="{% static 'assets/products/1image1.png' %}" alt="Tree Runner Go" class="img-fluid mb-3">
-                            <h5 class="mb-1">Tree Runner Go</h5>
+                            <img src="{{ MEDIA_URL }}assets/products/1image1.png" alt="Tree Runner Go" class="img-fluid mb-3">                            <h5 class="mb-1">Tree Runner Go</h5>
                             <p class="text-muted small mb-1">Natural Navy/Light</p> {# Reduced margin #}
                             <p class="price">$115</p>
                         </a>
@@ -710,8 +711,7 @@
                              <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
-                            <img src="{% static 'assets/products/10image1.png' %}" alt="Tree Flyer" class="img-fluid mb-3">
-                            <h5 class="mb-1">Tree Flyer</h5>
+                            <img src="{{ MEDIA_URL }}assets/products/10image1.png" alt="Tree Flyer" class="img-fluid mb-3">                            <h5 class="mb-1">Tree Flyer</h5>
                             <p class="text-muted small mb-1">White/Natural Light</p>
                             <p class="price">$160</p>
                         </a>
@@ -721,7 +721,7 @@
                              <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
-                            <img src="{% static 'assets/products/9image1.png' %}" alt="Tree Dasher 2" class="img-fluid mb-3">
+                            <img src="{{ MEDIA_URL }}assets/products/9image1.png" alt="Tree Dasher 2" class="img-fluid mb-3">
                             <h5 class="mb-1">Tree Dasher 2</h5>
                             <p class="text-muted small mb-1">White/Navy</p>
                             <p class="price">$135</p>
@@ -732,7 +732,7 @@
                              <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
-                            <img src="{% static 'assets/products/3image1.png' %}" alt="Wool Runner" class="img-fluid mb-3">
+                            <img src="{{ MEDIA_URL }}assets/products/3image1.png" alt="Wool Runner" class="img-fluid mb-3">
                             <h5 class="mb-1">Wool Runner</h5>
                             <p class="text-muted small mb-1">Natural Navy</p>
                             <p class="price">$110</p>
@@ -786,7 +786,7 @@
         <div class="slide">
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Tree-Runner-Go' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/1image1.png' %}" alt="Men's Tree Runner Go">
+                    <img src="{{ MEDIA_URL }}assets/products/1image1.png" alt="Men's Tree Runner Go">
                 </div>
                 <div class="product-info">
                     <h3>Men's Tree Runner Go</h3>
@@ -794,10 +794,10 @@
                     <p class="price">$120</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-dasher-2-womens' %}" class="product-carousel-card"></a>
-                <div class="product-image">
-                    <img src="{% static 'assets/products/29image1.png' %}" alt="Women's Tree Dasher 2">
-                </div>
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-dasher-2-womens' %}" class="product-carousel-card">
+            <div class="product-image">
+                <img src="{{ MEDIA_URL }}assets/products/29image1.png" alt="Women's Tree Dasher 2">
+            </div>
                 <div class="product-info">
                     <h3>Women's Tree Dasher 2</h3>
                     <p class="color">Blizzard/Hanami Night</p>
@@ -806,7 +806,7 @@
             </a>
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Tree-Lounger' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/21image1.png' %}" alt="Men's Tree Loungers">
+                    <img src="{{ MEDIA_URL }}assets/products/21image1.png" alt="Men's Tree Loungers">
                 </div>
                 <div class="product-info">
                     <h3>Men's Tree Loungers</h3>
@@ -814,9 +814,9 @@
                     <p class="price">$100</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go-womens' %}" class="product-carousel-card"></a>
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go-womens' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/24image1.png' %}" alt="Tree Runner Go Women's">
+                    <img src="{{ MEDIA_URL }}assets/products/24image1.png" alt="Tree Runner Go Women's">
                 </div>
                 <div class="product-info">
                     <h3>Tree Runner Go Women's</h3>
@@ -825,11 +825,10 @@
                 </div>
             </a>
         </div>
-        {# Slide 2 Content #}
         <div class="slide">
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Zen-Walker' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/8image1.png' %}" alt="Men's Zen Walker">
+                    <img src="{{ MEDIA_URL }}assets/products/8image1.png" alt="Men's Zen Walker">
                 </div>
                 <div class="product-info">
                     <h3>Men's Zen Walker</h3>
@@ -839,7 +838,7 @@
             </a>
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Wool-Breeze' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/26image1.png' %}" alt="Women's Wool Breeze">
+                    <img src="{{ MEDIA_URL }}assets/products/26image1.png" alt="Women's Wool Breeze">
                 </div>
                 <div class="product-info">
                     <h3>Women's Wool Breeze</h3>
@@ -849,7 +848,7 @@
             </a>
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Cloud-Walker' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/5image1.png' %}" alt="Men's Cloud Walker">
+                    <img src="{{ MEDIA_URL }}assets/products/5image1.png" alt="Men's Cloud Walker">
                 </div>
                 <div class="product-info">
                     <h3>Men's Cloud Walker</h3>
@@ -859,7 +858,7 @@
             </a>
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Mountain-Trekker' %}" class="product-carousel-card">
                 <div class="product-image">
-                    <img src="{% static 'assets/products/36image1.png' %}" alt="Women's Mountain Trekker">
+                    <img src="{{ MEDIA_URL }}assets/products/36image1.png" alt="Women's Mountain Trekker">
                 </div>
                 <div class="product-info">
                     <h3>Women's Mountain Trekker</h3>
@@ -868,10 +867,8 @@
                 </div>
             </a>
         </div>
-        {# Add more <div class="slide"> blocks if needed #}
     </div>
 
-    {# Controls remain labels for accessibility, but functionality handled by JS #}
     <div class="carousel-controls">
         <label class="prev prod-carousel-prev">❮</label>
         <label class="next prod-carousel-next">❯</label>
