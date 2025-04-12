@@ -8,7 +8,7 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import User, Address  # Import custom User model
-from Store.models import Order
+from Store.models import Order, Product
 
 def register_view(request):
     if request.method == 'POST':
@@ -212,25 +212,38 @@ def admin_signin(request):
         password = request.POST.get('admin_password')
         
         if not email or not password:
-            messages.error(request, 'Email and password are required')
-            return redirect('profile')
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Email and password are required'
+            }, status=400)
         
         try:
             user = User.objects.get(email=email)
             authenticated_user = authenticate(request, username=user.username, password=password)
-            if authenticated_user and authenticated_user.is_staff:
+            if authenticated_user and authenticated_user.is_superuser:
                 login(request, authenticated_user)
                 request.session['is_admin'] = True
-                messages.success(request, 'Admin sign-in successful!')
-                return redirect('adminProducts')  # Changed to match URL name
+                return JsonResponse({
+                    'status': 'success',
+                    'message': 'Admin sign-in successful!',
+                    'redirect': reverse('adminProducts')
+                })
             else:
-                messages.error(request, 'Invalid credentials or insufficient permissions')
-                return redirect('profile')
+                return JsonResponse({
+                    'status': 'error',
+                    'message': 'Invalid credentials or not a superuser'
+                }, status=400)
         except User.DoesNotExist:
-            messages.error(request, 'User does not exist')
-            return redirect('profile')
+            return JsonResponse({
+                'status': 'error',
+                'message': 'User does not exist'
+            }, status=400)
     
-    return redirect('profile')
+    return JsonResponse({
+        'status': 'error',
+        'message': 'Invalid request method'
+    }, status=400)
+
 
 @login_required
 def address_list_view(request):
@@ -310,3 +323,131 @@ def delete_profile(request):
             }, status=400)
     
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
+
+
+@login_required
+def admin_products_view(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this page')
+        return redirect('profile')
+    
+    from Store.models import Product
+    products = Product.objects.all()
+    
+    return render(request, 'adminProducts.html', {
+        'products': products,
+        'admin_emails': ['admin@example.com']  # Add your admin emails here
+    })
+
+    
+@login_required
+def add_product(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this page')
+        return redirect('profile')
+    
+    if request.method == 'POST':
+        try:
+            # Extract product data from the form
+            product_name = request.POST.get('product_name')
+            category = request.POST.get('category')
+            gender = request.POST.get('gender')
+            price = request.POST.get('price')
+            description = request.POST.get('description')
+            image_1 = request.FILES.get('image_1')
+            
+            # Create the product
+            product = Product.objects.create(
+                product_name=product_name,
+                category=category,
+                gender=gender,
+                price=price,
+                description=description,
+                image_1=image_1
+            )
+            
+            messages.success(request, 'Product added successfully!')
+            return redirect('adminProducts')
+        except Exception as e:
+            messages.error(request, f'Error adding product: {str(e)}')
+            return redirect('add_product')
+    
+    # For GET request, render the add product form
+    return render(request, 'add_product.html', {
+        'categories': Product.CATEGORY_CHOICES,
+        'gender_choices': Product.GENDER_CHOICES
+    })
+
+
+@login_required
+def view_product(request, product_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this page')
+        return redirect('profile')
+    
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'view_product.html', {'product': product})
+
+@login_required
+def edit_product(request, product_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this page')
+        return redirect('profile')
+    
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        try:
+            product.product_name = request.POST.get('product_name')
+            product.category = request.POST.get('category')
+            product.gender = request.POST.get('gender')
+            product.price = request.POST.get('price')
+            product.description = request.POST.get('description')
+            if request.FILES.get('image_1'):
+                product.image_1 = request.FILES.get('image_1')
+            product.save()
+            messages.success(request, 'Product updated successfully!')
+            return redirect('adminProducts')
+        except Exception as e:
+            messages.error(request, f'Error updating product: {str(e)}')
+    
+    return render(request, 'add_product.html', {
+        'product': product,
+        'categories': Product.CATEGORY_CHOICES,
+        'gender_choices': Product.GENDER_CHOICES,
+        'is_edit': True  # Flag to indicate editing mode
+    })
+
+
+@login_required
+def delete_product(request, product_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this page')
+        return redirect('profile')
+    
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        try:
+            product.delete()
+            messages.success(request, 'Product deleted successfully!')
+        except Exception as e:
+            messages.error(request, f'Error deleting product: {str(e)}')
+        return redirect('adminProducts')
+    
+    return redirect('adminProducts')
+
+@login_required
+def bulk_delete_products(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access this page')
+        return redirect('profile')
+    
+    if request.method == 'POST':
+        product_ids = request.POST.getlist('product_ids')
+        try:
+            Product.objects.filter(id__in=product_ids).delete()
+            messages.success(request, 'Selected products deleted successfully!')
+        except Exception as e:
+            messages.error(request, f'Error deleting products: {str(e)}')
+        return redirect('adminProducts')
+    
+    return redirect('adminProducts')
