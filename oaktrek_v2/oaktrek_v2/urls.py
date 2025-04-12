@@ -20,7 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
-    path('profile/', include('Profile.urls')),
+    path('auth/', include('Profile.urls')),
     # path('adminpanel/', include('Admin.urls')),
     # path('chatbot/', include('Chatbot.urls')),  # If chatbot added later
 ]
