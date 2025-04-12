@@ -5,8 +5,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('products/<str:collection_name>/', views.products_view, name='products'),
-    path('products/<str:collection_name>/<slug:product_slug>/', views.product_page_view, name='product_page'),
+    path('products/<str:collection_name>/', views.products_view, 
+    name='products'),
+    path('products/<slug:collection_name>/<slug:product_slug>/', views.product_page_view, name='product_page'),
     path('stores/', views.stores, name='stores'),
     path('coming_soon/', views.coming_soon, name='coming_soon'),
     path('moonshot/', views.moonshot, name='moonshot'),
@@ -29,4 +30,6 @@ urlpatterns = [
     path('products/mens-apparel/', views.products_view, name='mens_apparel'),
     path('products/womens-apparel/', views.products_view, name='womens_apparel'),
     path('products/socks/', views.products_view, name='socks'),
+    path('cart/', views.cart_view, name='cart'),
+    path('search/', views.search, name='search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

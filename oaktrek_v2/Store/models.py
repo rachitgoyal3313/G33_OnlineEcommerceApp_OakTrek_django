@@ -25,6 +25,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    category_slug = models.SlugField(blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     price = models.FloatField()
     rating = models.FloatField(default=0.0)
@@ -37,6 +38,8 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.product_name)
+        if not self.category_slug:
+            self.category_slug = slugify(self.category)
         super().save(*args, **kwargs)
 
     def __str__(self):

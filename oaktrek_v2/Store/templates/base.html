@@ -5,15 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title_block %} {% endblock %}</title>
+    <title>{% block title_block %}OakTrek{% endblock %}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{% static 'assets/logos/leaf.png' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     {% block style_block %}{% endblock %}
-
-    {% block head_block %} {% endblock %}
+    {% block head_block %}{% endblock %}
 </head>
 
 <body>
@@ -33,12 +32,9 @@
                                 <div class="dropdown-content">
                                     <div class="dropdown-section">
                                         <h6>SHOES</h6>
-                                        <a href="#">Everyday
-                                            Sneakers</a>
-                                        <a href="#">Active
-                                            Shoes</a>
-                                        <a href="#">Water-Repellent
-                                            Sneakers</a>
+                                        <a href="#">Everyday Sneakers</a>
+                                        <a href="#">Active Shoes</a>
+                                        <a href="#">Water-Repellent Sneakers</a>
                                         <a href="#">Slip-Ons</a>
                                         <a href="#">High Tops</a>
                                         <a href="#">Hiking</a>
@@ -46,30 +42,14 @@
                                     </div>
                                     <div class="dropdown-section">
                                         <h6>BESTSELLERS</h6>
-                                        <a
-                                            href="#">Tree
-                                            Runner Go</a>
-                                        <a
-                                            href="#">Tree
-                                            Dasher 2</a>
-                                        <a
-                                            href="#">Tree
-                                            Runner</a>
-                                        <a
-                                            href="#">Power
-                                            Sprint</a>
-                                        <a
-                                            href="#">Mizzle
-                                            Runner</a>
-                                        <a
-                                            href="#">Wool
-                                            Runner Go</a>
-                                        <a
-                                            href="#">Tree
-                                            Runner Pro</a>
-                                        <a
-                                            href="#">Storm
-                                            Shield</a>
+                                        <a href="#">Tree Runner Go</a>
+                                        <a href="#">Tree Dasher 2</a>
+                                        <a href="#">Tree Runner</a>
+                                        <a href="#">Power Sprint</a>
+                                        <a href="#">Mizzle Runner</a>
+                                        <a href="#">Wool Runner Go</a>
+                                        <a href="#">Tree Runner Pro</a>
+                                        <a href="#">Storm Shield</a>
                                         <a href="#">Shop all</a>
                                     </div>
                                     <div class="dropdown-section">
@@ -93,14 +73,10 @@
                                 <div class="dropdown-content">
                                     <div class="dropdown-section">
                                         <h6>SHOES</h6>
-                                        <a href="#">Everyday
-                                            Sneakers</a>
-                                        <a href="#">Active
-                                            Shoes</a>
-                                        <a href="#">Ballet
-                                            Flats</a>
-                                        <a href="#">Water-Repellent
-                                            Sneakers</a>
+                                        <a href="#">Everyday Sneakers</a>
+                                        <a href="#">Active Shoes</a>
+                                        <a href="#">Ballet Flats</a>
+                                        <a href="#">Water-Repellent Sneakers</a>
                                         <a href="#">Slip-Ons</a>
                                         <a href="#">High Tops</a>
                                         <a href="#">Hiking</a>
@@ -108,30 +84,14 @@
                                     </div>
                                     <div class="dropdown-section">
                                         <h6>BESTSELLERS</h6>
-                                        <a
-                                            href="#">Tree
-                                            Runner Go</a>
-                                        <a
-                                            href="#">Tree
-                                            Dasher 2</a>
-                                        <a
-                                            href="#">Tree
-                                            Runner</a>
-                                        <a
-                                            href="#">Tree
-                                            Breezer</a>
-                                        <a
-                                            href="#">Tree
-                                            Sprinter</a>
-                                        <a
-                                            href="#">Wool
-                                            Breezer</a>
-                                        <a
-                                            href="#">Mountain
-                                            Trekker</a>
-                                        <a
-                                            href="#">Cloud
-                                            Ballet</a>
+                                        <a href="#">Tree Runner Go</a>
+                                        <a href="#">Tree Dasher 2</a>
+                                        <a href="#">Tree Runner</a>
+                                        <a href="#">Tree Breezer</a>
+                                        <a href="#">Tree Sprinter</a>
+                                        <a href="#">Wool Breezer</a>
+                                        <a href="#">Mountain Trekker</a>
+                                        <a href="#">Cloud Ballet</a>
                                     </div>
                                     <div class="dropdown-section">
                                         <h6>APPAREL & MORE</h6>
@@ -199,14 +159,20 @@
                     </ul>
                 </div>
 
-
                 <div class="right-icons ms-3">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-
-                    <!-- ICON -->
+                    <!-- Search Form -->
+                    <div class="search-container">
+                        <form action="{% url 'search' %}" method="get" class="search-form d-flex">
+                            <input type="text" name="q" class="form-control search-input"
+                                   placeholder="Search products..." value="{{ query|default_if_none:'' }}">
+                            <a href="#" class="search-toggle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg>
+                            </a>
+                        </form>
+                    </div>
                     <a href="{% url 'auth' %}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -235,22 +201,46 @@
         </nav>
     </header>
 
-
     <main>
         {% block main_block %}
-
         {% endblock %}
     </main>
-
 
     <footer>
         {% include 'footer.html' %}
     </footer>
 
-
     <script src="{% static 'js/header.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" defer></script>
-    {% block scripts %} {% endblock %}
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const searchToggle = document.querySelector('.search-toggle');
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results-dropdown');
 
+        searchToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            searchInput.style.display = searchInput.style.display === 'none' ? 'block' : 'none';
+            if (searchInput.style.display === 'block') {
+                searchInput.focus();
+            }
+        });
+
+        searchInput.addEventListener('input', function () {
+            if (this.value.trim() === '' && searchResults) {
+                searchResults.classList.remove('show');
+            }
+        });
+
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                if (this.value.trim() === '') {
+                    e.preventDefault();
+                }
+            }
+        });
+    });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
 </html>
