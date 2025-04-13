@@ -79,3 +79,12 @@ class Order(models.Model):
     def __str__(self):
         return f"Order #{self.id} by {self.user.username}"
     
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    quantity = models.PositiveIntegerField()
+    price = models.FloatField()
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.product_name} in Order #{self.order.id}"

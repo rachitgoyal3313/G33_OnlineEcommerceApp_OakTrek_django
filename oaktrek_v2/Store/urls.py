@@ -32,4 +32,6 @@ urlpatterns = [
     path('products/socks/', views.products_view, name='socks'),
     path('cart/', views.cart_view, name='cart'),
     path('search/', views.search, name='search'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('order-confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

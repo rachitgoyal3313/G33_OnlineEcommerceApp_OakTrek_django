@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Cart
+from .models import Product, Cart, Order, OrderItem
+from Profile.models import Address
 from django.utils.text import slugify
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.conf import settings
 from django import forms
 from django.core.mail import send_mail
 from .models import ContactForm
 from django.db.models import Q
 import re
+import uuid
 
 def home(request):
     return render(request, 'index.html', {
@@ -217,6 +221,8 @@ def terms(request):
 
 def responsibleEnergy(request):
     return render(request, 'responsibleenergy.html')
+
+@login_required
 def cart_view(request):
     user = request.user
 
@@ -242,9 +248,123 @@ def cart_view(request):
     # GET request
     cart_items = Cart.objects.filter(user=user).select_related('product')
     total = sum(item.product.price * item.quantity for item in cart_items)
-
-    return render(request, 'cart.html', {
+    tax = total * 0.28
+    context = {
         'cart_items': cart_items,
-        'total': total,
-    })
+        'tax' : tax,
+        'subtotal' : total,
+        'total': total + tax,
+    }
+    return render(request, 'cart.html', context)
 
+
+@login_required
+@transaction.atomic
+def checkout(request):
+    user = request.user
+    cart_items = Cart.objects.filter(user=user).select_related('product')
+    
+    if not cart_items.exists():
+        return redirect('cart')  # Redirect to cart if it's empty
+
+    total_amount = sum(item.product.price * item.quantity for item in cart_items)
+
+    if request.method == 'POST':
+        address_id = request.POST.get('address_id')
+        
+        try:
+            address = Address.objects.get(id=address_id, user=user)
+        except Address.DoesNotExist:
+            return render(request, 'checkout.html', {
+                'error': 'Invalid address selected.',
+                'cart_items': cart_items,
+                'total_amount': total_amount,
+                'addresses': user.addresses.all()
+            })
+
+        # Create the order
+        order = Order.objects.create(
+            user=user,
+            address=address,
+            total_amount=total_amount
+        )
+
+        # Create order items (you might want to create an OrderItem model)
+        for cart_item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product=cart_item.product,
+                quantity=cart_item.quantity,
+                price=cart_item.product.price
+            )
+
+        # Clear the user's cart
+        cart_items.delete()
+
+        return redirect('order_confirmation', order_id=order.id)
+    
+    total = sum(item.product.price * item.quantity for item in cart_items)
+    tax = total * 0.28
+    context = {
+        'cart_items': cart_items,
+        'tax' : tax,
+        'subtotal' : total,
+        'total': total + tax,
+        'addresses': user.addresses.all(),
+    }
+
+    return render(request, 'checkout.html', context)
+
+
+@login_required
+def order_confirmation(request, order_id):
+    """
+    View function to display the order confirmation page after a successful checkout.
+    
+    Args:
+        request: The HTTP request object
+        order_id: The ID of the order to display confirmation for
+    
+    Returns:
+        Rendered confirmation.html template with order details
+    """
+    # Get the order or return 404 if not found
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    
+    # Get all order items related to this order
+    order_items = order.items.all().select_related('product')
+    
+    address = Address.objects.all().filter(user=request.user)
+
+    # Calculate order totals
+    subtotal = sum(item.price * item.quantity for item in order_items)
+    tax = subtotal * 0.28  # Same tax calculation as in checkout
+    total = subtotal + tax
+    
+    # Generate a formatted order number (you could also use the order ID directly)
+    order_number = f"OAK-{order.id}-{uuid.uuid4().hex[:6].upper()}"
+    
+    # Prepare order items for the template with the required format
+    formatted_items = []
+    for item in order_items:
+        formatted_items.append({
+            'name': item.product.product_name,
+            'quantity': item.quantity,
+            'price': item.price,
+            'image': item.product.image_1.url,
+            # If you have product images, you could include them here
+            # 'image': item.product.image_1.url if item.product.image_1 else '',
+        })
+    
+    # Prepare the context for the template
+    context = {
+        'order_number': order_number,
+        'order_items': formatted_items,
+        'subtotal': subtotal,
+        'tax': tax,
+        'total': total,
+        'user': request.user,
+        'addresses': address
+    }
+    
+    return render(request, 'confirmation.html', context)
