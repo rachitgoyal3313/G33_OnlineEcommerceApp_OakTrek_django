@@ -9,6 +9,32 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import User, Address  # Import custom User model
 from Store.models import Order, Product
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
+
+def send_welcome_email(user):
+    subject = 'Welcome to OakTrek!'
+    from_email = settings.EMAIL_HOST_USER
+    to = [user.email]
+    
+    # Context data for the template
+    context = {
+        'user': user
+    }
+    
+    # Render HTML content
+    html_content = render_to_string('emails/welcome_email.html', context)
+    
+    # Create plain text version for email clients that don't support HTML
+    text_content = strip_tags(html_content)
+    
+    # Create the email
+    email = EmailMultiAlternatives(subject, text_content, from_email, to)
+    email.attach_alternative(html_content, "text/html")
+    email.send()
+
 
 def register_view(request):
     if request.method == 'POST':
@@ -32,6 +58,7 @@ def register_view(request):
                     password=password,
                     phone_number=phone_number if phone_number else None
                 )
+                send_welcome_email(user)
                 messages.success(request, 'Registration successful! Please log in.')
                 return redirect('auth')
             except IntegrityError as e:
