@@ -5,9 +5,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('products/<str:collection_name>/', views.products_view, 
-    name='products'),
     path('products/<slug:collection_name>/<slug:product_slug>/', views.product_page_view, name='product_page'),
+    path('products/category/<str:gender>/<str:collection_name>', views.products_cat_view, name="products-cat"),    
+    path('products/<str:collection_name>/', views.products_view, name='products'),
     path('stores/', views.stores, name='stores'),
     path('coming_soon/', views.coming_soon, name='coming_soon'),
     path('moonshot/', views.moonshot, name='moonshot'),

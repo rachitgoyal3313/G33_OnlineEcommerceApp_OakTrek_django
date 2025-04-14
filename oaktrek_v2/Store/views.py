@@ -21,8 +21,8 @@ def home(request):
 def normalize_gender_query(query):
     query = query.lower()
 
-    male_keywords = ['men', "men's", 'mens', 'man', 'male', 'boys', 'dudes', 'queer','rachit', 'divyansh']
-    female_keywords = ['women', "women's", 'womens', 'lady', 'ladies', 'female', 'girls', 'gay', 'bi', 'queer', 'abhinav']
+    male_keywords = ['men', "men's", 'mens', 'man', 'male', 'boys', 'dudes', 'queer','rachit', 'divyansh', 'pushkar', 'handsome']
+    female_keywords = ['women', "women's", 'womens', 'lady', 'ladies', 'female', 'girls', 'gay', 'bi', 'queer', 'abhinav', 'sexy' ]
     unisex_keywords = ['unisex', 'all', 'any', 'everyone', 'nonbinary', 'pan', 'fab', 'slay']
 
     for word in male_keywords:
@@ -36,7 +36,6 @@ def normalize_gender_query(query):
             return 'Unisex'
 
     return None
-
 
 def search(request):
     """
@@ -52,8 +51,8 @@ def search(request):
 
             # Build search filter
             filters = (
-                Q(product_name__icontains=query) |
-                Q(category__icontains=query)
+                Q(category__icontains=query) |
+                Q(product_name__icontains=query)
             )
 
             if normalized_gender:
@@ -95,26 +94,72 @@ def stores(request):
 def coming_soon(request):
     return render(request, "coming_soon.html")
 
+def products_cat_view(request, gender, collection_name):
+    products = []
+    normalized_gender = gender.lower()
+    category = None
+    gender = None
+    if normalized_gender in ["male", "mens", "men's", "men"]:
+        gender = "Male"
+        # products = Product.objects.filter(gender="Male")
+        # category = "Men"
+
+    elif normalized_gender in ["Women", "Womens", "Wommen's", "women"]:
+        gender = "Female"
+        category = "Women"
+        # products = Product.objects.filter(gender="Female")
+
+
+    products = Product.objects.filter(gender=gender, category_slug = collection_name)
+
+    category = products[1].category
+    
+    context = {
+        'products': products,
+        'collection_name': collection_name,  
+        'original_collection_name': collection_name,  
+        'product_category': category, 
+        "sizes": [8, 9, 10, 11, 12]
+    }
+
+
+    return render(request, 'products.html', context)
+
+
+
+
 def products_view(request, collection_name):
     products = []
     normalized_collection_name = collection_name.lower()
-    
+    category = None
     if normalized_collection_name in ["male", "mens", "men's", "men"]:
         collection_name = "Men"
         products = Product.objects.filter(gender="Male")
+        category = "Men"
 
     elif normalized_collection_name in ["Women", "Womens", "Wommen's", "women"]:
         collection_name = "Women"
+        category = "Women"
         products = Product.objects.filter(gender="Female")
     
     else:
          products = Product.objects.filter(category_slug=collection_name)
+         category = products[1].category
 
+    sort_by = request.GET.get('sort', 'featured')
+    if sort_by == 'price_low':
+        products = products.order_by('price')
+    elif sort_by == 'price_high':
+        products = products.order_by('-price')
+    elif sort_by == 'relevance':
+        # For random ordering in Django
+        products = products.order_by('?')
     
     context = {
         'products': products,
-        'collection_name': collection_name,  # Use normalized name for URLs
-        'original_collection_name': collection_name,  # Pass original for display if needed
+        'collection_name': collection_name,  
+        'original_collection_name': collection_name,  
+        'product_category': category, 
         "sizes": [8, 9, 10, 11, 12]
     }
     return render(request, 'products.html', context)

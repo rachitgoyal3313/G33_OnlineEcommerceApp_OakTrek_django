@@ -13,6 +13,22 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
+from django.core.mail import send_mail
+
+import random
+import string
+
+def generate_otp():
+    """Generate a 6-digit OTP"""
+    return ''.join(random.choices(string.digits, k=6))
+
+def send_otp_email(email, otp):
+    """Send OTP to user's email"""
+    subject = 'Password Reset OTP'
+    message = f'Your OTP for password reset is: {otp}'
+    from_email = settings.EMAIL_HOST_USER
+    recipient_list = [email]
+    send_mail(subject, message, from_email, recipient_list)
 
 def send_welcome_email(user):
     subject = 'Welcome to OakTrek!'
@@ -195,25 +211,131 @@ def delete_address(request, address_id):
     except Exception as e:
         messages.error(request, f'Error deleting address: {str(e)}')
     return redirect('profile')
-@login_required
+
 def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            user.password_changed_at = timezone.now()
-            user.save()
-            update_session_auth_hash(request, user)
-            return JsonResponse({
-                'status': 'success',
-                'message': 'Password changed successfully!'
+    # Check if the request is coming from forgot password or profile
+    source = request.GET.get('source', 'profile')
+    
+    # If user is not authenticated and not coming from forgot password, redirect
+    if not request.user.is_authenticated and source != 'forgot':
+        messages.error(request, 'Please login to change your password.')
+        return redirect('login')
+    
+    # For forgot password flow, we need to first ask for the email
+    if source == 'forgot' and request.method == 'GET' and 'reset_email' not in request.session:
+        return render(request, 'change_password.html', {
+            'step': 'request_email',
+            'source': source
+        })
+    
+    # Process email submission for forgot password
+    if source == 'forgot' and 'submit_email' in request.POST:
+        email = request.POST.get('email')
+        # Verify email exists in the system
+        try:
+            User.objects.get(email=email)
+            request.session['reset_email'] = email
+        except User.DoesNotExist:
+            messages.error(request, 'No account found with this email address.')
+            return render(request, 'change_password.html', {
+                'step': 'request_email',
+                'source': source
+            })
+    
+    # Get email from session if coming from forgot password, otherwise use logged in user's email
+    email = request.session.get('reset_email', request.user.email if request.user.is_authenticated else None)
+    
+    if not email:
+        messages.error(request, 'Email not found. Please try again.')
+        return redirect('login')
+    
+    # Step 1: Send OTP
+    if (request.method == 'GET' and 'reset_email' in request.session) or 'send_otp' in request.POST:
+        # Generate OTP and save to session
+        otp = generate_otp()
+        request.session['password_reset_otp'] = otp
+        request.session['reset_email'] = email
+        
+        # Send OTP to user's email
+        send_otp_email(email, otp)
+        
+        return render(request, 'change_password.html', {
+            'step': 'verify_otp',
+            'email': email,
+            'source': source
+        })
+    
+    # Rest of your function remains the same...
+    # Step 2: Verify OTP
+    elif 'verify_otp' in request.POST:
+        entered_otp = request.POST.get('otp')
+        stored_otp = request.session.get('password_reset_otp')
+        
+        if entered_otp == stored_otp:
+            return render(request, 'change_password.html', {
+                'step': 'change_password',
+                'email': email,
+                'source': source
             })
         else:
-            return JsonResponse({
-                'status': 'error',
-                'message': '\n'.join([error for errors in form.errors.values() for error in errors])
-            }, status=400)
-    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+            messages.error(request, 'Invalid OTP. Please try again.')
+            return render(request, 'change_password.html', {
+                'step': 'verify_otp',
+                'email': email,
+                'source': source
+            })
+    
+    # Step 3: Change Password
+    elif 'change_password' in request.POST:
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+        
+        if new_password != confirm_password:
+            messages.error(request, 'Passwords do not match.')
+            return render(request, 'change_password.html', {
+                'step': 'change_password',
+                'email': email,
+                'source': source
+            })
+        
+        try:
+            # Get user by email
+            user = User.objects.get(email=email)
+            
+            # Set new password
+            user.set_password(new_password)
+            user.save()
+            
+            # Update session if user is logged in
+            if request.user.is_authenticated:
+                update_session_auth_hash(request, user)
+            
+            # Clear session data
+            if 'password_reset_otp' in request.session:
+                del request.session['password_reset_otp']
+            if 'reset_email' in request.session:
+                del request.session['reset_email']
+            
+            messages.success(request, 'Password changed successfully.')
+            
+            # Render success page
+            return render(request, 'change_password.html', {
+                'step': 'success',
+                'source': source
+            })
+            
+        except User.DoesNotExist:
+            messages.error(request, 'User not found.')
+            return redirect('login')
+    
+    # Default case
+    return render(request, 'change_password.html', {
+        'step': 'verify_otp',
+        'email': email,
+        'source': source
+    })
+
+
 
 @login_required
 def add_phone(request):

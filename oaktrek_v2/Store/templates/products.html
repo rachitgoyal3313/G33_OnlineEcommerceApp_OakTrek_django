@@ -361,13 +361,29 @@
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="breadcrumb">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Home / </span>
-        <span>{{ collection_name}}</span>
+        <span>{{ product_category}}</span>
     </nav>
+
+    <!-- Sort Button in Top Right -->
+    <div class="sort-container">
+        <div class="dropdown">
+            <button class="sort-button" id="sortDropdown">
+                Sort By: <span id="currentSort">Featured</span>
+                <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content" id="sortOptions">
+                <a href="?sort=featured" class="sort-option active">Featured</a>
+                <a href="?sort=price_low" class="sort-option">Price: Low to High</a>
+                <a href="?sort=price_high" class="sort-option">Price: High to Low</a>
+                <a href="?sort=relevance" class="sort-option">Relevance</a>
+            </div>
+        </div>
+    </div>
 
     <div class="product-grid">
         <!-- Left Sidebar Filters -->
         <div class="filters">
-            <h2>{{ collection_name}}</h2>
+            <h2>{{ product_category}}</h2>
             <nav>
                 <ul class="nav flex-column">
                     {% for category in categories %}
@@ -401,7 +417,7 @@
 
         <!-- Main Product Grid -->
         <div class="products-container">
-            {% if products %}
+            {% if products.exists %}
                 {% for product in products %}
                 <a href="{% url 'product_page' collection_name=collection_name product_slug=product.slug %}" class="product-link">                
                     <div class="product-card">
@@ -430,4 +446,101 @@
             {% endif %}
         </div>
     </div>
+
+    <!-- JavaScript for Sort Dropdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortDropdown = document.getElementById('sortDropdown');
+            const sortOptions = document.getElementById('sortOptions');
+            const currentSort = document.getElementById('currentSort');
+            const options = document.querySelectorAll('.sort-option');
+            
+            // Toggle dropdown visibility
+            sortDropdown.addEventListener('click', function() {
+                sortOptions.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            window.addEventListener('click', function(event) {
+                if (!event.target.matches('.sort-button') && !event.target.parentNode.matches('.sort-button')) {
+                    sortOptions.classList.remove('show');
+                }
+            });
+            
+            // Update current sort text based on URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const sortParam = urlParams.get('sort');
+            if (sortParam) {
+                options.forEach(option => {
+                    option.classList.remove('active');
+                    if (option.getAttribute('href').includes(sortParam)) {
+                        option.classList.add('active');
+                        currentSort.textContent = option.textContent;
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- CSS for Sort Button -->
+    <style>
+        .sort-container {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0 40px 20px 0;
+            position: relative;
+        }
+        
+        .sort-button {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-arrow {
+            font-size: 10px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+            border: 1px solid #ddd;
+        }
+        
+        .dropdown-content.show {
+            display: block;
+        }
+        
+        .sort-option {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .sort-option:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .sort-option.active {
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+    </style>
 {% endblock %}

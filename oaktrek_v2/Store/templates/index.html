@@ -20,7 +20,7 @@
     .hero-slide {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: 90vh;
         opacity: 0;
         transition: opacity 1s ease-in-out; 
         background-size: cover;
@@ -44,8 +44,8 @@
 
     .hero-content {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 90%;
+        left: 85%;
         transform: translate(-50%, -50%);
         z-index: 2;
         text-align: center;
@@ -319,8 +319,8 @@
     .product-image img {
         width: 100%;
         height: auto; /* Maintain aspect ratio */
-        /* height: 100%; */ /* If you want to force fill */
-        /* object-fit: cover; */ /* Use cover if forcing fill */
+        /* height: 100%; / / If you want to force fill */
+        /* object-fit: cover; / / Use cover if forcing fill */
         display: block;
     }
 
@@ -540,7 +540,7 @@
              /* Option 1: Keep 2 cards */
              width: calc(50% - 12px);
              /* Option 2: Show 1 card */
-             /* width: calc(100% - 12px); */ /* Adjust padding if 1 card */
+             /* width: calc(100% - 12px); / / Adjust padding if 1 card */
         }
          .slide {
             /* Adjust gap if needed for mobile */
@@ -582,15 +582,15 @@
 {% block title %} Oaktrek {% endblock %}
 
 {% block main_block %}
-        <div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.png' %}">
-            <img src="{% static 'assets/products/landingpage2.png' %}" alt="Blue sneakers with flowers" style="visibility: hidden;">
+        <div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
+            <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers"">
         </div>
-        <div class="hero-slide" data-bg="{% static 'assets/products/landingpage.png' %}">
-            <img src="{% static 'assets/products/landingpage.png' %}" alt="Person with flowers" style="visibility: hidden;">
+        <div class="hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
+            <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers"">
         </div>
 
         <div class="hero-content">
-            <h1 class="hero-title">Blues In Bloom</h1>
+            <h1 class="hero-title">Bring it, Spring</h1>
             <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
             <div>
                 <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men</a>
@@ -707,7 +707,7 @@
                         </a>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'product_page' collection_name='men' product_slug='Tree-Flyer' %}" class="product-card text-center">
+                        <a href="{% url 'product_page' collection_name='men' product_slug='tree-flyer' %}" class="product-card text-center">
                              <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
@@ -717,7 +717,7 @@
                         </a>
                     </div>
                     <div class="col-6">
-                         <a href="{% url 'product_page' collection_name='men' product_slug='Tree-Dasher-2' %}" class="product-card text-center">
+                         <a href="{% url 'product_page' collection_name='men' product_slug='tree-dasher-2' %}" class="product-card text-center">
                              <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
@@ -728,7 +728,7 @@
                          </a>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'product_page' collection_name='men' product_slug='Wool-Runner' %}" class="product-card text-center">
+                        <a href="{% url 'product_page' collection_name='men' product_slug='wool-runner' %}" class="product-card text-center">
                              <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
@@ -784,7 +784,7 @@
     <div class="carousel-track">
         {# Slide 1 Content #}
         <div class="slide">
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Tree-Runner-Go' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go' %}" class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/1image1.png" alt="Men's Tree Runner Go">
                 </div>
@@ -794,7 +794,7 @@
                     <p class="price">$120</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-dasher-2-womens' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='active-shoes' product_slug='tree-dasher-2-womens' %}" class="product-carousel-card">
             <div class="product-image">
                 <img src="{{ MEDIA_URL }}assets/products/29image1.png" alt="Women's Tree Dasher 2">
             </div>
@@ -804,7 +804,7 @@
                     <p class="price">$135</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Tree-Lounger' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='slip-ons' product_slug='tree-lounger' %}" class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/21image1.png" alt="Men's Tree Loungers">
                 </div>
@@ -826,7 +826,7 @@
             </a>
         </div>
         <div class="slide">
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Zen-Walker' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='zen-walker' %}" class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/8image1.png" alt="Men's Zen Walker">
                 </div>
@@ -836,7 +836,7 @@
                     <p class="price">$125</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Wool-Breeze' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='wool-breeze' %}" class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/26image1.png" alt="Women's Wool Breeze">
                 </div>
@@ -846,7 +846,7 @@
                     <p class="price">$105</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Cloud-Walker' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='cloud-walker' %}" class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/5image1.png" alt="Men's Cloud Walker">
                 </div>
@@ -856,7 +856,7 @@
                     <p class="price">$130</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='Mountain-Trekker' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='hiking-shoes' product_slug='mountain-trekker' %}" class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/36image1.png" alt="Women's Mountain Trekker">
                 </div>
@@ -890,7 +890,7 @@
                 slide.classList.toggle('active', i === index);
                 // Set background image from data attribute
                 if (slide.dataset.bg) {
-                    slide.style.setProperty('--bg-image', `url(${slide.dataset.bg})`);
+                    slide.style.setProperty('--bg-image', url(${slide.dataset.bg}));
                 }
                 // Preload next image
                 if (heroSlides.length > 1) {
@@ -944,7 +944,7 @@
 
                 // Calculate translation: slide index * (100% / slides per view)
                 const translation = currentContentSlideIndex * (100 / slidesPerView);
-                contentCarousel.style.transform = `translateX(-${translation}%)`;
+                contentCarousel.style.transform = translateX(-${translation}%);
 
                 // Update dots (only if number of dots matches max index + 1)
                 if (contentDots.length === maxSlideIndex + 1) {
@@ -1057,7 +1057,7 @@
                  // Ensure index loops correctly
                  currentProductSlide = (index + totalProductSlides) % totalProductSlides;
                  const translation = currentProductSlide * 100; // Each .slide is 100% width
-                 productCarouselTrack.style.transform = `translateX(-${translation}%)`;
+                 productCarouselTrack.style.transform = translateX(-${translation}%);
 
                  // Optional: Add active class to the current slide container if needed for styling
                  productSlides.forEach((slide, i) => {
