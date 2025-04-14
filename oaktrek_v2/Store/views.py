@@ -96,7 +96,6 @@ def coming_soon(request):
     return render(request, "coming_soon.html")
 
 def products_cat_view(request, gender, collection_name):
-    products = []
     normalized_gender = gender.lower()
     category = None
     gender = None
@@ -114,6 +113,14 @@ def products_cat_view(request, gender, collection_name):
     products = Product.objects.filter(gender=gender, category_slug = collection_name)
 
     category = products[1].category
+    sort_by = request.GET.get('sort', 'featured')
+    if sort_by == 'price_low':
+        products = products.order_by('price')
+    elif sort_by == 'price_high':
+        products = products.order_by('-price')
+    elif sort_by == 'relevance':
+        # For random ordering in Django
+        products = products.order_by('?')
     
     context = {
         'products': products,
