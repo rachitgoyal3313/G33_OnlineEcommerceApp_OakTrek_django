@@ -365,6 +365,46 @@
         margin-bottom: 1rem;
     }
 </style>
+
+<style>
+    .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        cursor: pointer;
+    }
+
+    .star-rating i {
+        font-size: 2rem;
+        color: inherit;
+        transition: all 0.2s ease;
+    }
+
+    /* Set all to empty by default */
+    .star-rating label i::before {
+        content: "\f006"; /* Unicode for far fa-star (empty) */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 400;
+    }
+
+    /* On checked or hover, make stars filled */
+    .star-rating input:checked ~ label i::before,
+    .star-rating label:hover i::before,
+    .star-rating label:hover ~ label i::before {
+        content: "\f005"; /*Unicode for fas fa-star (solid) */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+    }
+</style>
+
+
 {% endblock %}
 
 {% block main_block %}
@@ -713,18 +753,17 @@
 <section class="reviews-section">
     <!-- Reviews Header -->
     <div class="reviews-header">
-        <h2>Men's {{ product.product_name }} Reviews</h2>
+        <h2>{{ product.gender }}'s {{ product.product_name }} Reviews</h2>
         <div class="d-flex align-items-center justify-content-center">
-            <span class="rating-big">4.6</span>
+            <span class="rating-big">{{ product.rating }}</span>
             <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                {% for i in star_range %}
+                        <i class="{{ i }}"></i>
+                {% endfor %}
+
             </div>
         </div>
-        <div class="text-muted mt-2">2994 Reviews</div>
+        <div class="text-muted mt-2">{{ product.reviews.count }} Reviews</div>
     </div>
 
     <!-- Review Filters -->
@@ -760,37 +799,81 @@
 
     <!-- Review Cards -->
     <div class="review-cards">
-        <!-- Review 1 -->
-        <div class="review-card">
-            <div class="stars mb-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h3 class="review-title">Fantastically Comfortable</h3>
-            <p class="review-content">I'm a first time OakTrek buyer with wide feet. These {{ product.product_name }} are like
-                butter on your feet. The top fabric is soft, breathable and stretches to fit the top of your foot
-                and the sole has a wide foot base that is fantastic. I just love them and have asked for several
-                more pair for Christmas!</p>
-        </div>
+    {% if reviews %}
+            <!-- Review card content -->
+            {% if product.reviews.exists %}
+            {% for review in product.reviews.all %}
+                <div class="review-card">
+                    <div class="stars mb-2">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                                <i class="fas fa-star"></i>
+                            {% else %}
+                                <i class="far fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="review-title">Review by {{ review.user.username }}</h3>
+                    <p class="review-content">{{ review.comment }}</p>
+                    <small class="text-muted">{{ review.created_at|date:"F d, Y" }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">No reviews yet for this product.</div>
+        {% endif %}
 
-        <!-- Review 2 -->
-        <div class="review-card">
-            <div class="stars mb-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <h3 class="review-title">OakTrek All The Way!</h3>
-            <p class="review-content">After discovering OakTrek, they are all I wear now. I love how comfortable
-                they are and the ability to clean them.</p>
+        
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if reviews.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ reviews.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}.
+                </span>
+
+                {% if reviews.has_next %}
+                    <a href="?page={{ reviews.next_page_number }}">next</a>
+                    <a href="?page={{ reviews.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
         </div>
+    {% else %}
+        <div class="alert alert-info">No reviews yet for this product.</div>
+    {% endif %}
+</div>
+
+{% if user.is_authenticated %}
+    <div class="review-form mt-4">
+        <h3>Leave a Review</h3>
+        <form method="post" action="{% url 'add_review' product.category_slug product.slug %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="rating">Rating</label>
+                <div class="star-rating">
+                    {% for i in "54321" %}
+                        <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}" required>
+                        <label for="star{{ i }}"><i></i></label>
+                    {% endfor %}
+                </div>
+            </div>            
+            <div class="mb-3">
+                <label for="comment">Your Review</label>
+                <textarea name="comment" id="comment" class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark w-100 py-3 add-to-cart mb-4">Submit Review</button>
+        </form>
     </div>
+{% else %}
+    <p class="mt-4">Please <a href="{% url 'login' %}">login</a> to leave a review.</p>
+{% endif %}
+
 </section>
+
 
 <!-- Trending Products Section -->
 <div class="container-fluid py-5">

@@ -4,6 +4,66 @@
 
 {% block style_block %}
 <style>
+    .sort-container {
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 40px 20px 0;
+        position: relative;
+    }
+    
+    .sort-button {
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .dropdown1 {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown1-arrow {
+        font-size: 10px;
+    }
+    
+    .dropdown1-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+        z-index: 1;
+        border: 1px solid #ddd;
+    }
+    
+    .dropdown1-content.show {
+        display: block;
+    }
+    
+    .sort-option {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    
+    .sort-option:hover {
+        background-color: #f9f9f9;
+    }
+    
+    .sort-option.active {
+        font-weight: bold;
+        background-color: #f5f5f5;
+    }
+</style>
+<style>
     /* [All your CSS remains unchanged here] */
     /* General Layout */
     .product-grid {
@@ -366,12 +426,12 @@
 
     <!-- Sort Button in Top Right -->
     <div class="sort-container">
-        <div class="dropdown">
-            <button class="sort-button" id="sortDropdown">
+        <div class="dropdown1">
+            <button class="sort-button" id="sortDropdown1">
                 Sort By: <span id="currentSort">Featured</span>
-                <span class="dropdown-arrow">▼</span>
+                <span class="dropdown1-arrow">▼</span>
             </button>
-            <div class="dropdown-content" id="sortOptions">
+            <div class="dropdown1-content" id="sortOptions">
                 <a href="?sort=featured" class="sort-option active">Featured</a>
                 <a href="?sort=price_low" class="sort-option">Price: Low to High</a>
                 <a href="?sort=price_high" class="sort-option">Price: High to Low</a>
@@ -438,25 +498,27 @@
                 </div>
                 </a>
                 {% endfor %}
-            {% else %}
+                {% else %}
                 <div class="no-products">
                     <h3>No products available</h3>
                     <p>Please check back later.</p>
                 </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
-    </div>
+        {% endblock %}
 
     <!-- JavaScript for Sort Dropdown -->
+    {% block scripts %}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sortDropdown = document.getElementById('sortDropdown');
+            const sortDropdown1 = document.getElementById('sortDropdown1');
             const sortOptions = document.getElementById('sortOptions');
             const currentSort = document.getElementById('currentSort');
             const options = document.querySelectorAll('.sort-option');
             
             // Toggle dropdown visibility
-            sortDropdown.addEventListener('click', function() {
+            sortDropdown1.addEventListener('click', function() {
                 sortOptions.classList.toggle('show');
             });
             
@@ -481,66 +543,4 @@
             }
         });
     </script>
-
-    <!-- CSS for Sort Button -->
-    <style>
-        .sort-container {
-            display: flex;
-            justify-content: flex-end;
-            margin: 0 40px 20px 0;
-            position: relative;
-        }
-        
-        .sort-button {
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .dropdown-arrow {
-            font-size: 10px;
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: white;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-            z-index: 1;
-            border: 1px solid #ddd;
-        }
-        
-        .dropdown-content.show {
-            display: block;
-        }
-        
-        .sort-option {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-        
-        .sort-option:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .sort-option.active {
-            font-weight: bold;
-            background-color: #f5f5f5;
-        }
-    </style>
-{% endblock %}
+    {% endblock %}

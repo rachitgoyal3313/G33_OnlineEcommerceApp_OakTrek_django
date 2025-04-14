@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Cart, Order, OrderItem
+from .models import Product, Cart, Order, OrderItem, Review
 from Profile.models import Address
 from django.utils.text import slugify
 from django.contrib import messages
@@ -12,6 +12,7 @@ from .models import ContactForm
 from django.db.models import Q
 import re
 import uuid
+from django.core.paginator import Paginator
 
 def home(request):
     return render(request, 'index.html', {
@@ -185,15 +186,78 @@ def product_page_view(request, collection_name, product_slug):
     # Normalize collection_name to match the gender field
     
     # Query the product by slug and gender
-    
+
+
+    reviews_list = product.reviews.all().order_by('-created_at')
+    paginator = Paginator(reviews_list, 5)  # Show 5 reviews per page
+    page = request.GET.get('page')
+    reviews = paginator.get_page(page)
+    rating = product.rating
+    stars = []
+    for i in range(1, 6):
+        if i <= rating:
+            stars.append("fas fa-star")  # full star
+        elif i - rating <= 0.5:
+            stars.append("fas fa-star-half-alt")  # half star
+        else:
+            stars.append("far fa-star")
+
+
     context = {
         "sizes": [8, 9, 10, 11, 12],
         'collection_name': collection_name,  # For URL consistency
         'product': product,
         'product_images': product_images,
+        'reviews': reviews,
+        'star_range': stars
     }
 
     return render(request, 'product_page.html', context)
+
+
+@login_required
+def add_review(request, collection_name, product_slug):  # Changed slug to product_slug to match product_page_view
+    # Find the product using the same logic as product_page_view
+    product = None
+    if collection_name.lower() in ["male", "mens", "men's", "men"]:
+        gender = "Male"
+        product = get_object_or_404(Product, gender=gender, slug=product_slug)
+    elif collection_name.lower() in ["women", "womens", "women's", "women"]:
+        gender = "Female"
+        product = get_object_or_404(Product, gender=gender, slug=product_slug)
+    else:
+        product = get_object_or_404(Product, category_slug=collection_name, slug=product_slug)
+    
+    if request.method == 'POST':
+        rating = int(request.POST.get('rating'))  # Convert to integer
+        comment = request.POST.get('comment')
+        
+        # Check if user already reviewed this product
+        existing_review = Review.objects.filter(user=request.user, product=product).first()
+        
+        if existing_review:
+            # Update existing review
+            existing_review.rating = rating
+            existing_review.comment = comment
+            existing_review.save()
+        else:
+            # Create new review
+            Review.objects.create(
+                user=request.user,
+                product=product,
+                rating=rating,
+                comment=comment
+            )
+            
+        # Update product rating
+        all_ratings = product.reviews.all().values_list('rating', flat=True)
+        if all_ratings:
+            product.rating = sum(all_ratings) / len(all_ratings)
+            product.save()
+            
+    return redirect('product_page', collection_name=collection_name, product_slug=product_slug)
+
+
 
 
 def moonshot(request):
