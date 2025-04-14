@@ -22,9 +22,26 @@ def home(request):
 def normalize_gender_query(query):
     query = query.lower()
 
-    male_keywords = ['men', "men's", 'mens', 'man', 'male', 'boys', 'dudes', 'queer','rachit', 'divyansh', 'pushkar', 'handsome']
-    female_keywords = ['women', "women's", 'womens', 'lady', 'ladies', 'female', 'girls', 'gay', 'bi', 'queer', 'abhinav', 'sexy' ]
-    unisex_keywords = ['unisex', 'all', 'any', 'everyone', 'nonbinary', 'pan', 'fab', 'slay']
+    male_keywords = [
+        'men', "men's", 'mens', 'man', 'male', 'boys', 'dudes', 'queer',
+        'rachit', 'divyansh', 'pushkar', 'handsome',
+        # Common misspellings
+        'mele', 'mail', 'mall', 'males', 'maans', 'mans', 'mal',
+        'mann', 'menn', 'mans', 'boyz', 'bois'
+    ]
+    female_keywords = [
+        'women', "women's", 'womens', 'lady', 'ladies', 'female', 'girls',
+        'gay', 'bi', 'queer', 'abhinav', 'sexy',
+        # Common misspellings
+        'womin', 'wuman', 'wommen', 'womans', 'femail', 'femle', 'fimale',
+        'ladie', 'ladys', 'females', 'femails', 'wman', 'woomen', 'gals'
+    ]
+    # unisex_keywords = [
+    #     'unisex', 'all', 'any', 'everyone', 'nonbinary', 'pan', 'fab', 'slay',
+    #     # Common variations
+    #     'uni-sex', 'uni sex', 'universal', 'neutral', 'gender neutral',
+    #     'enby', 'non-binary', 'non binary'
+    # ]
 
     for word in male_keywords:
         if re.search(rf'\b{re.escape(word)}\b', query):
@@ -32,9 +49,9 @@ def normalize_gender_query(query):
     for word in female_keywords:
         if re.search(rf'\b{re.escape(word)}\b', query):
             return 'Female'
-    for word in unisex_keywords:
-        if re.search(rf'\b{re.escape(word)}\b', query):
-            return 'Unisex'
+    # for word in unisex_keywords:
+    #     if re.search(rf'\b{re.escape(word)}\b', query):
+    #         return 'Unisex'
 
     return None
 
@@ -50,7 +67,6 @@ def search(request):
         if query:
             normalized_gender = normalize_gender_query(query)
 
-            # Build search filter
             filters = (
                 Q(category__icontains=query) |
                 Q(product_name__icontains=query)
@@ -99,27 +115,32 @@ def products_cat_view(request, gender, collection_name):
     normalized_gender = gender.lower()
     category = None
     gender = None
-    if normalized_gender in ["male", "mens", "men's", "men"]:
-        gender = "Male"
-        # products = Product.objects.filter(gender="Male")
-        # category = "Men"
+    
+    # Expanded patterns for male variations including misspellings
+    male_patterns = ["male", "mens", "men's", "men", "mann", "man", "mele", 
+                    "mail", "mall", "males", "mens", "maans", "mans", "mal"]
+    
+    # Expanded patterns for female variations including misspellings
+    female_patterns = ["woman", "womens", "women's", "women", "female", "femail",
+                      "femle", "fimale", "womans", "wommen", "womin", "wuman", 
+                      "females", "femails", "wman", "woomen"]
 
-    elif normalized_gender in ["Women", "Womens", "Wommen's", "women"]:
+    if normalized_gender in male_patterns:
+        gender = "Male"
+    elif normalized_gender in female_patterns:
         gender = "Female"
         category = "Women"
-        # products = Product.objects.filter(gender="Female")
 
+    products = Product.objects.filter(gender=gender, category_slug=collection_name)
 
-    products = Product.objects.filter(gender=gender, category_slug = collection_name)
-
-    category = products[1].category
+    category = products[1].category if products else None
+    
     sort_by = request.GET.get('sort', 'featured')
     if sort_by == 'price_low':
         products = products.order_by('price')
     elif sort_by == 'price_high':
         products = products.order_by('-price')
     elif sort_by == 'relevance':
-        # For random ordering in Django
         products = products.order_by('?')
     
     context = {
@@ -129,29 +150,31 @@ def products_cat_view(request, gender, collection_name):
         'product_category': category, 
         "sizes": [8, 9, 10, 11, 12]
     }
-
-
     return render(request, 'products.html', context)
-
-
-
 
 def products_view(request, collection_name):
     normalized_collection_name = collection_name.lower()
     category = None
-    if normalized_collection_name in ["male", "mens", "men's", "men"]:
+    
+    # Same expanded patterns as above
+    male_patterns = ["male", "mens", "men's", "men", "mann", "man", "mele", 
+                    "mail", "mall", "males", "mens", "maans", "mans", "mal"]
+    
+    female_patterns = ["woman", "womens", "women's", "women", "female", "femail",
+                      "femle", "fimale", "womans", "wommen", "womin", "wuman", 
+                      "females", "femails", "wman", "woomen"]
+
+    if normalized_collection_name in male_patterns:
         collection_name = "Men"
         products = Product.objects.filter(gender="Male")
         category = "Men"
-
-    elif normalized_collection_name in ["Women", "Womens", "Wommen's", "women"]:
+    elif normalized_collection_name in female_patterns:
         collection_name = "Women"
         category = "Women"
         products = Product.objects.filter(gender="Female")
-    
     else:
-         products = Product.objects.filter(category_slug=collection_name)
-         category = products[1].category
+        products = Product.objects.filter(category_slug=collection_name)
+        category = products[1].category if products else None
 
     sort_by = request.GET.get('sort', 'featured')
     if sort_by == 'price_low':
@@ -159,7 +182,6 @@ def products_view(request, collection_name):
     elif sort_by == 'price_high':
         products = products.order_by('-price')
     elif sort_by == 'relevance':
-        # For random ordering in Django
         products = products.order_by('?')
     
     context = {
