@@ -40,7 +40,7 @@
         flex-direction: column; /* Stack header/main/footer vertically */
         /* Consider removing padding-top: 60px; if header is part of the flow */
         /* If header is position:fixed, padding-top is needed */
-        padding-top: 60px; /* Assuming fixed header height of 60px */
+        padding-top: 40px;
     }
 
     main {
@@ -175,21 +175,7 @@
         margin-bottom: 1rem; /* Space before notification */
     }
 
-    .form-control {
-        height: 55px; /* Slightly taller */
-        border: 1px solid #d5d5d5; /* Lighter border */
-        border-radius: 6px; /* Consistent radius */
-        padding: 0 130px 0 20px; /* Adjust padding for button */
-        font-size: 1rem;
-        font-family: 'Vollkorn', serif; /* Ensure font */
-        transition: border-color 0.3s ease;
-        width: 100%; /* Ensure it takes full width of parent */
-        box-sizing: border-box; /* Include padding/border in width */
-    }
-    .form-control:focus {
-        border-color: var(--primary-color);
-        outline: none;
-    }
+    
 
     .submit-btn {
         position: absolute;
@@ -239,13 +225,6 @@
             <div class="notification-message" id="notificationMessage">
                 Thank you! We'll keep you posted about our launch! 🎉
             </div>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="notification-message server-message show {% if message.tags %}{{ message.tags }}{% endif %}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
         </div>
     </main>
 </div>

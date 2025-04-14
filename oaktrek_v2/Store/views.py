@@ -101,6 +101,8 @@ def search(request):
 
     return render(request, 'search_results.html', context)
 
+def error_page(request):
+    return render(request, '404.html')
 
 def sustainability(request):
     return render(request, 'sustainability.html')
@@ -302,6 +304,9 @@ def bcorp(request):
 
 def carbonFootprint(request):
     return render(request, 'carbonoffsets.html')
+
+def join(request):
+    return render(request, 'join.html')
 
 def oaktrek_help(request):
     if request.method == 'POST':

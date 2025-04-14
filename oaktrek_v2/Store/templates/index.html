@@ -333,6 +333,7 @@
         text-decoration: none;
         color: inherit;
     }
+    
 
     .product-image {
         width: 100%;
@@ -526,65 +527,6 @@
         gap: 1rem;
     }
 
-    /* Radio button hiding for carousel */
-    input[type="radio"].slider-radio {
-        display: none;
-    }
-
-    #slide1:checked~.carousel-track {
-        transform: translateX(0);
-    }
-
-    #slide2:checked~.carousel-track {
-        transform: translateX(-100%);
-        /* Adjust if more slides */
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-
-        /* Adjust breakpoint for tablets */
-        .category-grid {
-            grid-template-columns: repeat(2, 1fr);
-            /* 2 columns */
-        }
-
-        .carousel-slide {
-            flex: 0 0 50%;
-            /* Still show 2 */
-        }
-
-        .product-carousel-card {
-            /* 2 cards per slide for smaller screens */
-            width: calc(50% - 12px);
-            /* Gap is 24px, (24px * 1 gap / 2 cards = 12px) */
-        }
-
-        .slide {
-            gap: 24px;
-        }
-
-        #slide1:checked~.carousel-track {
-            transform: translateX(0);
-        }
-
-        #slide2:checked~.carousel-track {
-            transform: translateX(-100%);
-        }
-
-        /* Add more rules if you have more slides for this view */
-
-        .hero-title {
-            font-size: 3rem;
-        }
-
-        .bg-navy,
-        .promo-card {
-            min-height: 500px;
-            height: 500px;
-        }
-
-    }
 
 
     @media (max-width: 768px) {
@@ -947,8 +889,8 @@
 <!-- Product Carousel Section -->
 <div class="product-carousel">
     {# Removed radio inputs, control will be via JS #}
-    {# <input type="radio" name="slider" id="slide1" checked class="slider-radio"> #}
-    {# <input type="radio" name="slider" id="slide2" class="slider-radio"> #}
+     <input type="radio" name="slider" id="slide1" checked class="slider-radio"> 
+    <input type="radio" name="slider" id="slide2" class="slider-radio"> 
 
     <div class="carousel-track">
         {# Slide 1 Content #}
@@ -1121,7 +1063,7 @@
 
                 // Calculate translation: slide index * (100% / slides per view)
                 const translation = currentContentSlideIndex * (100 / slidesPerView);
-                contentCarousel.style.transform = translateX(-${ translation } %);
+                contentCarousel.style.transform = `translateX(-${translation}%)`;
 
                 // Update dots (only if number of dots matches max index + 1)
                 if (contentDots.length === maxSlideIndex + 1) {
@@ -1221,43 +1163,35 @@
 
 
         // --- Product Carousel (Bottom) ---
-        const productCarouselTrack = document.querySelector('.product-carousel .carousel-track');
-        const productSlides = document.querySelectorAll('.product-carousel .slide'); // These are the containers for groups of cards
-        const prevButton = document.querySelector('.product-carousel .prod-carousel-prev');
-        const nextButton = document.querySelector('.product-carousel .prod-carousel-next');
-        let currentProductSlide = 0;
+const productCarouselTrack = document.querySelector('.product-carousel .carousel-track');
+const productSlides = document.querySelectorAll('.product-carousel .slide'); 
+const prevButton = document.querySelector('.product-carousel .prod-carousel-prev');
+const nextButton = document.querySelector('.product-carousel .prod-carousel-next');
+let currentProductSlide = 0;
 
-        if (productCarouselTrack && productSlides.length > 1 && prevButton && nextButton) {
-            const totalProductSlides = productSlides.length;
+if (productCarouselTrack && productSlides.length > 1 && prevButton && nextButton) {
+    const totalProductSlides = productSlides.length;
 
-            function showProductSlide(index) {
-                // Ensure index loops correctly
-                currentProductSlide = (index + totalProductSlides) % totalProductSlides;
-                const translation = currentProductSlide * 100; // Each .slide is 100% width
-                productCarouselTrack.style.transform = translateX(-${ translation } %);
+    function showProductSlide(index) {
+        currentProductSlide = (index + totalProductSlides) % totalProductSlides;
+        const translation = currentProductSlide * 100; 
+        productCarouselTrack.style.transform = `translateX(-${translation}%)`;
+    }
 
-                // Optional: Add active class to the current slide container if needed for styling
-                productSlides.forEach((slide, i) => {
-                    slide.classList.toggle('active-slide', i === currentProductSlide);
-                });
-            }
+    prevButton.addEventListener('click', () => {
+        showProductSlide(currentProductSlide - 1);
+    });
 
-            prevButton.addEventListener('click', () => {
-                showProductSlide(currentProductSlide - 1);
-            });
+    nextButton.addEventListener('click', () => {
+        showProductSlide(currentProductSlide + 1);
+    });
 
-            nextButton.addEventListener('click', () => {
-                showProductSlide(currentProductSlide + 1);
-            });
+    // Initial setup
+    showProductSlide(0);
 
-            // Initial setup
-            showProductSlide(0);
-
-        } else if (productSlides.length <= 1 && prevButton && nextButton) {
-            // Hide controls if only one slide or fewer
-            prevButton.style.display = 'none';
-            nextButton.style.display = 'none';
-        }
-    }); 
+} else if (productSlides.length <= 1 && prevButton && nextButton) {
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
+}
 </script>
 {% endblock %}
