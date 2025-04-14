@@ -6,7 +6,7 @@
 <style>
     .hero-section {
         width: 100%;
-        height: 90vh; 
+        height: 90vh;
         position: relative;
         overflow: hidden;
     }
@@ -22,12 +22,12 @@
         width: 100%;
         height: 90vh;
         opacity: 0;
-        transition: opacity 1s ease-in-out; 
+        transition: opacity 1s ease-in-out;
         background-size: cover;
         background-position: center;
     }
 
- 
+
     [data-bg] {
         background-image: var(--bg-image);
     }
@@ -35,7 +35,7 @@
     .hero-slide img {
         width: 100%;
         height: 100%;
-        object-fit: cover; 
+        object-fit: cover;
     }
 
     .hero-slide.active {
@@ -44,13 +44,14 @@
 
     .hero-content {
         position: absolute;
-        top: 90%;
-        left: 85%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         z-index: 2;
-        text-align: center;
+        text-align: end;
         color: white;
-        width: 100%;
+        margin-top: 40vh;
+        width: 90%;
     }
 
     .hero-title {
@@ -68,10 +69,10 @@
     /* Category Sections */
     .category-section {
         padding: 60px 0;
-        margin-top: 100vh; 
+        margin-top: 100vh;
         position: relative;
     }
-    
+
     .category-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -89,11 +90,13 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease; /* Add transition for hover effect */
+        transition: transform 0.3s ease;
+        /* Add transition for hover effect */
     }
 
     .category-card:hover img {
-        transform: scale(1.05); /* Slight zoom on hover */
+        transform: scale(1.05);
+        /* Slight zoom on hover */
     }
 
     .category-content {
@@ -101,7 +104,8 @@
         bottom: 30px;
         left: 30px;
         color: white;
-        z-index: 1; /* Ensure text is above image */
+        z-index: 1;
+        /* Ensure text is above image */
     }
 
     /* Buttons */
@@ -117,7 +121,8 @@
         font-size: 14px;
         font-weight: 500;
         border: none;
-        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        transition: background-color 0.3s ease, color 0.3s ease;
+        /* Smooth transition */
         cursor: pointer;
     }
 
@@ -134,17 +139,20 @@
     }
 
     .btn-light-outline:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Slight background on hover */
+        background-color: rgba(255, 255, 255, 0.1);
+        /* Slight background on hover */
         color: white;
     }
 
     /* Main Carousel Section */
     .carousel-container {
         width: 100%;
-        height: 50vh; /* Adjust height as needed */
+        height: 50vh;
+        /* Adjust height as needed */
         position: relative;
         overflow: hidden;
-        margin-top: 40px; /* Add some space */
+        margin-top: 40px;
+        /* Add some space */
         margin-bottom: 40px;
     }
 
@@ -156,12 +164,16 @@
     }
 
     .carousel-slide {
-        flex: 0 0 50%; /* Show two slides at a time */
+        flex: 0 0 50%;
+        /* Show two slides at a time */
         height: 100%;
         position: relative;
-        display: block; /* Make the link a block element */
-        text-decoration: none; /* Remove underline from link */
-        overflow: hidden; /* Hide overflow */
+        display: block;
+        /* Make the link a block element */
+        text-decoration: none;
+        /* Remove underline from link */
+        overflow: hidden;
+        /* Hide overflow */
     }
 
     .carousel-slide img {
@@ -172,7 +184,8 @@
     }
 
     .carousel-slide:hover img {
-        transform: scale(1.03); /* Slight zoom on hover */
+        transform: scale(1.03);
+        /* Slight zoom on hover */
     }
 
 
@@ -183,7 +196,8 @@
         color: white;
         font-family: system-ui, -apple-system, sans-serif;
         font-size: 1.25rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Stronger shadow */
         z-index: 1;
     }
 
@@ -214,26 +228,32 @@
     /* Product Showcase Section */
     .product-showcase {
         background-color: #fff;
-        margin-top: 60px; /* Add margin */
+        margin-top: 60px;
+        /* Add margin */
         margin-bottom: 60px;
     }
 
     /* .lifestyle-section {  -- Not directly used, styling applied to bg-navy */
-        /* min-height: 600px; */
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* justify-content: space-between; */
+    /* min-height: 600px; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
     /* } */
 
     .product-card {
         position: relative;
         transition: transform 0.3s ease;
-        overflow: hidden; /* Important for hover overlay */
+        overflow: hidden;
+        /* Important for hover overlay */
         margin-bottom: 30px;
-        text-align: center; /* Center align text */
-        text-decoration: none; /* Remove default link underline */
-        color: inherit; /* Inherit text color */
-        display: block; /* Ensure it behaves like a block */
+        text-align: center;
+        /* Center align text */
+        text-decoration: none;
+        /* Remove default link underline */
+        color: inherit;
+        /* Inherit text color */
+        display: block;
+        /* Ensure it behaves like a block */
     }
 
     .product-card:hover {
@@ -243,28 +263,32 @@
     }
 
     .bg-navy {
-        background-color: #1a394f; /* Assuming this is the navy color */
+        background-color: #1a394f;
+        /* Assuming this is the navy color */
         min-height: 600px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
-        overflow: hidden; /* For image opacity effect */
+        overflow: hidden;
+        /* For image opacity effect */
     }
 
     .bg-navy img {
-        opacity: 0.9; /* Slight opacity as in example */
+        opacity: 0.9;
+        /* Slight opacity as in example */
         transition: opacity 0.3s ease;
     }
 
     .bg-navy:hover img {
-         opacity: 1;
+        opacity: 1;
     }
 
 
     .price {
         font-weight: 600;
-        color: #1a394f; /* Match navy color? Or keep black? */
+        color: #1a394f;
+        /* Match navy color? Or keep black? */
     }
 
     /* Product Carousel Styles */
@@ -282,18 +306,23 @@
     }
 
     .slide {
-        min-width: 100%; /* Each slide takes full width */
+        min-width: 100%;
+        /* Each slide takes full width */
         display: flex;
-        gap: 24px; /* Gap between cards */
-        padding: 0 12px; /* Padding for visual spacing at edges */
+        gap: 24px;
+        /* Gap between cards */
+        padding: 0 12px;
+        /* Padding for visual spacing at edges */
         box-sizing: border-box;
     }
 
     .product-carousel-card {
-        width: calc(25% - 18px); /* 4 cards per slide, adjust for gap (24px * 3 gaps / 4 cards = 18px) */
+        width: calc(25% - 18px);
+        /* 4 cards per slide, adjust for gap (24px * 3 gaps / 4 cards = 18px) */
         text-decoration: none;
         color: inherit;
-        flex-shrink: 0; /* Prevent cards from shrinking */
+        flex-shrink: 0;
+        /* Prevent cards from shrinking */
         display: block;
         transition: transform 0.3s ease;
         box-sizing: border-box;
@@ -311,14 +340,17 @@
         margin-bottom: 16px;
         border-radius: 8px;
         overflow: hidden;
-        aspect-ratio: 1 / 1; /* Make image container square */
-        display: flex; /* Center image vertically */
+        aspect-ratio: 1 / 1;
+        /* Make image container square */
+        display: flex;
+        /* Center image vertically */
         align-items: center;
     }
 
     .product-image img {
         width: 100%;
-        height: auto; /* Maintain aspect ratio */
+        height: auto;
+        /* Maintain aspect ratio */
         /* height: 100%; / / If you want to force fill */
         /* object-fit: cover; / / Use cover if forcing fill */
         display: block;
@@ -326,7 +358,8 @@
 
     .product-info {
         padding: 0 8px;
-        text-align: left; /* Align text left */
+        text-align: left;
+        /* Align text left */
     }
 
     .product-info h3 {
@@ -334,9 +367,12 @@
         font-weight: 500;
         margin: 0 0 4px 0;
         color: #000;
-        line-height: 1.2; /* Adjust line height */
-         height: 2.4em; /* Approx 2 lines */
-        overflow: hidden; /* Hide overflow */
+        line-height: 1.2;
+        /* Adjust line height */
+        height: 2.4em;
+        /* Approx 2 lines */
+        overflow: hidden;
+        /* Hide overflow */
     }
 
     .product-info .color {
@@ -347,14 +383,19 @@
 
     .carousel-controls {
         position: absolute;
-        top: 40%; /* Position controls vertically */
-        width: calc(100% - 40px); /* Adjust width to prevent overlap with content */
-        left: 20px; /* Align with padding */
+        top: 40%;
+        /* Position controls vertically */
+        width: calc(100% - 40px);
+        /* Adjust width to prevent overlap with content */
+        left: 20px;
+        /* Align with padding */
         transform: translateY(-50%);
         display: flex;
         justify-content: space-between;
-        padding: 0; /* Remove padding here */
-        pointer-events: none; /* Allow clicks through controls div */
+        padding: 0;
+        /* Remove padding here */
+        pointer-events: none;
+        /* Allow clicks through controls div */
         z-index: 10;
     }
 
@@ -367,12 +408,14 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        pointer-events: auto; /* Enable pointer events for labels */
+        pointer-events: auto;
+        /* Enable pointer events for labels */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         color: #333;
         font-size: 20px;
         border: 1px solid #eee;
     }
+
     .carousel-controls label:hover {
         background: white;
     }
@@ -394,13 +437,16 @@
         gap: 10px;
         opacity: 0;
         transition: opacity 0.3s ease;
-        pointer-events: none; /* Initially not clickable */
-        z-index: 5; /* Above image, below card content if needed */
+        pointer-events: none;
+        /* Initially not clickable */
+        z-index: 5;
+        /* Above image, below card content if needed */
     }
 
     .product-card:hover .product-hover-overlay {
         opacity: 1;
-        pointer-events: auto; /* Clickable on hover */
+        pointer-events: auto;
+        /* Clickable on hover */
     }
 
     .hover-btn {
@@ -422,8 +468,10 @@
 
     /* Final Promo Section */
     .promo-section {
-        margin-top: 60px; /* Space above promo */
-        margin-bottom: 40px; /* Space below promo */
+        margin-top: 60px;
+        /* Space above promo */
+        margin-bottom: 40px;
+        /* Space below promo */
     }
 
     .promo-card {
@@ -453,18 +501,24 @@
         /* Smoother gradient */
         background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0) 100%);
         opacity: 0;
-        transition: opacity 0.4s ease, transform 0.4s ease; /* Add transform transition */
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        /* Add transform transition */
         display: flex;
         justify-content: center;
-        align-items: flex-end; /* Align buttons to bottom */
-        transform: translateY(20px); /* Start slightly lower */
-        pointer-events: none; /* Allow hover on card itself */
+        align-items: flex-end;
+        /* Align buttons to bottom */
+        transform: translateY(20px);
+        /* Start slightly lower */
+        pointer-events: none;
+        /* Allow hover on card itself */
     }
 
     .promo-card:hover .promo-overlay {
         opacity: 1;
-        transform: translateY(0); /* Move up into view */
-        pointer-events: auto; /* Enable button clicks */
+        transform: translateY(0);
+        /* Move up into view */
+        pointer-events: auto;
+        /* Enable button clicks */
     }
 
     .button-group {
@@ -477,96 +531,192 @@
         display: none;
     }
 
-    #slide1:checked ~ .carousel-track {
+    #slide1:checked~.carousel-track {
         transform: translateX(0);
     }
 
-    #slide2:checked ~ .carousel-track {
-        transform: translateX(-100%); /* Adjust if more slides */
+    #slide2:checked~.carousel-track {
+        transform: translateX(-100%);
+        /* Adjust if more slides */
     }
 
     /* Responsive Design */
-    @media (max-width: 992px) { /* Adjust breakpoint for tablets */
+    @media (max-width: 992px) {
+
+        /* Adjust breakpoint for tablets */
         .category-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 columns */
         }
+
         .carousel-slide {
-            flex: 0 0 50%; /* Still show 2 */
+            flex: 0 0 50%;
+            /* Still show 2 */
         }
+
         .product-carousel-card {
-             /* 2 cards per slide for smaller screens */
-            width: calc(50% - 12px); /* Gap is 24px, (24px * 1 gap / 2 cards = 12px) */
+            /* 2 cards per slide for smaller screens */
+            width: calc(50% - 12px);
+            /* Gap is 24px, (24px * 1 gap / 2 cards = 12px) */
         }
-         .slide {
+
+        .slide {
             gap: 24px;
         }
-         #slide1:checked ~ .carousel-track { transform: translateX(0); }
-         #slide2:checked ~ .carousel-track { transform: translateX(-100%); }
-         /* Add more rules if you have more slides for this view */
 
-        .hero-title { font-size: 3rem; }
-        .bg-navy, .promo-card { min-height: 500px; height: 500px;}
+        #slide1:checked~.carousel-track {
+            transform: translateX(0);
+        }
+
+        #slide2:checked~.carousel-track {
+            transform: translateX(-100%);
+        }
+
+        /* Add more rules if you have more slides for this view */
+
+        .hero-title {
+            font-size: 3rem;
+        }
+
+        .bg-navy,
+        .promo-card {
+            min-height: 500px;
+            height: 500px;
+        }
 
     }
 
 
-    @media (max-width: 768px) { /* Standard mobile breakpoint */
-         .hero-title { font-size: 2.5rem; }
-         .hero-subtitle { font-size: 0.8rem; }
-         .hero-section { height: 70vh; } /* Shorter hero */
+    @media (max-width: 768px) {
+
+        /* Standard mobile breakpoint */
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 0.8rem;
+        }
+
+        .hero-section {
+            height: 70vh;
+        }
+
+        /* Shorter hero */
 
         .category-grid {
-            grid-template-columns: 1fr; /* 1 column */
+            grid-template-columns: 1fr;
+            /* 1 column */
         }
-        .category-card { height: 400px; }
 
-        .carousel-container { height: 60vh; /* Adjust height for mobile */ }
-        .carousel-slide { flex: 0 0 100%; /* Show one slide at a time */ }
-        .carousel-dots { bottom: 1rem; right: 1rem; }
+        .category-card {
+            height: 400px;
+        }
+
+        .carousel-container {
+            height: 60vh;
+            /* Adjust height for mobile */
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            /* Show one slide at a time */
+        }
+
+        .carousel-dots {
+            bottom: 1rem;
+            right: 1rem;
+        }
+
         /* Adjust carousel JS logic or CSS for 1 slide view if needed */
-         .carousel.one-slide-view .carousel-slide { flex: 0 0 100%; }
+        .carousel.one-slide-view .carousel-slide {
+            flex: 0 0 100%;
+        }
 
 
-         .product-showcase .row > div[class^="col-"] {
-             flex-basis: 100%; /* Stack columns */
-             max-width: 100%;
-         }
-        .bg-navy { min-height: 400px; }
-        .product-showcase .p-4 { padding: 1.5rem !important; } /* Reduce padding */
+        .product-showcase .row>div[class^="col-"] {
+            flex-basis: 100%;
+            /* Stack columns */
+            max-width: 100%;
+        }
+
+        .bg-navy {
+            min-height: 400px;
+        }
+
+        .product-showcase .p-4 {
+            padding: 1.5rem !important;
+        }
+
+        /* Reduce padding */
 
 
         .product-carousel-card {
-             /* Still show 2 cards per slide on mobile? Or switch to 1? */
-             /* Option 1: Keep 2 cards */
-             width: calc(50% - 12px);
-             /* Option 2: Show 1 card */
-             /* width: calc(100% - 12px); / / Adjust padding if 1 card */
+            /* Still show 2 cards per slide on mobile? Or switch to 1? */
+            /* Option 1: Keep 2 cards */
+            width: calc(50% - 12px);
+            /* Option 2: Show 1 card */
+            /* width: calc(100% - 12px); / / Adjust padding if 1 card */
         }
-         .slide {
+
+        .slide {
             /* Adjust gap if needed for mobile */
             gap: 16px;
         }
-        .product-carousel { width: 95%; } /* More width */
-        .carousel-controls { width: calc(100% - 20px); left: 10px; }
-        .carousel-controls label { width: 35px; height: 35px; font-size: 18px;}
 
-        .promo-section .row > div[class^="col-"] {
-             flex-basis: 100%;
-             max-width: 100%;
+        .product-carousel {
+            width: 95%;
         }
-        .promo-card { height: 400px; }
+
+        /* More width */
+        .carousel-controls {
+            width: calc(100% - 20px);
+            left: 10px;
+        }
+
+        .carousel-controls label {
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+        }
+
+        .promo-section .row>div[class^="col-"] {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+
+        .promo-card {
+            height: 400px;
+        }
+
         .button-group {
             flex-direction: column;
             width: 100%;
-            max-width: 200px; /* Limit button width */
-            gap: 0.5rem; /* Reduce gap */
+            max-width: 200px;
+            /* Limit button width */
+            gap: 0.5rem;
+            /* Reduce gap */
         }
-         .btn-allbirds { width: 100%; } /* Full width buttons in column */
-         .promo-overlay { padding: 1.5rem; }
 
-         /* Adjust product carousel for potentially 1 slide view or fewer items */
-        #slide1:checked ~ .carousel-track { transform: translateX(0); }
-        #slide2:checked ~ .carousel-track { transform: translateX(-100%); } /* Might need adjustment based on items per view */
+        .btn-allbirds {
+            width: 100%;
+        }
+
+        /* Full width buttons in column */
+        .promo-overlay {
+            padding: 1.5rem;
+        }
+
+        /* Adjust product carousel for potentially 1 slide view or fewer items */
+        #slide1:checked~.carousel-track {
+            transform: translateX(0);
+        }
+
+        #slide2:checked~.carousel-track {
+            transform: translateX(-100%);
+        }
+
+        /* Might need adjustment based on items per view */
 
     }
 </style>
@@ -582,22 +732,22 @@
 {% block title %} Oaktrek {% endblock %}
 
 {% block main_block %}
-        <div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
-            <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers"">
+<div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
+    <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers"">
         </div>
-        <div class="hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
-            <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers"">
+        <div class=" hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
+    <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers"">
         </div>
 
-        <div class="hero-content">
-            <h1 class="hero-title">Bring it, Spring</h1>
-            <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
-            <div>
-                <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men</a>
-                <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds">Shop Women</a>
-            </div>
-        </div>
+        <div class=" hero-content">
+    <h1 class="hero-title">Bring it, Spring</h1>
+    <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
+    <div>
+        <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men</a>
+        <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds">Shop Women</a>
     </div>
+</div>
+</div>
 </section>
 
 
@@ -615,7 +765,8 @@
             <img src="{% static 'assets/products/landingpageflex2.png' %}" alt="Women's Shoes">
             <div class="category-content">
                 <h3>Women's Shoes</h3>
-                <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds btn-light-outline">Shop Now</a>
+                <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds btn-light-outline">Shop
+                    Now</a>
             </div>
         </div>
         <div class="category-card">
@@ -663,7 +814,7 @@
         <button class="dot" data-slide-index="2"></button>
         <button class="dot" data-slide-index="3"></button>
         <button class="dot" data-slide-index="4"></button>
-         {# Add more dots if needed #}
+        {# Add more dots if needed #}
     </div>
 </div>
 
@@ -675,16 +826,20 @@
             <!-- Left Side - Lifestyle Image -->
             <div class="col-lg-6 d-flex"> {# Changed to col-lg-6 for better stacking control #}
                 <div class="bg-navy w-100 position-relative overflow-hidden">
-                    <img src="{% static 'assets/products/landingpageblues1.png' %}" alt="New And Beautiful Blues Collection" class="w-100 h-100 object-fit-cover">
-                    <div class="position-absolute bottom-0 start-0 p-4 text-white" style="z-index: 1;"> {# Ensure text is above image #}
+                    <img src="{% static 'assets/products/landingpageblues1.png' %}"
+                        alt="New And Beautiful Blues Collection" class="w-100 h-100 object-fit-cover">
+                    <div class="position-absolute bottom-0 start-0 p-4 text-white" style="z-index: 1;"> {# Ensure text
+                        is above image #}
                         <h2 class="display-4 mb-2">New And Beautiful Blues</h2>
                         <p class="mb-4">Cool classics to put spring in your step.</p>
                         <div class="d-flex gap-2 flex-wrap"> {# Added flex-wrap for smaller screens #}
                             <a href="{% url 'products' collection_name='men' %}">
-                                <button class="btn btn-light text-dark px-4 btn-allbirds">Shop men</button> {# Use consistent button class? #}
+                                <button class="btn btn-light text-dark px-4 btn-allbirds">Shop men</button> {# Use
+                                consistent button class? #}
                             </a>
                             <a href="{% url 'products' collection_name='women' %}">
-                                <button class="btn btn-outline-light px-4 btn-allbirds btn-light-outline">Shop women</button> {# Use consistent button class? #}
+                                <button class="btn btn-outline-light px-4 btn-allbirds btn-light-outline">Shop
+                                    women</button> {# Use consistent button class? #}
                             </a>
                         </div>
                     </div>
@@ -696,43 +851,53 @@
                 <div class="row g-4 p-4 w-100">
                     <!-- Product Cards -->
                     <div class="col-6">
-                        <a href="{% url 'product_page' collection_name='men' product_slug='tree-runner-go' %}" class="product-card text-center">
+                        <a href="{% url 'product_page' collection_name='men' product_slug='tree-runner-go' %}"
+                            class="product-card text-center">
 
                             <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button> {# Button inside overlay #}
                             </div>
-                            <img src="{{ MEDIA_URL }}assets/products/1image1.png" alt="Tree Runner Go" class="img-fluid mb-3">                            <h5 class="mb-1">Tree Runner Go</h5>
+                            <img src="{{ MEDIA_URL }}assets/products/1image1.png" alt="Tree Runner Go"
+                                class="img-fluid mb-3">
+                            <h5 class="mb-1">Tree Runner Go</h5>
                             <p class="text-muted small mb-1">Natural Navy/Light</p> {# Reduced margin #}
                             <p class="price">$115</p>
                         </a>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'product_page' collection_name='men' product_slug='tree-flyer' %}" class="product-card text-center">
-                             <div class="product-hover-overlay">
+                        <a href="{% url 'product_page' collection_name='men' product_slug='tree-flyer' %}"
+                            class="product-card text-center">
+                            <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
-                            <img src="{{ MEDIA_URL }}assets/products/10image1.png" alt="Tree Flyer" class="img-fluid mb-3">                            <h5 class="mb-1">Tree Flyer</h5>
+                            <img src="{{ MEDIA_URL }}assets/products/10image1.png" alt="Tree Flyer"
+                                class="img-fluid mb-3">
+                            <h5 class="mb-1">Tree Flyer</h5>
                             <p class="text-muted small mb-1">White/Natural Light</p>
                             <p class="price">$160</p>
                         </a>
                     </div>
                     <div class="col-6">
-                         <a href="{% url 'product_page' collection_name='men' product_slug='tree-dasher-2' %}" class="product-card text-center">
-                             <div class="product-hover-overlay">
+                        <a href="{% url 'product_page' collection_name='men' product_slug='tree-dasher-2' %}"
+                            class="product-card text-center">
+                            <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
-                            <img src="{{ MEDIA_URL }}assets/products/9image1.png" alt="Tree Dasher 2" class="img-fluid mb-3">
+                            <img src="{{ MEDIA_URL }}assets/products/9image1.png" alt="Tree Dasher 2"
+                                class="img-fluid mb-3">
                             <h5 class="mb-1">Tree Dasher 2</h5>
                             <p class="text-muted small mb-1">White/Navy</p>
                             <p class="price">$135</p>
-                         </a>
+                        </a>
                     </div>
                     <div class="col-6">
-                        <a href="{% url 'product_page' collection_name='men' product_slug='wool-runner' %}" class="product-card text-center">
-                             <div class="product-hover-overlay">
+                        <a href="{% url 'product_page' collection_name='men' product_slug='wool-runner' %}"
+                            class="product-card text-center">
+                            <div class="product-hover-overlay">
                                 <button class="hover-btn">Shop</button>
                             </div>
-                            <img src="{{ MEDIA_URL }}assets/products/3image1.png" alt="Wool Runner" class="img-fluid mb-3">
+                            <img src="{{ MEDIA_URL }}assets/products/3image1.png" alt="Wool Runner"
+                                class="img-fluid mb-3">
                             <h5 class="mb-1">Wool Runner</h5>
                             <p class="text-muted small mb-1">Natural Navy</p>
                             <p class="price">$110</p>
@@ -750,23 +915,27 @@
 <section class="promo-section container-fluid p-0">
     <div class="row g-0">
         <div class="col-md-6">
-             {# Wrap promo card content in an anchor tag if the whole card should be clickable #}
-             <a href="{% url 'products' collection_name='men' %}" class="d-block promo-card">
-                <img src="{% static 'assets/products/landingpagemoonshot.png' %}" alt="Moonshot Collection Promo" class="w-100 h-100 object-fit-cover">
+            {# Wrap promo card content in an anchor tag if the whole card should be clickable #}
+            <a href="{% url 'products' collection_name='men' %}" class="d-block promo-card">
+                <img src="{% static 'assets/products/landingpagemoonshot.png' %}" alt="Moonshot Collection Promo"
+                    class="w-100 h-100 object-fit-cover">
                 <div class="promo-overlay">
                     {# Button is optional if whole card is linked, but good for explicit action #}
                     <button class="btn-allbirds">Explore Now</button>
                 </div>
-             </a>
+            </a>
         </div>
         <div class="col-md-6">
             {# This card has multiple actions, so linking the whole card is not ideal #}
             <div class="promo-card">
-                <img src="{% static 'assets/products/landingpagechaelsea.png' %}" alt="Chelsea Boots Promo" class="w-100 h-100 object-fit-cover">
+                <img src="{% static 'assets/products/landingpagechaelsea.png' %}" alt="Chelsea Boots Promo"
+                    class="w-100 h-100 object-fit-cover">
                 <div class="promo-overlay">
                     <div class="button-group">
-                        <a href="{% url 'products' collection_name='men' %}"><button class="btn-allbirds">Shop Men</button></a>
-                        <a href="{% url 'products' collection_name='women' %}"><button class="btn-allbirds">Shop Women</button></a>
+                        <a href="{% url 'products' collection_name='men' %}"><button class="btn-allbirds">Shop
+                                Men</button></a>
+                        <a href="{% url 'products' collection_name='women' %}"><button class="btn-allbirds">Shop
+                                Women</button></a>
                     </div>
                 </div>
             </div>
@@ -784,7 +953,8 @@
     <div class="carousel-track">
         {# Slide 1 Content #}
         <div class="slide">
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/1image1.png" alt="Men's Tree Runner Go">
                 </div>
@@ -794,17 +964,19 @@
                     <p class="price">$120</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='active-shoes' product_slug='tree-dasher-2-womens' %}" class="product-carousel-card">
-            <div class="product-image">
-                <img src="{{ MEDIA_URL }}assets/products/29image1.png" alt="Women's Tree Dasher 2">
-            </div>
+            <a href="{% url 'product_page' collection_name='active-shoes' product_slug='tree-dasher-2-womens' %}"
+                class="product-carousel-card">
+                <div class="product-image">
+                    <img src="{{ MEDIA_URL }}assets/products/29image1.png" alt="Women's Tree Dasher 2">
+                </div>
                 <div class="product-info">
                     <h3>Women's Tree Dasher 2</h3>
                     <p class="color">Blizzard/Hanami Night</p>
                     <p class="price">$135</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='slip-ons' product_slug='tree-lounger' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='slip-ons' product_slug='tree-lounger' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/21image1.png" alt="Men's Tree Loungers">
                 </div>
@@ -814,7 +986,8 @@
                     <p class="price">$100</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go-womens' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='tree-runner-go-womens' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/24image1.png" alt="Tree Runner Go Women's">
                 </div>
@@ -826,7 +999,8 @@
             </a>
         </div>
         <div class="slide">
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='zen-walker' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='zen-walker' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/8image1.png" alt="Men's Zen Walker">
                 </div>
@@ -836,7 +1010,8 @@
                     <p class="price">$125</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='wool-breeze' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='wool-breeze' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/26image1.png" alt="Women's Wool Breeze">
                 </div>
@@ -846,7 +1021,8 @@
                     <p class="price">$105</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='cloud-walker' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='cloud-walker' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/5image1.png" alt="Men's Cloud Walker">
                 </div>
@@ -856,7 +1032,8 @@
                     <p class="price">$130</p>
                 </div>
             </a>
-            <a href="{% url 'product_page' collection_name='hiking-shoes' product_slug='mountain-trekker' %}" class="product-carousel-card">
+            <a href="{% url 'product_page' collection_name='hiking-shoes' product_slug='mountain-trekker' %}"
+                class="product-carousel-card">
                 <div class="product-image">
                     <img src="{{ MEDIA_URL }}assets/products/36image1.png" alt="Women's Mountain Trekker">
                 </div>
@@ -890,7 +1067,7 @@
                 slide.classList.toggle('active', i === index);
                 // Set background image from data attribute
                 if (slide.dataset.bg) {
-                    slide.style.setProperty('--bg-image', url(${slide.dataset.bg}));
+                    slide.style.setProperty('--bg-image', url(${ slide.dataset.bg }));
                 }
                 // Preload next image
                 if (heroSlides.length > 1) {
@@ -944,12 +1121,12 @@
 
                 // Calculate translation: slide index * (100% / slides per view)
                 const translation = currentContentSlideIndex * (100 / slidesPerView);
-                contentCarousel.style.transform = translateX(-${translation}%);
+                contentCarousel.style.transform = translateX(-${ translation } %);
 
                 // Update dots (only if number of dots matches max index + 1)
                 if (contentDots.length === maxSlideIndex + 1) {
                     contentDots.forEach((dot, index) => {
-                       dot.classList.toggle('active', index === currentContentSlideIndex);
+                        dot.classList.toggle('active', index === currentContentSlideIndex);
                     });
                 } else {
                     // Regenerate or hide dots if mismatch (simple hide shown)
@@ -959,9 +1136,9 @@
             }
 
             function setContentSlide(index) {
-                 currentContentSlideIndex = Math.min(Math.max(0, index), maxSlideIndex);
-                 updateContentCarousel();
-                 resetAutoPlay(); // Reset timer when user interacts
+                currentContentSlideIndex = Math.min(Math.max(0, index), maxSlideIndex);
+                updateContentCarousel();
+                resetAutoPlay(); // Reset timer when user interacts
             }
 
             function nextContentSlide() {
@@ -970,7 +1147,7 @@
             }
 
             function startAutoPlay() {
-                 // Clear existing interval before starting a new one
+                // Clear existing interval before starting a new one
                 clearInterval(contentAutoPlayInterval);
                 if (contentSlides.length > slidesPerView) { // Only autoplay if slides can scroll
                     contentAutoPlayInterval = setInterval(nextContentSlide, 5000);
@@ -995,9 +1172,9 @@
             });
 
             // Pause on Hover
-             const carouselContainer = document.querySelector('.carousel-container');
-             carouselContainer.addEventListener('mouseenter', () => clearInterval(contentAutoPlayInterval));
-             carouselContainer.addEventListener('mouseleave', startAutoPlay);
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => clearInterval(contentAutoPlayInterval));
+            carouselContainer.addEventListener('mouseleave', startAutoPlay);
 
 
             // Touch Support
@@ -1054,15 +1231,15 @@
             const totalProductSlides = productSlides.length;
 
             function showProductSlide(index) {
-                 // Ensure index loops correctly
-                 currentProductSlide = (index + totalProductSlides) % totalProductSlides;
-                 const translation = currentProductSlide * 100; // Each .slide is 100% width
-                 productCarouselTrack.style.transform = translateX(-${translation}%);
+                // Ensure index loops correctly
+                currentProductSlide = (index + totalProductSlides) % totalProductSlides;
+                const translation = currentProductSlide * 100; // Each .slide is 100% width
+                productCarouselTrack.style.transform = translateX(-${ translation } %);
 
-                 // Optional: Add active class to the current slide container if needed for styling
-                 productSlides.forEach((slide, i) => {
-                     slide.classList.toggle('active-slide', i === currentProductSlide);
-                 });
+                // Optional: Add active class to the current slide container if needed for styling
+                productSlides.forEach((slide, i) => {
+                    slide.classList.toggle('active-slide', i === currentProductSlide);
+                });
             }
 
             prevButton.addEventListener('click', () => {
@@ -1077,9 +1254,9 @@
             showProductSlide(0);
 
         } else if (productSlides.length <= 1 && prevButton && nextButton) {
-             // Hide controls if only one slide or fewer
-             prevButton.style.display = 'none';
-             nextButton.style.display = 'none';
+            // Hide controls if only one slide or fewer
+            prevButton.style.display = 'none';
+            nextButton.style.display = 'none';
         }
     }); 
 </script>
