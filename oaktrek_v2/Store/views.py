@@ -130,7 +130,6 @@ def products_cat_view(request, gender, collection_name):
 
 
 def products_view(request, collection_name):
-    products = []
     normalized_collection_name = collection_name.lower()
     category = None
     if normalized_collection_name in ["male", "mens", "men's", "men"]:
@@ -276,29 +275,37 @@ def carbonFootprint(request):
     return render(request, 'carbonoffsets.html')
 
 def oaktrek_help(request):
-    context = {
-        'form_submitted': False
-    }
-    form = ContactForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        name = form.cleaned_data['name']
-        email = form.cleaned_data['email']
-        subject = form.cleaned_data['subject'] or 'Contact Form Submission'
-        message = form.cleaned_data['message']
-        try:
-            send_mail(
-                subject=subject,
-                message=f"From: {name}\nEmail: {email}\n\n{message}",
-                from_email=email,
-                recipient_list=['your-email@example.com'],
-                fail_silently=False,
-            )
-            messages.success(request, 'Your message has been sent successfully!')
-            return redirect('oaktrek_help')
-        except Exception:
-            messages.error(request, 'There was an error sending your message.')
-        context['form_submitted'] = True
-    return render(request, 'oaktrek_help.html', {'form': form})
+    if request.method == 'POST':
+        # Extract form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject', 'No Subject')
+        message = request.POST.get('message')
+        
+        # Save message to database
+        contact = ContactMessage.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message
+        )
+        
+        # Get user's order details if they exist
+        user_orders = None
+        if request.user.is_authenticated:
+            user_orders = Order.objects.filter(user=request.user)
+        
+        # Process with AI and generate response
+        ai_response = generate_ai_response(name, email, message, user_orders)
+        
+        # Send email response
+        send_email_response(name, email, subject, ai_response)
+        
+        messages.success(request, "Your message has been received. We'll respond shortly.")
+        return redirect('home')  # or wherever you want to redirect after submission
+    
+    return render(request, 'oaktrek_help.html')
+
 
 
 def faq(request):

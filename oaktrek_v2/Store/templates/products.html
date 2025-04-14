@@ -427,7 +427,7 @@
     <!-- Sort Button in Top Right -->
     <div class="sort-container">
         <div class="dropdown1">
-            <button class="sort-button" id="sortDropdown1">
+            <button class="sort-button" id="sortDropdown">
                 Sort By: <span id="currentSort">Featured</span>
                 <span class="dropdown1-arrow">▼</span>
             </button>
@@ -512,13 +512,13 @@
     {% block scripts %}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sortDropdown1 = document.getElementById('sortDropdown1');
+            const sortDropdown = document.getElementById('sortDropdown');
             const sortOptions = document.getElementById('sortOptions');
             const currentSort = document.getElementById('currentSort');
             const options = document.querySelectorAll('.sort-option');
             
             // Toggle dropdown visibility
-            sortDropdown1.addEventListener('click', function() {
+            sortDropdown.addEventListener('click', function() {
                 sortOptions.classList.toggle('show');
             });
             
