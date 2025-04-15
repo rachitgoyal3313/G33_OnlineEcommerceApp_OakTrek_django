@@ -28,13 +28,12 @@ urlpatterns = [
     path('renewable/', views.renewable, name='renewable'),
     path('terms/', views.terms, name='terms'),
     path('responsibleEnergy/', views.responsibleEnergy, name='responsibleEnergy'),
-    # New paths for apparel and socks
     path('products/mens-apparel/', views.products_view, name='mens_apparel'),
     path('products/womens-apparel/', views.products_view, name='womens_apparel'),
     path('products/socks/', views.products_view, name='socks'),
     path('cart/', views.cart_view, name='cart'),
     path('page_not_found/', views.error_page, name='page_not_found'),
     path('search/', views.search, name='search'),
-    path('checkout/', views.checkout, name='checkout'),
+    path('checkout/', views.checkout,  name='checkout'),
     path('order-confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

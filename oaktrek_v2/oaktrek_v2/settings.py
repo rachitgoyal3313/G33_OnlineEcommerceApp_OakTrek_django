@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(_file_).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
+    'fontawesomefree',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     'Store',
     # 'Admin',
     'Profile',
-    'Chatbot'
+    # 'Chatbot',
+    'CustomerSupportAI',
 ]
 
 MIDDLEWARE = [
@@ -262,3 +264,37 @@ EMAIL_USE_SSL = False  # Only one of TLS or SSL should be True
 EMAIL_HOST_USER = os.getenv('oaktrek_mail')  # Your email address
 EMAIL_HOST_PASSWORD = os.getenv('oaktrek_pass')  # Your email password or app password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
+
+RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET')
+
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'django_error.log',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        '': {  # Root logger
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+    },
+}

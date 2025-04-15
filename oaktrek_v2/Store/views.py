@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Cart, Order, OrderItem, Review
+from .models import Product, Cart, Order, OrderItem, Review, ContactMessage
 from Profile.models import Address
 from django.utils.text import slugify
 from django.contrib import messages
@@ -13,6 +13,15 @@ from django.db.models import Q
 import re
 import uuid
 from django.core.paginator import Paginator
+import requests
+import json
+import logging
+from .ai_service import generate_ai_response
+from .email_service import send_email_response
+import razorpay
+client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+
+logger = logging.getLogger(_name_)
 
 def home(request):
     return render(request, 'index.html', {
@@ -22,26 +31,9 @@ def home(request):
 def normalize_gender_query(query):
     query = query.lower()
 
-    male_keywords = [
-        'men', "men's", 'mens', 'man', 'male', 'boys', 'dudes', 'queer',
-        'rachit', 'divyansh', 'pushkar', 'handsome',
-        # Common misspellings
-        'mele', 'mail', 'mall', 'males', 'maans', 'mans', 'mal',
-        'mann', 'menn', 'mans', 'boyz', 'bois'
-    ]
-    female_keywords = [
-        'women', "women's", 'womens', 'lady', 'ladies', 'female', 'girls',
-        'gay', 'bi', 'queer', 'abhinav', 'sexy',
-        # Common misspellings
-        'womin', 'wuman', 'wommen', 'womans', 'femail', 'femle', 'fimale',
-        'ladie', 'ladys', 'females', 'femails', 'wman', 'woomen', 'gals'
-    ]
-    # unisex_keywords = [
-    #     'unisex', 'all', 'any', 'everyone', 'nonbinary', 'pan', 'fab', 'slay',
-    #     # Common variations
-    #     'uni-sex', 'uni sex', 'universal', 'neutral', 'gender neutral',
-    #     'enby', 'non-binary', 'non binary'
-    # ]
+    male_keywords = ['men', "men's", 'mens', 'man', 'male', 'boys', 'dudes', 'queer','rachit', 'divyansh', 'pushkar', 'handsome']
+    female_keywords = ['women', "women's", 'womens', 'lady', 'ladies', 'female', 'girls', 'gay', 'bi', 'queer', 'abhinav', 'sexy' ]
+    unisex_keywords = ['unisex', 'all', 'any', 'everyone', 'nonbinary', 'pan', 'fab', 'slay']
 
     for word in male_keywords:
         if re.search(rf'\b{re.escape(word)}\b', query):
@@ -49,9 +41,9 @@ def normalize_gender_query(query):
     for word in female_keywords:
         if re.search(rf'\b{re.escape(word)}\b', query):
             return 'Female'
-    # for word in unisex_keywords:
-    #     if re.search(rf'\b{re.escape(word)}\b', query):
-    #         return 'Unisex'
+    for word in unisex_keywords:
+        if re.search(rf'\b{re.escape(word)}\b', query):
+            return 'Unisex'
 
     return None
 
@@ -67,6 +59,7 @@ def search(request):
         if query:
             normalized_gender = normalize_gender_query(query)
 
+            # Build search filter
             filters = (
                 Q(category__icontains=query) |
                 Q(product_name__icontains=query)
@@ -101,8 +94,6 @@ def search(request):
 
     return render(request, 'search_results.html', context)
 
-def error_page(request):
-    return render(request, '404.html')
 
 def sustainability(request):
     return render(request, 'sustainability.html')
@@ -117,32 +108,27 @@ def products_cat_view(request, gender, collection_name):
     normalized_gender = gender.lower()
     category = None
     gender = None
-    
-    # Expanded patterns for male variations including misspellings
-    male_patterns = ["male", "mens", "men's", "men", "mann", "man", "mele", 
-                    "mail", "mall", "males", "mens", "maans", "mans", "mal"]
-    
-    # Expanded patterns for female variations including misspellings
-    female_patterns = ["woman", "womens", "women's", "women", "female", "femail",
-                      "femle", "fimale", "womans", "wommen", "womin", "wuman", 
-                      "females", "femails", "wman", "woomen"]
-
-    if normalized_gender in male_patterns:
+    if normalized_gender in ["male", "mens", "men's", "men"]:
         gender = "Male"
-    elif normalized_gender in female_patterns:
+        # products = Product.objects.filter(gender="Male")
+        # category = "Men"
+
+    elif normalized_gender in ["Women", "Womens", "Wommen's", "women"]:
         gender = "Female"
         category = "Women"
+        # products = Product.objects.filter(gender="Female")
 
-    products = Product.objects.filter(gender=gender, category_slug=collection_name)
 
-    category = products[1].category if products else None
-    
+    products = Product.objects.filter(gender=gender, category_slug = collection_name)
+
+    category = products[1].category
     sort_by = request.GET.get('sort', 'featured')
     if sort_by == 'price_low':
         products = products.order_by('price')
     elif sort_by == 'price_high':
         products = products.order_by('-price')
     elif sort_by == 'relevance':
+        # For random ordering in Django
         products = products.order_by('?')
     
     context = {
@@ -152,31 +138,26 @@ def products_cat_view(request, gender, collection_name):
         'product_category': category, 
         "sizes": [8, 9, 10, 11, 12]
     }
+
+
     return render(request, 'products.html', context)
 
 def products_view(request, collection_name):
     normalized_collection_name = collection_name.lower()
     category = None
-    
-    # Same expanded patterns as above
-    male_patterns = ["male", "mens", "men's", "men", "mann", "man", "mele", 
-                    "mail", "mall", "males", "mens", "maans", "mans", "mal"]
-    
-    female_patterns = ["woman", "womens", "women's", "women", "female", "femail",
-                      "femle", "fimale", "womans", "wommen", "womin", "wuman", 
-                      "females", "femails", "wman", "woomen"]
-
-    if normalized_collection_name in male_patterns:
+    if normalized_collection_name in ["male", "mens", "men's", "men"]:
         collection_name = "Men"
         products = Product.objects.filter(gender="Male")
         category = "Men"
-    elif normalized_collection_name in female_patterns:
+
+    elif normalized_collection_name in ["Women", "Womens", "Wommen's", "women"]:
         collection_name = "Women"
         category = "Women"
         products = Product.objects.filter(gender="Female")
+    
     else:
-        products = Product.objects.filter(category_slug=collection_name)
-        category = products[1].category if products else None
+         products = Product.objects.filter(category_slug=collection_name)
+         category = products[1].category
 
     sort_by = request.GET.get('sort', 'featured')
     if sort_by == 'price_low':
@@ -184,6 +165,7 @@ def products_view(request, collection_name):
     elif sort_by == 'price_high':
         products = products.order_by('-price')
     elif sort_by == 'relevance':
+        # For random ordering in Django
         products = products.order_by('?')
     
     context = {
@@ -305,15 +287,14 @@ def bcorp(request):
 def carbonFootprint(request):
     return render(request, 'carbonoffsets.html')
 
-def join(request):
-    return render(request, 'join.html')
-
 def oaktrek_help(request):
+    user = request.user
     if request.method == 'POST':
         # Extract form data
         name = request.POST.get('name')
-        email = request.POST.get('email')
-        subject = request.POST.get('subject', 'No Subject')
+        # email = request.POST.get('email')
+        email = user.email
+        subject = request.POST.get('subject', '')
         message = request.POST.get('message')
         
         # Save message to database
@@ -325,18 +306,31 @@ def oaktrek_help(request):
         )
         
         # Get user's order details if they exist
-        user_orders = None
+        order_details = ""
         if request.user.is_authenticated:
-            user_orders = Order.objects.filter(user=request.user)
+            user_orders = Order.objects.filter(user=request.user).order_by('-order_date')[:5]  # Get last 5 orders
+            
+            if user_orders:
+                order_details = "Recent order history:\n"
+                for order in user_orders:
+                    order_details += f"- Order #{order.id} (Date: {order.order_date.strftime('%Y-%m-%d')}): ${order.total_amount}\n"
+                    items = OrderItem.objects.filter(order=order)
+                    for item in items:
+                        product_name = item.product.product_name if item.product else "Unknown Product"
+                        order_details += f"  * {item.quantity} x {product_name} (${item.price})\n"
         
-        # Process with AI and generate response
-        ai_response = generate_ai_response(name, email, message, user_orders)
+        # Generate AI response
+        ai_response = generate_ai_response(name, email, message, order_details)
         
-        # Send email response
+        # Send email response using the HTML template
         send_email_response(name, email, subject, ai_response)
         
-        messages.success(request, "Your message has been received. We'll respond shortly.")
-        return redirect('home')  # or wherever you want to redirect after submission
+        # Mark as responded
+        contact.response_sent = True
+        contact.save()
+        
+        # Redirect or render success message
+        return render(request, 'oaktrek_help.html', {'form_submitted': True})
     
     return render(request, 'oaktrek_help.html')
 
@@ -379,19 +373,38 @@ def cart_view(request):
     if request.method == 'POST':
         product_id = request.POST.get('product_id')
         action = request.POST.get('action')
+        selected_color = request.POST.get('selected_color')
+        selected_size = request.POST.get('selected_size')
 
-        product = get_object_or_404(Product, id=product_id)
-        cart_item, created = Cart.objects.get_or_create(user=user, product=product)
+        # For actions like increase/decrease quantity
+        if action in ['increase', 'decrease']:
+            product = get_object_or_404(Product, id=product_id)
+            cart_item, created = Cart.objects.get_or_create(user=user, product=product)
 
-        if action == 'increase':
-            cart_item.quantity += 1
-            cart_item.save()
-        elif action == 'decrease':
-            if cart_item.quantity > 1:
-                cart_item.quantity -= 1
+            if action == 'increase':
+                cart_item.quantity += 1
                 cart_item.save()
-            else:
-                cart_item.delete()
+            elif action == 'decrease':
+                if cart_item.quantity > 1:
+                    cart_item.quantity -= 1
+                    cart_item.save()
+                else:
+                    cart_item.delete()
+        # For adding to cart
+        else:
+            # Server-side validation as a backup
+            if not selected_size:
+                messages.error(request, "Please select a size before adding to cart")
+                product = get_object_or_404(Product, id=product_id)
+                return redirect('product_page', collection_name=product.category_slug, product_slug=product.slug)
+
+            product = get_object_or_404(Product, id=product_id)
+            cart_item, created = Cart.objects.get_or_create(user=user, product=product)
+            
+            # If it's a new item, set quantity to 1, otherwise increment
+            if not created:
+                cart_item.quantity += 1
+            cart_item.save()
 
         return redirect('cart')
 
@@ -407,7 +420,13 @@ def cart_view(request):
     }
     return render(request, 'cart.html', context)
 
+def join(request):
+    return render(request, "join.html")
 
+def error_page(request):
+    return render(request, "404.html")
+
+# views.py
 @login_required
 @transaction.atomic
 def checkout(request):
@@ -415,31 +434,68 @@ def checkout(request):
     cart_items = Cart.objects.filter(user=user).select_related('product')
     
     if not cart_items.exists():
-        return redirect('cart')  # Redirect to cart if it's empty
+        return redirect('cart')
 
-    total_amount = sum(item.product.price * item.quantity for item in cart_items)
+    # Calculate amounts
+    subtotal = sum(item.product.price * item.quantity for item in cart_items)
+    tax = subtotal * 0.28
+    total_amount = subtotal + tax
 
     if request.method == 'POST':
+        # Payment verification and order processing
         address_id = request.POST.get('address_id')
-        
+        razorpay_payment_id = request.POST.get('razorpay_payment_id')
+        razorpay_order_id = request.POST.get('razorpay_order_id')
+        razorpay_signature = request.POST.get('razorpay_signature')
+
+        # Validate address
         try:
             address = Address.objects.get(id=address_id, user=user)
         except Address.DoesNotExist:
             return render(request, 'checkout.html', {
                 'error': 'Invalid address selected.',
                 'cart_items': cart_items,
-                'total_amount': total_amount,
-                'addresses': user.addresses.all()
+                'tax': tax,
+                'subtotal': subtotal,
+                'total': total_amount,
+                'addresses': user.addresses.all(),
+                'razorpay_order_id': razorpay_order_id,
+                'razorpay_key_id': settings.RAZORPAY_KEY_ID,  # Changed key name
             })
 
-        # Create the order
+        # Verify payment signature
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        params_dict = {
+            'razorpay_payment_id': razorpay_payment_id,
+            'razorpay_order_id': razorpay_order_id,
+            'razorpay_signature': razorpay_signature
+        }
+
+        try:
+            client.utility.verify_payment_signature(params_dict)
+        except razorpay.errors.SignatureVerificationError:
+            return render(request, 'checkout.html', {
+                'error': 'Payment verification failed.',
+                'cart_items': cart_items,
+                'tax': tax,
+                'subtotal': subtotal,
+                'total': total_amount,
+                'addresses': user.addresses.all(),
+                'razorpay_order_id': razorpay_order_id,
+                'razorpay_key_id': settings.RAZORPAY_KEY_ID,  # Changed key name
+            })
+
+        # Create order after successful payment verification
         order = Order.objects.create(
             user=user,
             address=address,
-            total_amount=total_amount
+            total_amount=total_amount,
+            payment_id=razorpay_payment_id,
+            razorpay_order_id=razorpay_order_id,
+            payment_status='Success'
         )
 
-        # Create order items (you might want to create an OrderItem model)
+        # Create order items
         for cart_item in cart_items:
             OrderItem.objects.create(
                 order=order,
@@ -448,22 +504,32 @@ def checkout(request):
                 price=cart_item.product.price
             )
 
-        # Clear the user's cart
+        # Clear cart
         cart_items.delete()
-
         return redirect('order_confirmation', order_id=order.id)
-    
-    total = sum(item.product.price * item.quantity for item in cart_items)
-    tax = total * 0.28
+
+    # GET request - show checkout page
+    client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+    razorpay_order = client.order.create({
+        'amount': int(total_amount * 100),  # Convert to paise
+        'currency': 'INR',
+        'payment_capture': '1'
+    })
+
     context = {
         'cart_items': cart_items,
-        'tax' : tax,
-        'subtotal' : total,
-        'total': total + tax,
+        'tax': tax,
+        'subtotal': subtotal,
+        'total': total_amount,
         'addresses': user.addresses.all(),
+        'razorpay_order_id': razorpay_order['id'],
+        'razorpay_key_id': settings.RAZORPAY_KEY_ID,  # Changed key name
+        'razorpay_amount': int(total_amount * 100),
+        'currency': 'INR',
     }
 
     return render(request, 'checkout.html', context)
+
 
 
 @login_required
