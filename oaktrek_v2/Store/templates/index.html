@@ -69,7 +69,6 @@
     /* Category Sections */
     .category-section {
         padding: 60px 0;
-        margin-top: 100vh;
         position: relative;
     }
 
@@ -698,14 +697,14 @@
 <section class="category-section">
     <div class="category-grid">
         <div class="category-card">
-            <img src="{% static 'assets/products/landingpageflex1.png' %}" alt="Men's Shoes">
+            <img src="{{ MEDIA_URL }}assets/products/landingpageflex1.png" alt="Men's Shoes">
             <div class="category-content">
                 <h3>Men's Shoes</h3>
                 <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds btn-light-outline">Shop Now</a>
             </div>
         </div>
         <div class="category-card">
-            <img src="{% static 'assets/products/landingpageflex2.png' %}" alt="Women's Shoes">
+            <img src="{{ MEDIA_URL }}assets/products/landingpageflex2.png" alt="Women's Shoes">
             <div class="category-content">
                 <h3>Women's Shoes</h3>
                 <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds btn-light-outline">Shop
@@ -713,7 +712,7 @@
             </div>
         </div>
         <div class="category-card">
-            <img src="{% static 'assets/products/landingpageflex3.png' %}" alt="New Arrivals">
+            <img src="{{ MEDIA_URL }}assets/products/landingpageflex3.png" alt="New Arrivals">
             <div class="category-content">
                 <h3>New Arrivals</h3>
                 <a href="{% url 'coming_soon' %}" class="btn-allbirds btn-light-outline">Shop Now</a>
