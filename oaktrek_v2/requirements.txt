@@ -1,0 +1,16 @@
+asgiref==3.8.1
+certifi==2025.1.31
+charset-normalizer==3.4.1
+Django==5.2
+django-jazzmin==3.0.1
+fontawesomefree==6.6.0
+idna==3.10
+pillow==11.1.0
+pip==24.0
+python-dotenv==1.1.0
+razorpay==1.4.2
+requests==2.32.3
+setuptools==78.1.0
+sqlparse==0.5.3
+tzdata==2025.2
+urllib3==2.4.0

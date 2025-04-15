@@ -21,7 +21,7 @@ from .email_service import send_email_response
 import razorpay
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, 'index.html', {
