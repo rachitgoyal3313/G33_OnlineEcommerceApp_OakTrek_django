@@ -252,7 +252,7 @@
         </div>
     </div>
 
-    <form method="post" action="{% url 'checkout' %}">
+    <form id="checkout-form" method="post" action="{% url 'checkout' %}">
         {% csrf_token %}
         <div class="row">
             <div class="col-lg-8">
@@ -294,7 +294,6 @@
                             </div>
                         {% endif %}
                     </div>
-
                     <div id="new-address-form" style="display: none;">
                         <div class="row">
                             <div class="col-md-6">
@@ -332,33 +331,14 @@
                     <div class="section-title">Payment Method</div>
                     <div class="payment-method selected">
                         <div class="d-flex align-items-center">
-                            <input type="radio" name="payment_method" value="credit_card" checked required>
+                            <input type="radio" name="payment_method" value="razorpay" checked required>
                             <div class="ms-3">
-                                <div class="fw-500">Credit Card</div>
-                                <div class="text-muted">Visa, Mastercard, American Express</div>
+                                <div class="fw-500">UPI / Card / Wallet (via Razorpay)</div>
+                                <div class="text-muted">Pay securely with UPI, cards, or wallets</div>
                             </div>
                         </div>
                     </div>
-                    <div class="payment-method">
-                        <div class="d-flex align-items-center">
-                            <input type="radio" name="payment_method" value="paypal" required>
-                            <div class="ms-3">
-                                <div class="fw-500">PayPal</div>
-                                <div class="text-muted">Pay with your PayPal account</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="credit-card-form">
-                        <input type="text" class="form-control" name="card_number" placeholder="Card Number" required>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="card_expiry" placeholder="MM/YY" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="card_cvv" placeholder="CVV" required>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- No manual card fields or PayPal for this demo -->
                 </div>
             </div>
 
@@ -369,7 +349,7 @@
                         <div>
                             <div class="fw-500">{{ item.product.product_name }}</div>
                             <div class="text-muted">Quantity: {{ item.quantity }}</div>
-                            <div>${{ item.product.price|floatformat:2 }}</div>
+                            <div>₹{{ item.product.price|floatformat:2 }}</div>
                         </div>
                         <div> <img style="height: 100px; margin-left: 145px;" src="{{ item.product.image_1.url }}" alt=""></div>
                     </div>
@@ -378,7 +358,7 @@
                     <div class="mt-4">
                         <div class="d-flex justify-content-between mb-2">
                             <span>Subtotal</span>
-                            <span>${{ subtotal|floatformat:2 }}</span>
+                            <span>₹{{ subtotal|floatformat:2 }}</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Shipping</span>
@@ -386,14 +366,19 @@
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Tax</span>
-                            <span>${{ tax|floatformat:2 }}</span>
+                            <span>₹{{ tax|floatformat:2 }}</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between mb-3">
                             <strong>Total</strong>
-                            <strong>${{ total|floatformat:2 }}</strong>
+                            <strong>₹{{ total|floatformat:2 }}</strong>
                         </div>
-                        <button type="submit" class="place-order-btn">Place Order</button>
+                        <!-- Razorpay payment button -->
+                        <button type="button" id="pay-btn" class="place-order-btn">Pay with UPI / Card</button>
+                        <!-- Hidden fields for payment response -->
+                        <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+                        <input type="hidden" name="razorpay_order_id" id="razorpay_order_id" value="{{ razorpay_order_id }}">
+                        <input type="hidden" name="razorpay_signature" id="razorpay_signature">
                     </div>
                 </div>
             </div>
@@ -403,8 +388,9 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-    // Create animated leaves
+    // Leaves animation
     const leavesContainer = document.getElementById('leaves-container');
     for (let i = 0; i < 10; i++) {
         const leaf = document.createElement('div');
@@ -418,7 +404,7 @@
         leavesContainer.appendChild(leaf);
     }
 
-    // Handle address type toggle
+    // Address type toggle
     const addressToggleBtns = document.querySelectorAll('.address-type-btn');
     const savedAddressesSection = document.getElementById('saved-addresses');
     const newAddressForm = document.getElementById('new-address-form');
@@ -439,22 +425,37 @@
         });
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const addressButtons = document.querySelectorAll(".address-btn");
-        const addressDisplay = document.getElementById("selected-address");
+    document.getElementById('pay-btn').onclick = function(e) {
+        const addressSelected = document.querySelector('input[name="address_id"]:checked');
+        if (!addressSelected) {
+            alert('Please select a delivery address');
+            return;
+        }
 
-        addressButtons.forEach((button) => {
-            button.addEventListener("click", function () {
-                // Remove active class from all buttons
-                addressButtons.forEach((btn) => btn.classList.remove("active"));
-                
-                // Add active class to the clicked button
-                this.classList.add("active");
-                
-                // Update the selected address display
-                addressDisplay.textContent = this.dataset.address;
-            });
-        });
-    });
+        var options = {
+            "key": "{{ razorpay_key_id }}",
+            "amount": "{{ razorpay_amount }}",
+            "currency": "{{ currency }}",
+            "name": "OakTrek Inc.",
+            "description": "Order Payment",
+            "order_id": "{{ razorpay_order_id }}",
+            "handler": function (response){
+                document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                document.getElementById('razorpay_order_id').value = response.razorpay_order_id;
+                document.getElementById('razorpay_signature').value = response.razorpay_signature;
+                document.getElementById('checkout-form').submit();
+            },
+            "prefill": {
+                "name": "{{ request.user.get_full_name }}",
+                "email": "{{ request.user.email }}"
+            },
+            "theme": {
+                "color": "#1C2327"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+        e.preventDefault();
+    }
 </script>
 {% endblock %}

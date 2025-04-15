@@ -673,24 +673,25 @@
 
 {% block title %} Oaktrek {% endblock %}
 
-{% block main_block %}
-<div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
-    <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers"">
+{% block main_block %}<section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
+        <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers">
+      </div>
+      <div class="hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
+        <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers">
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Bring it, Spring</h1>
+        <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
+        <div>
+          <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men</a>
+          <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds">Shop Women</a>
         </div>
-        <div class=" hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
-    <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers"">
-        </div>
-
-        <div class=" hero-content">
-    <h1 class="hero-title">Bring it, Spring</h1>
-    <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
-    <div>
-        <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men</a>
-        <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds">Shop Women</a>
+      </div>
     </div>
-</div>
-</div>
-</section>
+  </section>
+  
 
 
 <!-- Category Section -->
@@ -1006,22 +1007,10 @@
 
         function showHeroSlide(index) {
             heroSlides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-                // Set background image from data attribute
-                if (slide.dataset.bg) {
-                    slide.style.setProperty('--bg-image', url(${ slide.dataset.bg }));
-                }
-                // Preload next image
-                if (heroSlides.length > 1) {
-                    const nextIndex = (index + 1) % heroSlides.length;
-                    const nextSlide = heroSlides[nextIndex];
-                    if (nextSlide.dataset.bg) {
-                        const img = new Image();
-                        img.src = nextSlide.dataset.bg;
-                    }
-                }
+              slide.classList.toggle('active', i === index);
+              slide.style.setProperty('--bg-image', `url(${slide.dataset.bg})`);
             });
-        }
+          }
 
         function nextHeroSlide() {
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;

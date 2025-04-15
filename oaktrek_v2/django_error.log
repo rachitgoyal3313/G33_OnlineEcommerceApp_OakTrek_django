@@ -1,0 +1,1815 @@
+Internal Server Error: /products/socks/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 160, in products_view
+    category = products[1].category
+               ~~~~~~~~^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\db\models\query.py", line 436, in __getitem__
+    return qs._result_cache[0]
+           ~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+Internal Server Error: /products/socks/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 160, in products_view
+    category = products[1].category
+               ~~~~~~~~^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\db\models\query.py", line 436, in __getitem__
+    return qs._result_cache[0]
+           ~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+"GET /products/socks/ HTTP/1.1" 500 77885
+"GET /products/socks/ HTTP/1.1" 500 77885
+Internal Server Error: /products/mens-apparel/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 160, in products_view
+    category = products[1].category
+               ~~~~~~~~^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\db\models\query.py", line 436, in __getitem__
+    return qs._result_cache[0]
+           ~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+Internal Server Error: /products/mens-apparel/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 160, in products_view
+    category = products[1].category
+               ~~~~~~~~^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\db\models\query.py", line 436, in __getitem__
+    return qs._result_cache[0]
+           ~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+"GET /products/mens-apparel/ HTTP/1.1" 500 77976
+"GET /products/mens-apparel/ HTTP/1.1" 500 77976
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 513, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Authentication failed
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 513, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Authentication failed
+"GET /checkout/ HTTP/1.1" 500 102222
+"GET /checkout/ HTTP/1.1" 500 102222
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 513, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Authentication failed
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 513, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Authentication failed
+"GET /checkout/ HTTP/1.1" 500 102222
+"GET /checkout/ HTTP/1.1" 500 102222
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 513, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Authentication failed
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 513, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Authentication failed
+"GET /checkout/ HTTP/1.1" 500 102359
+"GET /checkout/ HTTP/1.1" 500 102359
+OpenRouter API error: 401 - {"error":{"message":"No auth credentials found","code":401}}
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 94892
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 94892
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 147, in admin_login_view
+    return render(request, 'admin_login.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: admin_login.html
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 95029
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view Profile.views.admin_login_view didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view Profile.views.admin_login_view didn't return an HttpResponse object. It returned None instead.
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 74883
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 74883
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view Profile.views.admin_login_view didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view Profile.views.admin_login_view didn't return an HttpResponse object. It returned None instead.
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 74746
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 74746
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view Profile.views.admin_login_view didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view Profile.views.admin_login_view didn't return an HttpResponse object. It returned None instead.
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 74883
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 74883
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73168
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73168
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+Internal Server Error: /auth/admin/login/?next=/admin/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+       ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+"GET /auth/admin/login/%3Fnext=/admin/ HTTP/1.1" 500 73305
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+"GET /auth/profile/ HTTP/1.1" 500 162446
+"GET /auth/profile/ HTTP/1.1" 500 162446
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+"GET /auth/profile/ HTTP/1.1" 500 162446
+"GET /auth/profile/ HTTP/1.1" 500 162446
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+"GET /auth/profile/ HTTP/1.1" 500 162446
+"GET /auth/profile/ HTTP/1.1" 500 162446
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+"GET /auth/profile/ HTTP/1.1" 500 162446
+"GET /auth/profile/ HTTP/1.1" 500 162446
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+Internal Server Error: /auth/profile/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Profile\views.py", line 155, in profile_view
+    return render(request, 'profile.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'chat' not found. 'chat' is not a valid view function or pattern name.
+"GET /auth/profile/ HTTP/1.1" 500 162446
+"GET /auth/profile/ HTTP/1.1" 500 162446
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024EBD091E80>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD091E80>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 515, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 120, in request
+    response = getattr(self.session, method)(url, auth=self.auth,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD091E80>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024EBD091E80>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD091E80>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 515, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 120, in request
+    response = getattr(self.session, method)(url, auth=self.auth,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD091E80>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+"GET /checkout/ HTTP/1.1" 500 198859
+"GET /checkout/ HTTP/1.1" 500 198859
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024EBD0B19A0>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD0B19A0>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 515, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 120, in request
+    response = getattr(self.session, method)(url, auth=self.auth,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD0B19A0>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024EBD0B19A0>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD0B19A0>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 515, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 120, in request
+    response = getattr(self.session, method)(url, auth=self.auth,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.razorpay.com', port=443): Max retries exceeded with url: /v1/orders (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024EBD0B19A0>: Failed to resolve 'api.razorpay.com' ([Errno 11001] getaddrinfo failed)"))
+"GET /checkout/ HTTP/1.1" 500 198859
+"GET /checkout/ HTTP/1.1" 500 198859

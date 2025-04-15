@@ -28,6 +28,8 @@ def home(request):
         'MEDIA_URL': settings.MEDIA_URL,
     })
 
+
+
 def normalize_gender_query(query):
     query = query.lower()
 

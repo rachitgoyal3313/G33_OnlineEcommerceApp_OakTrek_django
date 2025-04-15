@@ -227,12 +227,11 @@
         <h1 class="section-title mb-0">My Profile</h1>
         <div class="header-actions">
             <button class="btn-edit" onclick="window.location.href='/'">Home</button>
-            <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            <a href="{% url 'logout' %}" style="text-decoration: none;" class="logout-btn">Logout</a>
             {% if request.user.email in admin_emails %}
             <button class="btn-edit" onclick="window.location.href='/dashboard'">Go to Dashboard</button>
             {% endif %}
-            <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#adminSigninModal">Sign in as
-                Admin</a>
+            <a href="/admin/login/?next=/admin/" style="background-color: #1C2327;" class="btn btn-primary">Sign in as Admin</a>
         </div>
     </div>
 

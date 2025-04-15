@@ -14,7 +14,6 @@ urlpatterns = [
     path('add_phone/', views.add_phone, name='add_phone'),
     path('change_password/', views.change_password, name='change_password'),
     path('admin_signin/', views.admin_signin, name='admin_signin'),
-    path('admin/login/', views.admin_login_view, name='admin_login'),
     path('update_profile/', views.update_profile, name='update_profile'),
     path('delete_profile/', views.delete_profile, name='delete_profile'),
     path('admin/products/', views.admin_products_view, name='adminProducts'),

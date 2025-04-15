@@ -1,7 +1,7 @@
 """
 URL configuration for oaktrek_v2 project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The urlpatterns list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
 Examples:
 Function views
@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
     path('auth/', include('Profile.urls')),
+    path('chat/', include('CustomerSupportAI.urls'))
     # path('adminpanel/', include('Admin.urls')),
     # path('chatbot/', include('Chatbot.urls')),  # If chatbot added later
 ]
