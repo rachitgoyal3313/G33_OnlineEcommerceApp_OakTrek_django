@@ -29,7 +29,6 @@ def home(request):
     })
 
 
-
 def normalize_gender_query(query):
     query = query.lower()
 

@@ -69,6 +69,7 @@
     /* Category Sections */
     .category-section {
         padding: 60px 0;
+        margin-top: 100vh;
         position: relative;
     }
 
@@ -672,39 +673,38 @@
 
 {% block title %} Oaktrek {% endblock %}
 
-{% block main_block %}<section class="hero-section">
-    <div class="hero-container">
-      <div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
-        <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers">
-      </div>
-      <div class="hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
-        <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers">
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">Bring it, Spring</h1>
-        <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
-        <div>
-          <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men</a>
-          <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds">Shop Women</a>
+{% block main_block %}
+<div class="hero-slide active" data-bg="{% static 'assets/products/landingpage2.avif' %}">
+    <img src="{% static 'assets/products/landingpage2.avif' %}" alt="Blue sneakers with flowers">
         </div>
-      </div>
+        <div class=" hero-slide" data-bg="{% static 'assets/products/landingpage.avif' %}">
+    <img src="{% static 'assets/products/landingpage.avif' %}" alt="Person with flowers">
+        </div>
+
+        <div class=" hero-content">
+    <h1 class="hero-title">Bring it, Spring</h1>
+    <p class="hero-subtitle">NEW LIMITED-EDITION HUES ARE HERE FOR SPRING.</p>
+    <div>
+        <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds">Shop Men &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;</a>
+        <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds">Shop Women</a>
     </div>
-  </section>
-  
+</div>
+</div>
+</section>
 
 
 <!-- Category Section -->
 <section class="category-section">
     <div class="category-grid">
         <div class="category-card">
-            <img src="{{ MEDIA_URL }}assets/products/landingpageflex1.png" alt="Men's Shoes">
+            <img src="{% static 'assets/products/landingpageflex1.png' %}" alt="Men's Shoes">
             <div class="category-content">
                 <h3>Men's Shoes</h3>
                 <a href="{% url 'products' collection_name='men' %}" class="btn-allbirds btn-light-outline">Shop Now</a>
             </div>
         </div>
         <div class="category-card">
-            <img src="{{ MEDIA_URL }}assets/products/landingpageflex2.png" alt="Women's Shoes">
+            <img src="{% static 'assets/products/landingpageflex2.png' %}" alt="Women's Shoes">
             <div class="category-content">
                 <h3>Women's Shoes</h3>
                 <a href="{% url 'products' collection_name='women' %}" class="btn-allbirds btn-light-outline">Shop
@@ -712,7 +712,7 @@
             </div>
         </div>
         <div class="category-card">
-            <img src="{{ MEDIA_URL }}assets/products/landingpageflex3.png" alt="New Arrivals">
+            <img src="{% static 'assets/products/landingpageflex3.png' %}" alt="New Arrivals">
             <div class="category-content">
                 <h3>New Arrivals</h3>
                 <a href="{% url 'coming_soon' %}" class="btn-allbirds btn-light-outline">Shop Now</a>
@@ -749,15 +749,6 @@
             <div class="slide-content">Women's Weather Ready Collection</div>
         </a>
     </div>
-    <div class="carousel-dots">
-        {# Dots will be dynamically handled by JS #}
-        <button class="dot active" data-slide-index="0"></button>
-        <button class="dot" data-slide-index="1"></button>
-        <button class="dot" data-slide-index="2"></button>
-        <button class="dot" data-slide-index="3"></button>
-        <button class="dot" data-slide-index="4"></button>
-        {# Add more dots if needed #}
-    </div>
 </div>
 
 
@@ -770,18 +761,16 @@
                 <div class="bg-navy w-100 position-relative overflow-hidden">
                     <img src="{% static 'assets/products/landingpageblues1.png' %}"
                         alt="New And Beautiful Blues Collection" class="w-100 h-100 object-fit-cover">
-                    <div class="position-absolute bottom-0 start-0 p-4 text-white" style="z-index: 1;"> {# Ensure text
-                        is above image #}
+                    <div class="position-absolute bottom-0 start-0 p-4 text-white" style="z-index: 1;"> 
                         <h2 class="display-4 mb-2">New And Beautiful Blues</h2>
                         <p class="mb-4">Cool classics to put spring in your step.</p>
-                        <div class="d-flex gap-2 flex-wrap"> {# Added flex-wrap for smaller screens #}
+                        <div class="d-flex gap-2 flex-wrap"> 
                             <a href="{% url 'products' collection_name='men' %}">
-                                <button class="btn btn-light text-dark px-4 btn-allbirds">Shop men</button> {# Use
-                                consistent button class? #}
+                                <button class="btn btn-light text-dark px-4 btn-allbirds">Shop men</button> 
                             </a>
                             <a href="{% url 'products' collection_name='women' %}">
                                 <button class="btn btn-outline-light px-4 btn-allbirds btn-light-outline">Shop
-                                    women</button> {# Use consistent button class? #}
+                                    women</button>
                             </a>
                         </div>
                     </div>
@@ -862,7 +851,6 @@
                 <img src="{% static 'assets/products/landingpagemoonshot.png' %}" alt="Moonshot Collection Promo"
                     class="w-100 h-100 object-fit-cover">
                 <div class="promo-overlay">
-                    {# Button is optional if whole card is linked, but good for explicit action #}
                     <button class="btn-allbirds">Explore Now</button>
                 </div>
             </a>
@@ -888,9 +876,6 @@
 
 <!-- Product Carousel Section -->
 <div class="product-carousel">
-    {# Removed radio inputs, control will be via JS #}
-     <input type="radio" name="slider" id="slide1" checked class="slider-radio"> 
-    <input type="radio" name="slider" id="slide2" class="slider-radio"> 
 
     <div class="carousel-track">
         {# Slide 1 Content #}
@@ -940,7 +925,7 @@
                 </div>
             </a>
         </div>
-        <div class="slide">
+        
             <a href="{% url 'product_page' collection_name='everyday-sneakers' product_slug='zen-walker' %}"
                 class="product-carousel-card">
                 <div class="product-image">
@@ -987,11 +972,6 @@
             </a>
         </div>
     </div>
-
-    <div class="carousel-controls">
-        <label class="prev prod-carousel-prev">❮</label>
-        <label class="next prod-carousel-next">❯</label>
-    </div>
 </div>
 
 
@@ -1006,10 +986,21 @@
 
         function showHeroSlide(index) {
             heroSlides.forEach((slide, i) => {
-              slide.classList.toggle('active', i === index);
-              slide.style.setProperty('--bg-image', `url(${slide.dataset.bg})`);
+                slide.classList.toggle('active', i === index);
+                // Set background image from data attribute
+                if (slide.dataset.bg) {
+                    slide.style.setProperty('--bg-image', `url(${slide.dataset.bg})`);                }
+                // Preload next image
+                if (heroSlides.length > 1) {
+                    const nextIndex = (index + 1) % heroSlides.length;
+                    const nextSlide = heroSlides[nextIndex];
+                    if (nextSlide.dataset.bg) {
+                        const img = new Image();
+                        img.src = nextSlide.dataset.bg;
+                    }
+                }
             });
-          }
+        }
 
         function nextHeroSlide() {
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
