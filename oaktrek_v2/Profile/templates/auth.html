@@ -56,7 +56,7 @@
             position: relative;
             z-index: 1;
             flex: 1;
-            padding: 20px;
+            padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -72,6 +72,7 @@
             overflow: visible;
             position: relative;
             padding: 30px;
+            height: 100%;
         }
 
         .toggle-container {
@@ -335,6 +336,66 @@
         .btn-primary:hover {
             background-color: #4D5559 !important;
         }
+
+        /* Password strength meter styles */
+        .password-strength-meter {
+            margin-bottom: 1rem;
+        }
+
+        .strength-bar {
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .strength-indicator {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .strength-indicator.weak {
+            background-color: #ef4444;
+        }
+
+        .strength-indicator.medium {
+            background-color: #f59e0b;
+        }
+
+        .strength-indicator.strong {
+            background-color: #10b981;
+        }
+
+        .strength-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: right;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .eye-icon {
+            font-size: 1.25rem;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+        }
+
+        .toggle-password:hover .eye-icon {
+            opacity: 1;
+        }
 </style>
 {% endblock %}
 
@@ -364,15 +425,15 @@
                 <div class="form-section login-form">
                     <form id="loginForm" method="post" action="{% url 'login' %}">
                         {% csrf_token %}
-                        <div class="mb-2">
+                        <div class="mb-1">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-1">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <div class="mb-3 form-check">
+                        <div class="mb-2 form-check">
                             <input type="checkbox" class="form-check-input" id="remember" name="remember">
                             <label class="form-check-label" for="remember">Remember me</label>
                         </div>
@@ -387,25 +448,42 @@
                 <div class="form-section signup-form">
                     <form id="signupForm" method="post" action="{% url 'register' %}">
                         {% csrf_token %}
-                        <div class="mb-2">
+                        <div class="mb-1">
                             <label for="signup-name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="signup-name" name="name" required>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-1">
                             <label for="signup-email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="signup-email" name="email" required>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-1">
                             <label for="signup-phone" class="form-label">Phone Number</label>
                             <input type="tel" class="form-control" id="signup-phone" name="phone_number">
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-1">
                             <label for="signup-password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="signup-password" name="password1" required>
+                            <div class="input-container">
+                                <input type="password" class="form-control" id="signup-password" name="password1" required>
+                                <span class="toggle-password" onclick="togglePasswordVisibility('signup-password')">
+                                    <span class="eye-icon">🔑</span>
+                                </span>
+                            </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-1">
                             <label for="signup-password2" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="signup-password2" name="password2" required>
+                            <div class="input-container">
+                                <input type="password" class="form-control" id="signup-password2" name="password2" required>
+                                <span class="toggle-password" onclick="togglePasswordVisibility('signup-password2')">
+                                    <span class="eye-icon">🔑</span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Password strength meter -->
+                        <div class="password-strength-meter">
+                            <div class="strength-bar">
+                                <div class="strength-indicator" id="strength-indicator"></div>
+                            </div>
+                            <div class="strength-text" id="strength-text">Password strength</div>
                         </div>
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
@@ -444,6 +522,63 @@
             card.classList.remove('show-signup');
             options[0].classList.add('active');
             options[1].classList.remove('active');
+        }
+    }
+
+    // Toggle password visibility
+    function togglePasswordVisibility(inputId) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
+
+    // Password strength meter
+    document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('signup-password');
+        if (passwordInput) {
+            passwordInput.addEventListener('input', function () {
+                updatePasswordStrength(this.value);
+            });
+        }
+    });
+
+    function updatePasswordStrength(password) {
+        const indicator = document.getElementById('strength-indicator');
+        const text = document.getElementById('strength-text');
+
+        if (!password) {
+            indicator.style.width = '0%';
+            indicator.className = 'strength-indicator';
+            text.textContent = 'Password strength';
+            return;
+        }
+
+        // Simple password strength calculation
+        let strength = 0;
+
+        // Length check
+        if (password.length >= 8) strength += 25;
+
+        // Character variety checks
+        if (/[A-Z]/.test(password)) strength += 25;
+        if (/[0-9]/.test(password)) strength += 25;
+        if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+
+        // Update UI
+        indicator.style.width = strength + '%';
+
+        if (strength < 50) {
+            indicator.className = 'strength-indicator weak';
+            text.textContent = 'Weak password';
+        } else if (strength < 75) {
+            indicator.className = 'strength-indicator medium';
+            text.textContent = 'Medium password';
+        } else {
+            indicator.className = 'strength-indicator strong';
+            text.textContent = 'Strong password';
         }
     }
 </script>
