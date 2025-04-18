@@ -216,7 +216,7 @@
                     <div class="flex-grow-1">
                         <div class="fw-500">{{ item.name }}</div>
                         <div class="text-muted">Quantity: {{ item.quantity }}</div>
-                        <div>${{ item.price|floatformat:2 }}</div>
+                        <div>₹{{ item.price|floatformat:2 }}</div>
                     </div>
                     <div> <img style="height: 150px; margin-left: 145px;" src="{{ item.image }}" alt=""></div>
                 </div>
@@ -225,7 +225,7 @@
                 <div class="mt-4">
                     <div class="detail-row">
                         <span>Subtotal</span>
-                        <span>${{ subtotal|floatformat:2 }}</span>
+                        <span>₹{{ subtotal|floatformat:2 }}</span>
                     </div>
                     <div class="detail-row">
                         <span>Shipping</span>
@@ -233,12 +233,12 @@
                     </div>
                     <div class="detail-row">
                         <span>Tax</span>
-                        <span>${{ tax|floatformat:2 }}</span>
+                        <span>₹{{ tax|floatformat:2 }}</span>
                     </div>
                     <hr>
                     <div class="detail-row">
                         <strong>Total</strong>
-                        <strong>${{ total|floatformat:2 }}</strong>
+                        <strong>₹{{ total|floatformat:2 }}</strong>
                     </div>
                 </div>
             </div>

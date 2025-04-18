@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/products/edit/<int:product_id>/', views.edit_product, name='edit_product'),
     path('admin/products/delete/<int:product_id>/', views.delete_product, name='delete_product'),
     path('admin/products/bulk_delete/', views.bulk_delete_products, name='bulk_delete_products'),
+    path('orders/<int:order_id>/', views.order_detail, name='order_detail'),
 ]

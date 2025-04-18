@@ -141,7 +141,7 @@
                     </div>
                     <div class="flex-grow-1">
                         <div class="product-title">{{ item.product.product_name }}</div>
-                        <div class="product-price">${{ item.product.price }}</div>
+                        <div class="product-price">₹{{ item.product.price }}</div>
                         <div class="quantity-selector">
                             <button class="quantity-btn decrease-btn" data-product-id="{{ item.product.id }}">-</button>
                             <span class="px-3 quantity">{{ item.quantity }}</span>
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                     <div>
-                        <span class="fw-bold">${{ item.product.price|floatformat:2 }}</span>
+                        <span class="fw-bold">₹{{ item.product.price|floatformat:2 }}</span>
                     </div>
                 </div>
                 {% endfor %}
@@ -163,7 +163,7 @@
                 <h4 class="mb-4">Cart Summary</h4>
                 <div class="d-flex justify-content-between mb-3">
                     <span>Subtotal</span>
-                    <span>${{ subtotal|floatformat:2 }}</span>
+                    <span>₹{{ subtotal|floatformat:2 }}</span>
                 </div>
                 <div class="d-flex justify-content-between mb-3">
                     <span>Shipping</span>
@@ -176,7 +176,7 @@
                 <hr>
                 <div class="d-flex justify-content-between mb-3">
                     <strong>Total</strong>
-                    <strong>${{ total|floatformat:2 }}</strong>
+                    <strong>₹{{ total|floatformat:2 }}</strong>
                 </div>
                 <a href="{% url 'checkout' %}">
                     <button class="checkout-btn">Proceed to Checkout</button>

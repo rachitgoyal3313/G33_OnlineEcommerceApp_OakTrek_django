@@ -494,7 +494,7 @@
                             loading="lazy">
                     </div>
                     <h3 class="product-name">{{ product.product_name }}</h3>
-                    <p class="product-price">${{ product.price|floatformat:2 }}</p>
+                    <p class="product-price">₹{{ product.price|floatformat:2 }}</p>
                 </div>
                 </a>
                 {% endfor %}

@@ -295,19 +295,39 @@
         </div>
     </div>
 
+    {% load custom_filters %}
+
+
     <div class="info-card orders-section">
         <h2 class="section-title">My Orders</h2>
         {% if orders %}
-        {% for order in orders %}
-        <div class="order-item">
-            <div class="order-date">Ordered on: {{ order.order_date|date:"F d, Y g:i A" }}</div>
-            <div class="order-total">Total: ${{ order.total_amount }}</div>
-        </div>
-        {% endfor %}
+            {% for order in orders %}
+                <div class="order-item mb-4 p-3 border rounded shadow-sm">
+                    <a href="{% url 'order_detail' order.id %}" class="text-decoration-none text-dark">
+                        <div class="order-date">Ordered on: {{ order.order_date|date:"F d, Y g:i A" }}</div>
+                        <div class="order-total">Total: ₹{{ order.total_amount }}</div>
+                        <div class="payment-status">Payment Status: {{ order.payment_status }}</div>
+                        
+                        <div class="order-products mt-2">
+                            <strong>Items:</strong>
+                            <ul class="ms-3">
+                                {% for item in order.items.all %}
+                                    <li>
+                                        {{ item.product.product_name }} — 
+                                        {{ item.quantity }} × ₹{{ item.price }} 
+                                        = ₹{{ item.quantity|multiply:item.price }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         {% else %}
-        <p class="text-center p-4">No orders placed yet.</p>
+            <p class="text-center p-4">No orders placed yet.</p>
         {% endif %}
     </div>
+    
 <!-- Edit Profile Modal -->
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">

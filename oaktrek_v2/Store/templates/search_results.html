@@ -175,7 +175,7 @@
                                     {{ product.gender }}
                                 </span>
                             </div>
-                            <div class="price">${{ product.price|floatformat:2 }}</div>
+                            <div class="price">₹{{ product.price|floatformat:2 }}</div>
                             <a href="{% url 'product_page' product.category_slug product.slug %}" class="btn view-details-btn w-100">View Details</a>
                         </div>
                     </div>
