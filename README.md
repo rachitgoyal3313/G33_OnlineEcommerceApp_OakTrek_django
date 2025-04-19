@@ -15,7 +15,7 @@ OakTrek is a web-based e-commerce application specializing in footwear. Built us
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/rachitgoyal3313/oaktrek_v2_2.git
+git clone https://github.com/rachitgoyal3313/G33_OnlineEcommerceApp_OakTrek_django.git
 cd oaktrek_v2
 ```
 
