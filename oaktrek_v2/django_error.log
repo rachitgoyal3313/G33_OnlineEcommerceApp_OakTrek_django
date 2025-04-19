@@ -2849,3 +2849,63 @@ Traceback (most recent call last):
 django.template.exceptions.TemplateSyntaxError: Invalid filter: 'multiply'
 "GET /auth/orders/34/ HTTP/1.1" 500 205730
 "GET /auth/orders/34/ HTTP/1.1" 500 205730
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 514, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Amount exceeds maximum amount allowed.
+Internal Server Error: /checkout/
+Traceback (most recent call last):
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\oaktrek v2_2\oaktrek_v2\Store\views.py", line 514, in checkout
+    razorpay_order = client.order.create({
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\order.py", line 71, in create
+    return self.post_url(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\resources\base.py", line 20, in post_url
+    return self.client.post(url, data, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 156, in post
+    return self.request('post', path, data=data, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\goyal\Desktop\Oaktrek v2\oaktrek v2\env\Lib\site-packages\razorpay\client.py", line 137, in request
+    raise BadRequestError(msg)
+razorpay.errors.BadRequestError: Amount exceeds maximum amount allowed.
+"GET /checkout/ HTTP/1.1" 500 104130
+"GET /checkout/ HTTP/1.1" 500 104130
