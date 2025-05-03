@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-%0o=-fj%1o7dl--0(cnl18@%_*a&0okoz+%bjat&=u9wln*q!j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Store',
+    'auctions',
     # 'Admin',
     'Profile',
     # 'Chatbot',
@@ -74,6 +76,23 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'oaktrek_v2.wsgi.application'
+
+# settings.py
+ASGI_APPLICATION = 'oaktrek_v2.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
+
+
+# Cache configuration
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
 
 
 # Database

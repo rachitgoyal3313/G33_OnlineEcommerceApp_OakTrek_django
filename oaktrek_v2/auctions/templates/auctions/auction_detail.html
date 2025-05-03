@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auction: {{ luxury_shoe.product.product_name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; background-color: #f8f8f8; }
+        h1 { color: #333; }
+        form { margin-top: 20px; }
+        input[type="number"] { padding: 8px; margin-right: 10px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 8px 12px; border: none; border-radius: 4px; background-color: #28a745; color: white; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        button:disabled { background-color: #6c757d; cursor: not-allowed; }
+        .bid-entry { margin: 5px 0; padding: 6px 10px; background-color: white; border-radius: 4px; border-left: 4px solid #007bff; }
+        .error { color: red; }
+        .success { color: green; }
+        .info { color: #0c5460; background-color: #d1ecf1; padding: 10px; border-radius: 4px; }
+        #bid-history { background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #ddd; max-height: 300px; overflow-y: auto; margin-top: 20px; }
+        #countdown { font-size: 18px; color: #dc3545; margin-top: 10px; }
+        .auction-inactive { color: #721c24; background-color: #f8d7da; padding: 10px; border-radius: 4px; margin-bottom: 20px; }
+        /* Popup styles */
+        #checkout-popup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        #checkout-popup .popup-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 90vw;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        #checkout-popup .popup-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        #checkout-popup .popup-message {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        #checkout-popup .checkout-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #checkout-popup .checkout-btn:hover {
+            background-color: #218838;
+        }
+        #checkout-popup .close-popup {
+            background-color: #6c757d;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #checkout-popup .close-popup:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <h1>Auction: {{ luxury_shoe.product.product_name }}</h1>
+    
+    {% if not luxury_shoe.is_active %}
+    <div class="auction-inactive">
+        This auction has ended.
+        {% if highest_bid %}
+            {% if highest_bid.user == request.user %}
+                You won this auction with a bid of ${{ highest_bid.amount }}!
+            {% else %}
+                This auction was won by {{ highest_bid.user.username }} with a bid of ${{ highest_bid.amount }}.
+            {% endif %}
+        {% else %}
+            No bids were placed.
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    <p>Starting Bid: ${{ luxury_shoe.starting_bid }}</p>
+    <p>Current Highest Bid:
+        <span id="highest-bid">
+            {% if highest_bid %}
+                ${{ highest_bid.amount }} by {{ highest_bid.user.username }}
+            {% else %}
+                None
+            {% endif %}
+        </span>
+    </p>
+    <div id="countdown">Time left: <span id="timer">{% if highest_bid %}10{% else %}0{% endif %}</span>s</div>
+
+    {% if luxury_shoe.is_active %}
+    <form method="post" action="{% url 'auctions:auction_detail' luxury_shoe.id %}" id="bid-form">
+        {% csrf_token %}
+        <input type="number" name="amount" step="0.01" placeholder="Enter your bid" required>
+        <button type="submit" id="bid-button">Place Bid</button>
+    </form>
+    {% endif %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <h3>Bid History:</h3>
+    <div id="bid-history">
+        {% for bid in bid_history %}
+            <div class="bid-entry">
+                <strong>{{ bid.user.username }}</strong> bid <strong>${{ bid.amount }}</strong> at
+                <em>{{ bid.timestamp }}</em>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Checkout Popup Modal -->
+    <div id="checkout-popup">
+        <div class="popup-content">
+            <h2 class="popup-title" id="popup-title">Auction Ended!</h2>
+            <p class="popup-message" id="popup-message"></p>
+            <div id="popup-buttons">
+                <button class="checkout-btn" id="go-to-checkout">Go to Checkout</button>
+                <button class="close-popup" id="close-popup">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const luxuryShoeId = {{ luxury_shoe.id }};
+        const currentUser = "{{ request.user.username|escapejs }}";
+        const isActive = {% if luxury_shoe.is_active %}true{% else %}false{% endif %};
+        const socket = new WebSocket(`ws://${window.location.host}/ws/auction/${luxuryShoeId}/`);
+        const bidForm = document.getElementById('bid-form');
+        const bidButton = document.getElementById('bid-button');
+        const checkoutPopup = document.getElementById('checkout-popup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupMessage = document.getElementById('popup-message');
+        const goToCheckout = document.getElementById('go-to-checkout');
+        const closePopup = document.getElementById('close-popup');
+
+        // Hide popup initially
+        checkoutPopup.style.display = 'none';
+
+        // Close popup when the close button is clicked
+        if (closePopup) {
+            closePopup.addEventListener('click', function() {
+                checkoutPopup.style.display = 'none';
+            });
+        }
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+
+            if (data.bid) {
+                // Handle bid updates
+                const bidHistory = document.getElementById('bid-history');
+                const bidEntry = document.createElement('div');
+                bidEntry.classList.add('bid-entry');
+                bidEntry.innerHTML = `<strong>${data.bid.user}</strong> bid <strong>$${data.bid.amount}</strong> at <em>${data.bid.timestamp}</em>`;
+                bidHistory.prepend(bidEntry);
+                document.getElementById('highest-bid').textContent = `$${data.bid.amount} by ${data.bid.user}`;
+            } 
+            else if (typeof data.timer === 'number') {
+                // Handle timer updates
+                const timerElement = document.getElementById('timer');
+                if (timerElement) {
+                    timerElement.textContent = data.timer;
+                }
+            } 
+            else if (data.winner) {
+                // Handle winner announcement with popup
+                if (bidForm) bidForm.style.display = 'none';
+                const timerElement = document.getElementById('timer');
+                if (timerElement) timerElement.textContent = '0';
+
+                // Normalize usernames for comparison
+                const winnerUsername = (data.winner || '').trim().toLowerCase();
+                const currentUsername = currentUser.trim().toLowerCase();
+
+                if (winnerUsername && winnerUsername === currentUsername) {
+                    // --- Instant redirect for winner ---
+                    window.location.href = '/store/checkout/';
+                    // Optionally, show popup as fallback
+                    popupTitle.textContent = "Congratulations!";
+                    popupMessage.textContent = `You won this auction for $${data.amount}. Click below to proceed to checkout.`;
+                    goToCheckout.style.display = 'inline-block';
+                    goToCheckout.onclick = function() {
+                        window.location.href = '/store/checkout/';
+                    };
+                } else {
+                    popupTitle.textContent = "Auction Ended";
+                    popupMessage.textContent = `Winner: ${data.winner} ($${data.amount})`;
+                    goToCheckout.style.display = 'none';
+                }
+                checkoutPopup.style.display = 'flex';
+            }
+        };
+
+        socket.onopen = function() {};
+        socket.onclose = function(e) {
+            if (bidButton) {
+                bidButton.disabled = true;
+                bidButton.textContent = 'Connection Lost';
+            }
+        };
+        socket.onerror = function(e) {};
+
+        if (bidForm) {
+            bidForm.addEventListener('submit', function() {
+                bidButton.disabled = true;
+                bidButton.textContent = 'Placing Bid...';
+            });
+        }
+    </script>
+</body>
+</html>

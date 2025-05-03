@@ -21,7 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Store.urls')),
     path('auth/', include('Profile.urls')),
-    path('chat/', include('CustomerSupportAI.urls'))
+    path('chat/', include('CustomerSupportAI.urls')),
+    path('auctions/', include('auctions.urls')),
     # path('adminpanel/', include('Admin.urls')),
     # path('chatbot/', include('Chatbot.urls')),  # If chatbot added later
 ]

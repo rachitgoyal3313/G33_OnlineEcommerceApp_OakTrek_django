@@ -1,0 +1,21 @@
+<!-- auctions/templates/auctions/auction_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Luxury Shoe Auctions</title>
+</head>
+<body>
+    <h1>Luxury Shoe Auctions</h1>
+    <ul>
+        {% for auction in auctions %}
+            <li>
+                <a href="{% url 'auctions:auction_detail' auction.id %}">
+                    {{ auction.product.product_name }} - Starting Bid: ${{ auction.starting_bid }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No active auctions.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
