@@ -512,7 +512,7 @@ def checkout(request):
     # GET request - show checkout page
     client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
     razorpay_order = client.order.create({
-        'amount': int(total_amount * 100),  # Convert to paise
+        'amount': int(total_amount * 10),  # Convert to paise
         'currency': 'INR',
         'payment_capture': '1'
     })
